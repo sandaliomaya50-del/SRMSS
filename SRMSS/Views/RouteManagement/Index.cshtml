@@ -1,0 +1,1084 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Route Management - SRMSS</title>
+
+    <link rel="stylesheet" href="~/css/route-management.css" />
+</head>
+
+<body>
+
+    <!-- =========================================================
+         MAIN PAGE
+    ========================================================== -->
+    <div class="route-management-page">
+
+        <!-- =====================================================
+             LEFT SIDEBAR
+             EXACT SAME STRUCTURE AS DASHBOARD
+        ====================================================== -->
+        <aside class="sidebar">
+
+            <!-- Sidebar Background -->
+            <img src="~/Images/dashboard-left-panel.png"
+                 class="sidebar-background"
+                 alt="SRMSS Dashboard Left Panel" />
+
+ 
+            <!-- Sidebar Content -->
+            <div class="sidebar-content">
+
+ 
+                <!-- =================================================
+                     SIDEBAR LOGO
+                ================================================== -->
+                <div class="sidebar-logo">
+
+                    <img src="~/Images/srms-logo.png"
+                         alt="SRMSS Logo" />
+
+                    <div class="sidebar-brand-text">
+
+                        <h2>SRMSS</h2>
+
+                        <span>
+                            Smart Route Management<br />
+                            and Scheduling System
+                        </span>
+
+                    </div>
+
+                </div>
+
+ 
+                <!-- =================================================
+                     SIDEBAR MENU
+                ================================================== -->
+                <nav class="sidebar-menu">
+
+ 
+                    <!-- Dashboard -->
+                    <a href="/Dashboard"
+                       class="menu-item">
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Dashboard" />
+
+                        <span>Dashboard</span>
+
+                    </a>
+
+ 
+                    <!-- Route Management -->
+                    <a href="/RouteManagement"
+                       class="menu-item active">
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Route Management" />
+
+                        <span>Route Management</span>
+
+                    </a>
+
+ 
+                    <!-- Route List -->
+                    <a href="/RouteList"
+                       class="menu-item">
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Route List" />
+
+                        <span>Route List</span>
+
+                    </a>
+
+ 
+                    <!-- Schedule Management -->
+                    <a href="/ScheduleManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/schedule-management-icon.png"
+                             alt="Schedule Management" />
+
+                        <span>Schedule Management</span>
+
+                    </a>
+
+ 
+                    <!-- Schedule List -->
+                    <a href="/ScheduleList"
+                       class="menu-item">
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Schedule List" />
+
+                        <span>Schedule List</span>
+
+                    </a>
+
+ 
+                    <!-- Bus / Vehicle Management -->
+                    <a href="/VehicleManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/bus-icon.png"
+                             alt="Bus Vehicle Management" />
+
+                        <span>Bus/Vehicle Management</span>
+
+                    </a>
+
+ 
+                    <!-- Driver Management -->
+                    <a href="/DriverManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/driver-management-icon.png"
+                             alt="Driver Management" />
+
+                        <span>Driver Management</span>
+
+                    </a>
+
+ 
+                    <!-- Fuel Management -->
+                    <a href="/FuelManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/fuel-management-icon.png"
+                             alt="Fuel Management" />
+
+                        <span>Fuel Management</span>
+
+                    </a>
+
+ 
+                    <!-- Maintenance Management -->
+                    <a href="/MaintenanceManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/maintenance-management-icon.png"
+                             alt="Maintenance Management" />
+
+                        <span>Maintenance Management</span>
+
+                    </a>
+
+ 
+                    <!-- Depot Dashboard -->
+                    <a href="/DepotDashboard"
+                       class="menu-item">
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Depot Dashboard" />
+
+                        <span>Depot Dashboard</span>
+
+                    </a>
+
+ 
+                    <!-- Reports & Analytics -->
+                    <a href="/Reports"
+                       class="menu-item">
+
+                        <img src="~/Images/reports-analytics-icon.png"
+                             alt="Reports and Analytics" />
+
+                        <span>Reports &amp; Analytics</span>
+
+                    </a>
+
+ 
+                    <!-- User Management -->
+                    <a href="/UserManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/user-icon.png"
+                             alt="User Management" />
+
+                        <span>User Management</span>
+
+                    </a>
+
+ 
+                    <!-- Profile / Settings -->
+                    <a href="/Profile"
+                       class="menu-item">
+
+                        <img src="~/Images/profile-settings-icon.png"
+                             alt="Profile and Settings" />
+
+                        <span>Profile / Settings</span>
+
+                    </a>
+
+                </nav>
+
+ 
+                <!-- =================================================
+                     SIDEBAR BOTTOM
+                ================================================== -->
+                <div class="sidebar-bottom">
+
+                    <div class="sidebar-slogan">
+
+                        <strong>Smart Transport.</strong>
+
+                        <span>Better Routes.</span>
+
+                        <span>Efficient Operations.</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+ 
+        <!-- =====================================================
+             RIGHT SIDE CONTENT
+        ====================================================== -->
+        <main class="main-content">
+
+ 
+            <!-- =================================================
+                 TOP HEADER
+            ================================================== -->
+            <header class="top-header">
+
+                <!-- Search -->
+                <div class="search-box">
+
+                    <span class="search-symbol">⌕</span>
+
+                    <input type="text"
+                           placeholder="Search here..." />
+
+                </div>
+
+ 
+                <!-- Header Right -->
+                <div class="header-right">
+
+                    <!-- Notification -->
+                    <button class="notification-button"
+                            type="button">
+
+                        <span class="notification-icon">♧</span>
+
+                        <span class="notification-count">
+                            3
+                        </span>
+
+                    </button>
+
+ 
+                    <!-- Administrator -->
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+
+                            <img src="~/Images/user-icon.png"
+                                 alt="Admin" />
+
+                        </div>
+
+                        <div class="admin-information">
+
+                            <strong>Admin</strong>
+
+                            <span>System Administrator</span>
+
+                        </div>
+
+                        <span class="admin-arrow">⌄</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+ 
+            <!-- =================================================
+                 PAGE CONTENT
+            ================================================== -->
+            <section class="content-area">
+
+ 
+                <!-- =================================================
+                     SUCCESS NOTIFICATION
+                     ONLY ADDED FOR SAVE SUCCESS MESSAGE
+                ================================================== -->
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div id="successNotification" class="success-notification">
+                        <span class="success-icon">✓</span>
+                        <span>@TempData["SuccessMessage"]</span>
+                    </div>
+                }
+
+ 
+                <!-- =============================================
+                     PAGE TITLE
+                ============================================== -->
+                <div class="page-heading">
+
+                    <div class="heading-left">
+
+                        <a href="/Dashboard"
+                           class="back-button"
+                           title="Back to Dashboard">
+
+                            ←
+
+                        </a>
+
+                        <div>
+
+                            <h1>Route Management</h1>
+
+                            <p>Add New Route</p>
+
+                        </div>
+
+                    </div>
+
+ 
+                    <!-- Breadcrumb -->
+                    <div class="breadcrumb">
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Routes" />
+
+                        <span>Routes</span>
+
+                        <span class="breadcrumb-slash">/</span>
+
+                        <span>Add Route</span>
+
+                    </div>
+
+                </div>
+
+ 
+                <!-- =============================================
+                     MAIN ROUTE SECTION
+                ============================================== -->
+                <div class="route-main-grid">
+
+ 
+                    <!-- =========================================
+                         LEFT: ADD ROUTE FORM
+                    ========================================== -->
+                    <section class="add-route-card">
+
+ 
+                        <!-- Card Header -->
+                        <div class="card-heading">
+
+                            <div class="card-heading-icon">
+
+                                <img src="~/Images/route-management-icon-2.png"
+                                     alt="Add Route" />
+
+                            </div>
+
+                            <div>
+
+                                <h2>Add Route</h2>
+
+                                <p>
+                                    Enter the route details below to create a new route.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+ 
+                        <!-- Form -->
+                        <form id="routeForm"
+                              method="post"
+                              asp-controller="RouteManagement"
+                              asp-action="SaveRoute">
+
+                            @Html.AntiForgeryToken()
+
+ 
+                            <!-- =================================
+                                 ROW 1
+                            ================================== -->
+                            <div class="form-row">
+
+ 
+                                <!-- Route ID -->
+                                <div class="form-group">
+
+                                    <label for="routeId">
+
+                                        <img src="~/Images/route-management-icon-2.png"
+                                             alt="Route ID" />
+
+                                        <span>Route ID</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <input type="text"
+                                           id="routeId"
+                                           name="routeCode"
+                                           placeholder="Enter route ID" />
+
+                                </div>
+
+ 
+                                <!-- Start Point -->
+                                <div class="form-group">
+
+                                    <label for="startPoint">
+
+                                        <img src="~/Images/start-point-icon.png"
+                                             alt="Start Point" />
+
+                                        <span>Start Point</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select id="startPoint"
+                                            name="startPoint">
+
+                                        <option value="">
+                                            Select start point
+                                        </option>
+
+                                        <option value="Matara">
+                                            Matara
+                                        </option>
+
+                                        <option value="Weligama">
+                                            Weligama
+                                        </option>
+
+                                        <option value="Galle">
+                                            Galle
+                                        </option>
+
+                                        <option value="Akuressa">
+                                            Akuressa
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+ 
+                            <!-- =================================
+                                 ROW 2
+                            ================================== -->
+                            <div class="form-row">
+
+ 
+                                <!-- End Point -->
+                                <div class="form-group">
+
+                                    <label for="endPoint">
+
+                                        <img src="~/Images/end-point-icon.png"
+                                             alt="End Point" />
+
+                                        <span>End Point</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select id="endPoint"
+                                            name="endPoint">
+
+                                        <option value="">
+                                            Select end point
+                                        </option>
+
+                                        <option value="Matara">
+                                            Matara
+                                        </option>
+
+                                        <option value="Weligama">
+                                            Weligama
+                                        </option>
+
+                                        <option value="Galle">
+                                            Galle
+                                        </option>
+
+                                        <option value="Akuressa">
+                                            Akuressa
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+ 
+                                <!-- Intermediate Stops -->
+                                <div class="form-group">
+
+                                    <label for="intermediateStops">
+
+                                        <img src="~/Images/location-icon.png"
+                                             alt="Intermediate Stops" />
+
+                                        <span>Intermediate Stops</span>
+
+                                    </label>
+
+                                    <input type="text"
+                                           id="intermediateStops"
+                                           name="intermediateStops"
+                                           placeholder="Add intermediate stops (comma separated)" />
+
+                                    <small>
+                                        e.g. Galle, Matara, Weligama
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+ 
+                            <!-- =================================
+                                 ROW 3
+                            ================================== -->
+                            <div class="form-row">
+
+ 
+                                <!-- Total Distance -->
+                                <div class="form-group">
+
+                                    <label for="totalDistance">
+
+                                        <span class="distance-icon">
+                                            A
+                                        </span>
+
+                                        <span>Total Distance (km)</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <div class="input-with-unit">
+
+                                        <input type="number"
+                                               id="totalDistance"
+                                               name="totalDistanceKm"
+                                               placeholder="Enter total distance"
+                                               min="0"
+                                               step="0.1" />
+
+                                        <span class="input-unit">
+                                            km
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+ 
+                                <!-- Service Type -->
+                                <div class="form-group">
+
+                                    <label for="serviceType">
+
+                                        <img src="~/Images/bus-icon.png"
+                                             alt="Service Type" />
+
+                                        <span>Service Type</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select id="serviceType"
+                                            name="serviceType">
+
+                                        <option value="">
+                                            Select service type
+                                        </option>
+
+                                        <option value="Normal">
+                                            Normal Service
+                                        </option>
+
+                                        <option value="Express">
+                                            Express Service
+                                        </option>
+
+                                        <option value="Limited">
+                                            Limited Service
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+ 
+                            <!-- =================================
+                                 ROW 4
+                            ================================== -->
+                            <div class="form-row">
+
+ 
+                                <!-- Assigned Bus -->
+                                <div class="form-group">
+
+                                    <label for="assignedBus">
+
+                                        <img src="~/Images/bus-icon.png"
+                                             alt="Assigned Bus" />
+
+                                        <span>Assigned Bus</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select id="assignedBus"
+                                            name="assignedBus">
+
+                                        <option value="">
+                                            Select bus
+                                        </option>
+
+                                        <option value="NB-001">
+                                            NB-001
+                                        </option>
+
+                                        <option value="NB-002">
+                                            NB-002
+                                        </option>
+
+                                        <option value="NB-003">
+                                            NB-003
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+ 
+                                <!-- Assigned Driver -->
+                                <div class="form-group">
+
+                                    <label for="assignedDriver">
+
+                                        <img src="~/Images/driver-management-icon.png"
+                                             alt="Assigned Driver" />
+
+                                        <span>Assigned Driver</span>
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select id="assignedDriver"
+                                            name="assignedDriver">
+
+                                        <option value="">
+                                            Select driver
+                                        </option>
+
+                                        <option value="D001">
+                                            D001 - Driver 01
+                                        </option>
+
+                                        <option value="D002">
+                                            D002 - Driver 02
+                                        </option>
+
+                                        <option value="D003">
+                                            D003 - Driver 03
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+ 
+                            <!-- =================================
+                                 FORM BUTTONS
+                            ================================== -->
+                            <div class="form-buttons">
+
+                                <button type="reset"
+                                        class="reset-button">
+
+                                    <span class="reset-icon">
+                                        ↻
+                                    </span>
+
+                                    <span>Reset</span>
+
+                                </button>
+
+ 
+                                <button type="submit"
+                                        class="save-route-button">
+
+                                    <span class="save-icon">
+                                        ▣
+                                    </span>
+
+                                    <span>Save Route</span>
+
+                                </button>
+
+                            </div>
+
+                        </form>
+
+                    </section>
+
+ 
+  
+                    <!-- =========================================
+                         RIGHT: ROUTE OVERVIEW
+                    ========================================== -->
+                    <section class="route-overview-card">
+
+ 
+                        <!-- Card Header -->
+                        <div class="overview-heading">
+
+                            <div class="overview-heading-icon">
+
+                                <img src="~/Images/location-icon.png"
+                                     alt="Route Overview" />
+
+                            </div>
+
+                            <div>
+
+                                <h2>Route Overview</h2>
+
+                                <p>
+                                    Visual representation of the selected route.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+ 
+                        <!-- =====================================
+                             MAP AREA
+                        ====================================== -->
+                        <div class="route-map">
+
+                            <!-- Start Marker -->
+                            <div class="map-start-marker">
+
+                                <img src="~/Images/start-point-icon.png"
+                                     alt="Start" />
+
+                                <span>Start</span>
+
+                            </div>
+
+ 
+                            <!-- Route Line -->
+                            <div class="route-line route-line-one"></div>
+
+                            <div class="route-line route-line-two"></div>
+
+                            <div class="route-line route-line-three"></div>
+
+ 
+                            <!-- Route Points -->
+                            <div class="route-point point-one"></div>
+
+                            <div class="route-point point-two"></div>
+
+                            <div class="route-point point-three"></div>
+
+ 
+                            <!-- End Marker -->
+                            <div class="map-end-marker">
+
+                                <img src="~/Images/end-point-icon.png"
+                                     alt="End" />
+
+                                <span>End</span>
+
+                            </div>
+
+                        </div>
+
+ 
+                        <!-- =====================================
+                             ROUTE INFORMATION
+                        ====================================== -->
+                        <div class="route-information">
+
+ 
+                            <!-- Start Point -->
+                            <div class="overview-row">
+
+                                <img src="~/Images/start-point-icon.png"
+                                     alt="Start Point" />
+
+                                <span class="overview-label">
+                                    Start Point
+                                </span>
+
+                                <strong id="overviewStartPoint">
+                                    -
+                                </strong>
+
+                            </div>
+
+ 
+                            <!-- End Point -->
+                            <div class="overview-row">
+
+                                <img src="~/Images/end-point-icon.png"
+                                     alt="End Point" />
+
+                                <span class="overview-label">
+                                    End Point
+                                </span>
+
+                                <strong id="overviewEndPoint">
+                                    -
+                                </strong>
+
+                            </div>
+
+ 
+                            <!-- Distance -->
+                            <div class="overview-row">
+
+                                <span class="overview-distance-icon">
+                                    A
+                                </span>
+
+                                <span class="overview-label">
+                                    Total Distance
+                                </span>
+
+                                <strong id="overviewDistance">
+                                    - km
+                                </strong>
+
+                            </div>
+
+ 
+                            <!-- Service Type -->
+                            <div class="overview-row">
+
+                                <img src="~/Images/bus-icon.png"
+                                     alt="Service Type" />
+
+                                <span class="overview-label">
+                                    Service Type
+                                </span>
+
+                                <strong id="overviewServiceType">
+                                    -
+                                </strong>
+
+                            </div>
+
+ 
+                            <!-- Assigned Bus -->
+                            <div class="overview-row">
+
+                                <img src="~/Images/bus-icon.png"
+                                     alt="Assigned Bus" />
+
+                                <span class="overview-label">
+                                    Assigned Bus
+                                </span>
+
+                                <strong id="overviewBus">
+                                    -
+                                </strong>
+
+                            </div>
+
+ 
+                            <!-- Assigned Driver -->
+                            <div class="overview-row">
+
+                                <img src="~/Images/driver-management-icon.png"
+                                     alt="Assigned Driver" />
+
+                                <span class="overview-label">
+                                    Assigned Driver
+                                </span>
+
+                                <strong id="overviewDriver">
+                                    -
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+ 
+    <!-- =========================================================
+         ROUTE MANAGEMENT JAVASCRIPT
+         UI ONLY - NO DATABASE
+    ========================================================== -->
+    <script>
+
+ 
+  
+            // Start Point
+            const startPoint = document.getElementById("startPoint");
+
+            // End Point
+            const endPoint = document.getElementById("endPoint");
+
+            // Distance
+            const totalDistance = document.getElementById("totalDistance");
+
+            // Service Type
+            const serviceType = document.getElementById("serviceType");
+
+            // Bus
+            const assignedBus = document.getElementById("assignedBus");
+
+            // Driver
+            const assignedDriver = document.getElementById("assignedDriver");
+
+ 
+            // Overview fields
+            const overviewStartPoint =
+                document.getElementById("overviewStartPoint");
+
+            const overviewEndPoint =
+                document.getElementById("overviewEndPoint");
+
+            const overviewDistance =
+                document.getElementById("overviewDistance");
+
+            const overviewServiceType =
+                document.getElementById("overviewServiceType");
+
+            const overviewBus =
+                document.getElementById("overviewBus");
+
+            const overviewDriver =
+                document.getElementById("overviewDriver");
+
+ 
+            // Update Route Overview
+            function updateRouteOverview() {
+
+                overviewStartPoint.textContent =
+                    startPoint.value || "-";
+
+                overviewEndPoint.textContent =
+                    endPoint.value || "-";
+
+                overviewDistance.textContent =
+                    totalDistance.value
+                        ? totalDistance.value + " km"
+                        : "- km";
+
+                overviewServiceType.textContent =
+                    serviceType.options[serviceType.selectedIndex]?.text || "-";
+
+                overviewBus.textContent =
+                    assignedBus.options[assignedBus.selectedIndex]?.text || "-";
+
+                overviewDriver.textContent =
+                    assignedDriver.options[assignedDriver.selectedIndex]?.text || "-";
+            }
+
+ 
+            // Update when fields change
+            startPoint.addEventListener("change", updateRouteOverview);
+
+            endPoint.addEventListener("change", updateRouteOverview);
+
+            totalDistance.addEventListener("input", updateRouteOverview);
+
+            serviceType.addEventListener("change", updateRouteOverview);
+
+            assignedBus.addEventListener("change", updateRouteOverview);
+
+            assignedDriver.addEventListener("change", updateRouteOverview);
+
+ 
+            // Reset Overview
+            document
+                .getElementById("routeForm")
+                .addEventListener("reset", function () {
+
+                    setTimeout(function () {
+
+                        overviewStartPoint.textContent = "-";
+
+                        overviewEndPoint.textContent = "-";
+
+                        overviewDistance.textContent = "- km";
+
+                        overviewServiceType.textContent = "-";
+
+                        overviewBus.textContent = "-";
+
+                        overviewDriver.textContent = "-";
+
+                    }, 10);
+
+                });
+
+ 
+            // Success notification
+            const successNotification = document.getElementById("successNotification");
+
+            if (successNotification) {
+
+                setTimeout(function () {
+
+                    successNotification.style.display = "none";
+
+                }, 3000);
+
+            }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1398 @@
+﻿/* =========================================================
+   DRIVER MANAGEMENT CSS
+   SRMSS MASTER STYLE
+   SIDEBAR PRESERVED
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+
+
+
+/* =========================================================
+   MAIN CONTENT AREA
+   SIDEBAR SPACE MUST REMAIN UNCHANGED
+   ========================================================= */
+
+
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    min-height: 100vh;
+    padding: 0;
+}
+
+
+
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+
+.page-container {
+    width: 100%;
+    padding: 25px 30px;
+}
+
+
+
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+.page-heading-left h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+
+
+
+.page-heading-left p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+/* =========================================================
+   DRIVER ADD CARD
+   ========================================================= */
+
+
+.vehicle-management-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+
+.vehicle-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+
+
+
+    /* =========================================================
+   ADD NEW DRIVER HEADING ICON
+   SIZE INCREASED 3X
+   ========================================================= */
+
+
+    .vehicle-card-title img {
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+    .vehicle-card-title h2 {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: #1f2937;
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   DRIVER FORM GRID
+   ========================================================= */
+
+
+.vehicle-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 22px;
+    width: 100%;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+
+.vehicle-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+    .vehicle-form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+
+
+
+
+
+
+    /* =========================================================
+   FORM LABEL
+   ========================================================= */
+
+
+    .vehicle-form-group label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #374151;
+    }
+
+
+/* =========================================================
+   INPUT BOX
+   ========================================================= */
+
+
+.vehicle-input-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    background: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+
+
+
+
+
+    /* =========================================================
+   FIELD ICONS
+   SIZE CORRECTED 2X
+   ========================================================= */
+
+
+    .vehicle-input-box img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+
+
+
+
+
+
+    /* Force icon size (prevent later CSS override) */
+
+
+    .vehicle-input-box > img {
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+    .vehicle-input-box input,
+    .vehicle-input-box select,
+    .vehicle-input-box textarea {
+        width: 100%;
+        flex: 1;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 12px 15px;
+        font-size: 14px;
+        color: #374151;
+    }
+
+
+
+
+
+
+
+        .vehicle-input-box input::placeholder,
+        .vehicle-input-box textarea::placeholder {
+            color: #9ca3af;
+        }
+
+
+
+
+
+
+
+    /* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+
+    .vehicle-input-box:focus-within {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+
+
+
+
+
+
+    /* =========================================================
+   DROPDOWN STYLE
+   ========================================================= */
+
+
+    .vehicle-input-box select {
+        height: 48px;
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        padding-right: 15px;
+    }
+
+
+
+
+
+
+
+    /* =========================================================
+   DATE INPUT
+   ========================================================= */
+
+
+    .vehicle-input-box input[type="date"] {
+        cursor: pointer;
+    }
+
+
+
+
+
+
+
+        .vehicle-input-box input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+    /* =========================================================
+   AVAILABILITY DROPDOWN
+   ONLY USER ICON
+   NO EXTRA CIRCLE / TICK
+   ========================================================= */
+
+
+    .vehicle-input-box select[name="Status"] {
+        padding-left: 10px;
+    }
+
+
+
+
+
+
+
+    /* =========================================================
+   ROUTE DROPDOWN
+   ========================================================= */
+
+
+    .vehicle-input-box select[name="AssignedRoute"] {
+        padding-left: 10px;
+    }
+
+
+/* =========================================================
+   ADDITIONAL NOTES
+   ========================================================= */
+
+
+.vehicle-form-group.full-width .vehicle-input-box {
+    width: 100%;
+}
+
+
+
+
+
+
+
+    .vehicle-form-group.full-width .vehicle-input-box img {
+        align-self: flex-start;
+        margin-top: 15px;
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   DRIVER PHOTO UPLOAD
+   ========================================================= */
+
+
+.vehicle-upload-section {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-upload-box {
+    border: 2px dashed #d1d5db;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    background: #fafafa;
+}
+
+
+
+
+
+
+
+/* Driver Photo Upload Icon */
+
+
+.upload-vehicle-icon {
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+
+
+
+
+
+
+.vehicle-upload-box h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+
+
+
+
+
+.vehicle-upload-box p {
+    margin: 0 0 18px 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+
+
+
+
+
+.upload-image-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 22px;
+    background: #2563eb;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   FORM ACTION BUTTONS
+   ========================================================= */
+
+
+.vehicle-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.reset-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.save-vehicle-button {
+    padding: 12px 28px;
+    border-radius: 8px;
+    border: none;
+    background: #2563eb;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   DRIVER LIST CARD
+   ========================================================= */
+
+
+.vehicle-list-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+
+
+
+
+
+
+    /* =========================================================
+   DRIVER LIST HEADING ICON
+   SIZE INCREASED 3X
+   ========================================================= */
+
+
+    .vehicle-list-title img {
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+    }
+
+
+/* =========================================================
+   DRIVER LIST ACTION AREA
+   ========================================================= */
+
+
+.driver-list-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   PROFESSIONAL SEARCH BAR
+   ========================================================= */
+
+
+.driver-search-box {
+    width: 360px;
+    height: 44px;
+    border: 1px solid #dbe3f0;
+    border-radius: 10px;
+    padding: 0 18px 0 42px;
+    font-size: 14px;
+    color: #374151;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 3px 10px rgba(15,23,42,0.08);
+    transition: 0.3s ease;
+}
+
+
+
+
+
+
+
+    .driver-search-box::placeholder {
+        color: #94a3b8;
+    }
+
+
+
+
+
+
+
+    .driver-search-box:hover {
+        border-color: #cbd5e1;
+    }
+
+
+
+
+
+
+
+    .driver-search-box:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   STATUS FILTER DROPDOWN
+   ========================================================= */
+
+
+.driver-status-filter {
+    width: 170px;
+    height: 44px;
+    border: 1px solid #dbe3f0;
+    border-radius: 10px;
+    padding: 0 15px;
+    background: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 3px 10px rgba(15,23,42,0.05);
+}
+
+
+
+
+
+
+
+    .driver-status-filter:hover {
+        border-color: #cbd5e1;
+    }
+
+
+
+
+
+
+
+    .driver-status-filter:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   ADD DRIVER BUTTON
+   ========================================================= */
+
+
+.add-schedule-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: #2563eb;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+
+
+
+
+    .add-schedule-button:hover {
+        opacity: 0.9;
+    }
+
+
+
+
+
+
+
+.plus {
+    font-size: 20px;
+    line-height: 1;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   DRIVER TABLE
+   ========================================================= */
+
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+
+
+
+
+
+    .schedule-table thead {
+        background: #f3f4f6;
+    }
+
+
+
+
+
+
+
+    .schedule-table th {
+        padding: 15px;
+        text-align: left;
+        font-size: 13px;
+        font-weight: 700;
+        color: #374151;
+    }
+
+
+
+
+
+
+
+    .schedule-table td {
+        padding: 15px;
+        border-bottom: 1px solid #e5e7eb;
+        font-size: 14px;
+        color: #4b5563;
+    }
+
+
+
+
+
+
+
+    .schedule-table tbody tr:hover {
+        background: #f9fafb;
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   DRIVER TABLE PHOTO
+   ========================================================= */
+
+
+.driver-table-image {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   STATUS BADGE
+   ========================================================= */
+
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+.action-button {
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: none;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+    .action-button.delete {
+        background: #dc2626;
+    }
+
+
+/* =========================================================
+   TABLE FOOTER
+   ========================================================= */
+
+
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+.total-records {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+
+
+
+    .total-records strong {
+        color: #111827;
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+.page-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #374151;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .page-button.active {
+        background: #2563eb;
+        color: #ffffff;
+        border-color: #2563eb;
+    }
+
+
+
+
+
+
+
+/* =========================================================
+   EMPTY TABLE MESSAGE
+   ========================================================= */
+
+
+.empty-row {
+    text-align: center;
+    padding: 40px !important;
+    color: #6b7280;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   NOTIFICATION SYSTEM
+   ========================================================= */
+
+
+.vehicle-notification {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 360px;
+    background: #ffffff;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 9999;
+    animation: notificationShow 0.4s ease;
+}
+
+
+
+
+
+
+
+.notification-icon-circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+.notification-content {
+    flex: 1;
+}
+
+
+
+
+
+
+
+    .notification-content h4 {
+        margin: 0 0 5px;
+        font-size: 15px;
+    }
+
+
+
+
+
+
+
+    .notification-content p {
+        margin: 0;
+        font-size: 14px;
+        color: #6b7280;
+    }
+
+
+
+
+
+
+
+.notification-close {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   SUCCESS NOTIFICATION TICK MARK
+   ========================================================= */
+
+
+.vehicle-notification.success .notification-icon-circle {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+
+
+
+
+
+
+    .vehicle-notification.success .notification-icon-circle::after {
+        content: "✓";
+    }
+
+
+
+
+
+
+
+.vehicle-notification.success {
+    border-left: 5px solid #16a34a;
+}
+
+
+
+
+
+
+
+.vehicle-notification.error {
+    border-left: 5px solid #dc2626;
+}
+
+
+
+
+
+
+
+.vehicle-notification.warning {
+    border-left: 5px solid #f59e0b;
+}
+
+
+
+
+
+
+
+.vehicle-notification.information {
+    border-left: 5px solid #2563eb;
+}
+
+
+
+
+
+
+
+@keyframes notificationShow {
+
+
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+
+
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+
+@media (max-width:1200px) {
+
+
+    .vehicle-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width:992px) {
+
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+
+
+
+
+    .vehicle-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+
+
+
+    .driver-list-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width:768px) {
+
+
+    .page-container {
+        padding: 20px;
+    }
+
+
+
+
+
+    .vehicle-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+
+
+
+    .vehicle-form-actions {
+        flex-direction: column;
+    }
+
+
+
+
+
+    .reset-button,
+    .save-vehicle-button {
+        width: 100%;
+    }
+
+
+
+
+
+    .driver-list-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+
+
+
+    .driver-search-box,
+    .driver-status-filter {
+        width: 100%;
+    }
+
+
+
+
+
+    .vehicle-notification {
+        width: calc(100% - 40px);
+        right: 20px;
+    }
+}
+
+
+
+
+
+
+
+@media (max-width:480px) {
+
+
+    .vehicle-card-title h2,
+    .vehicle-list-title {
+        font-size: 18px;
+    }
+
+
+
+
+
+        .vehicle-card-title img,
+        .vehicle-list-title img {
+            width: 70px;
+            height: 70px;
+        }
+}
+
+
+
+
+
+
+
+/* =========================================================
+   END OF DRIVER MANAGEMENT CSS
+   ========================================================= */

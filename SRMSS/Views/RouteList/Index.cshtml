@@ -1,0 +1,1617 @@
+﻿@model IEnumerable<SRMSS.Models.RouteListViewModel>
+
+@{
+    Layout = null;
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        Route List - SRMSS
+    </title>
+
+
+    <link rel="stylesheet"
+          href="~/css/route-list.css" />
+
+
+</head>
+
+
+<body>
+
+
+
+    <!-- =====================================================
+         DELETE FIX ONLY
+    ====================================================== -->
+
+
+    <form id="deleteRouteForm"
+          asp-controller="RouteList"
+          asp-action="Delete"
+          method="post"
+          style="display:none;">
+
+
+        @Html.AntiForgeryToken()
+
+
+        <input type="hidden"
+               id="deleteRouteId"
+               name="routeId" />
+
+
+    </form>
+
+    <!-- =====================================================
+         MASTER SRMSS SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Dashboard Left Panel" />
+
+
+
+        <div class="sidebar-content">
+
+
+
+            <!-- SIDEBAR LOGO -->
+
+            <div class="sidebar-logo">
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+
+                <div class="sidebar-brand-text">
+
+
+                    <h2>
+                        SRMSS
+                    </h2>
+
+
+
+                    <span>
+                        Smart Route Management<br />
+                        and Scheduling System
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+            <!-- SIDEBAR MENU -->
+
+            <nav class="sidebar-menu">
+
+
+
+                <a href="/Dashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Dashboard" />
+
+
+                    <span>
+                        Dashboard
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/RouteManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/location-icon.png"
+                         alt="Route Management" />
+
+
+                    <span>
+                        Route Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <!-- ACTIVE ROUTE LIST -->
+
+                <a href="/RouteList"
+                   class="menu-item active">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Route List" />
+
+
+                    <span>
+                        Route List
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/ScheduleManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/schedule-management-icon.png"
+                         alt="Schedule Management" />
+
+
+                    <span>
+                        Schedule Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/ScheduleList"
+                   class="menu-item">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Schedule List" />
+
+
+                    <span>
+                        Schedule List
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/VehicleManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/bus-icon.png"
+                         alt="Bus Vehicle Management" />
+
+
+                    <span>
+                        Bus/Vehicle Management
+                    </span>
+
+
+                </a>
+
+                
+                <a href="/DriverManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/driver-management-icon.png"
+                         alt="Driver Management" />
+
+
+                    <span>
+                        Driver Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/FuelManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/fuel-management-icon.png"
+                         alt="Fuel Management" />
+
+
+                    <span>
+                        Fuel Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/MaintenanceManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/maintenance-management-icon.png"
+                         alt="Maintenance Management" />
+
+
+                    <span>
+                        Maintenance Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/DepotDashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Depot Dashboard" />
+
+
+                    <span>
+                        Depot Dashboard
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/Reports"
+                   class="menu-item">
+
+
+                    <img src="~/Images/reports-analytics-icon.png"
+                         alt="Reports and Analytics" />
+
+
+                    <span>
+                        Reports &amp; Analytics
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/UserManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/user-icon.png"
+                         alt="User Management" />
+
+
+                    <span>
+                        User Management
+                    </span>
+
+
+                </a>
+
+
+
+
+                <a href="/Profile"
+                   class="menu-item">
+
+
+                    <img src="~/Images/profile-settings-icon.png"
+                         alt="Profile Settings" />
+
+
+                    <span>
+                        Profile / Settings
+                    </span>
+
+
+                </a>
+
+
+
+            </nav>
+
+
+
+
+            <div class="sidebar-bottom">
+
+
+                <div class="sidebar-slogan">
+
+
+                    <strong>
+                        Smart Transport.
+                    </strong>
+
+
+                    <span>
+                        Better Routes.
+                    </span>
+
+
+                    <span>
+                        Efficient Operations.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </aside>
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="top-header">
+
+
+            <div class="header-search">
+
+
+                <input type="text"
+                       id="headerSearch"
+                       placeholder="Search..." />
+
+
+            </div>
+
+
+
+
+            <div class="header-right">
+
+
+                <button type="button"
+                        class="notification-button"
+                        aria-label="Notifications">
+
+
+                    <span class="notification-icon">
+
+                        ♧
+
+                    </span>
+
+
+                    <span class="notification-dot"></span>
+
+
+                </button>
+
+
+
+
+                <div class="admin-profile">
+
+
+                    <div class="admin-avatar">
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="Admin" />
+
+
+                    </div>
+
+
+
+
+                    <div class="admin-details">
+
+
+                        <span class="admin-name">
+
+                            Admin
+
+                        </span>
+
+
+
+
+                        <span class="admin-role">
+
+                            System Administrator
+
+                        </span>
+
+
+                    </div>
+
+
+
+
+                    <span class="admin-arrow">
+
+                        ▾
+
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+
+
+        <!-- =====================================================
+             PAGE CONTAINER
+        ====================================================== -->
+
+
+        <div class="page-container">
+
+
+
+            <div class="page-heading">
+
+
+
+                <div class="page-heading-left">
+
+
+                    <h1>
+
+                        Route List
+
+                    </h1>
+
+
+
+                    <p>
+
+                        View and manage all transport routes.
+
+                    </p>
+
+
+
+                </div>
+
+
+
+
+                <a href="/RouteManagement"
+                   class="add-route-button">
+
+
+                    <span class="plus">
+
+                        +
+
+                    </span>
+
+
+
+
+                    <span>
+
+                        Add Route
+
+                    </span>
+
+
+                </a>
+
+
+
+            </div>
+            
+            <!-- =====================================================
+                 ROUTE LIST CARD
+            ====================================================== -->
+
+            <section class="route-list-card">
+
+
+
+                <!-- FILTER BAR -->
+
+                <div class="filter-bar">
+
+
+
+                    <div class="filter-search">
+
+
+                        <input type="text"
+                               id="routeSearch"
+                               placeholder="Search by route, start point, end point..." />
+
+
+                    </div>
+
+
+
+
+
+                    <select id="statusFilter"
+                            class="filter-select">
+
+
+                        <option value="">
+                            All Status
+                        </option>
+
+
+                        <option value="active">
+                            Active
+                        </option>
+
+
+                        <option value="inactive">
+                            Inactive
+                        </option>
+
+
+                    </select>
+
+
+
+
+
+                    <button type="button"
+                            id="clearFilters"
+                            class="clear-filter-button">
+
+
+                        Clear
+
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+                <!-- =====================================================
+                     ROUTE TABLE
+                ====================================================== -->
+
+
+                <div class="table-wrapper">
+
+
+                    <table class="route-table"
+                           id="routeTable">
+
+
+
+                        <thead>
+
+
+                            <tr>
+
+
+                                <th>
+                                    #
+                                </th>
+
+
+                                <th>
+                                    Route ID
+                                </th>
+
+
+                                <th>
+                                    Route Code
+                                </th>
+
+
+                                <th>
+                                    Start Point
+                                </th>
+
+
+                                <th>
+                                    End Point
+                                </th>
+
+
+                                <th>
+                                    Distance
+                                </th>
+
+
+                                <th>
+                                    Service Type
+                                </th>
+
+
+                                <th>
+                                    Assigned Bus
+                                </th>
+
+
+                                <th>
+                                    Assigned Driver
+                                </th>
+
+
+                                <th>
+                                    Status
+                                </th>
+
+
+                                <th>
+                                    Actions
+                                </th>
+
+
+                            </tr>
+
+
+                        </thead>
+
+
+
+
+                        <tbody id="routeTableBody">
+
+
+                            @{
+
+                                int rowNumber = 1;
+
+                            }
+
+
+
+                            @if (Model != null && Model.Any())
+
+                            {
+
+                                foreach (var route in Model)
+
+                                {
+
+
+                                    var status =
+
+                                        string.IsNullOrWhiteSpace(route.Status)
+
+                                        ? "Unknown"
+
+                                        : route.Status;
+
+
+
+                                    var statusClass =
+
+                                        status.ToLower() switch
+
+                                        {
+
+                                            "active" => "active",
+
+                                            "inactive" => "inactive",
+
+                                            _ => "active"
+
+                                        };
+
+
+
+                                    <tr class="route-row"
+                                        data-status="@status.ToLower()">
+
+                                        
+                                        <td>
+
+                                            <span class="row-number">
+
+                                                @rowNumber
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-id">
+
+                                                @route.RouteId
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-code">
+
+                                                @route.RouteCode
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-text">
+
+                                                @route.StartPoint
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-text">
+
+                                                @route.EndPoint
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="distance-text">
+
+                                                @route.DistanceKm km
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-text">
+
+                                                @route.ServiceType
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-text">
+
+                                                @route.AssignedBus
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="route-text">
+
+                                                @route.AssignedDriver
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+                                            <span class="status-badge @statusClass">
+
+                                                @status
+
+                                            </span>
+
+                                        </td>
+
+
+
+
+                                        <td>
+
+
+                                            <div class="action-buttons">
+
+
+
+                                                <button type="button"
+                                                        class="action-button"
+                                                        title="View"
+                                                        onclick="viewRoute(@route.RouteId)">
+
+
+                                                    👁
+
+
+                                                </button>
+
+
+
+
+
+                                                <button type="button"
+                                                        class="action-button"
+                                                        title="Edit"
+                                                        onclick="editRoute(@route.RouteId)">
+
+
+                                                    ✎
+
+
+                                                </button>
+
+
+
+
+
+                                                <!-- DELETE FIX ONLY -->
+
+                                                <button type="button"
+                                                        class="action-button delete"
+                                                        title="Delete"
+                                                        onclick="deleteRoute(@route.RouteId)">
+
+
+                                                    🗑
+
+
+                                                </button>
+
+
+
+                                            </div>
+
+
+                                        </td>
+
+
+
+                                    </tr>
+
+
+
+                                    rowNumber++;
+
+
+                                }
+
+
+                            }
+
+                            else
+
+                            {
+
+
+                                <tr class="empty-row">
+
+
+                                    <td colspan="11">
+
+
+                                        <div class="empty-message">
+
+
+                                            <div class="empty-message-icon">
+
+                                                ▱
+
+                                            </div>
+
+
+
+                                            <div class="empty-message-text">
+
+                                                No routes found.
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            }
+
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+                <!-- =====================================================
+                     TABLE FOOTER
+                ====================================================== -->
+
+
+                <div class="table-footer">
+
+
+                    <div class="total-records">
+
+
+                        Total Routes:
+
+
+                        <strong id="totalRouteCount">
+
+                            @(Model?.Count() ?? 0)
+
+                        </strong>
+
+
+                    </div>
+
+
+
+
+
+                    <div class="pagination">
+
+
+                        <button type="button"
+                                class="page-button"
+                                id="previousPage">
+
+                            ‹
+
+                        </button>
+
+
+
+
+                        <button type="button"
+                                class="page-button active">
+
+                            1
+
+                        </button>
+
+
+
+
+                        <button type="button"
+                                class="page-button"
+                                id="nextPage">
+
+                            ›
+
+                        </button>
+
+
+
+                    </div>
+
+
+                </div>
+
+
+
+            </section>
+
+
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+    <script>
+
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function ()
+                {
+
+
+                    const routeSearch =
+                        document.getElementById(
+                            "routeSearch"
+                        );
+
+
+                    const statusFilter =
+                        document.getElementById(
+                            "statusFilter"
+                        );
+
+
+                    const clearFilters =
+                        document.getElementById(
+                            "clearFilters"
+                        );
+
+
+                    const routeTableBody =
+                        document.getElementById(
+                            "routeTableBody"
+                        );
+
+
+                    const totalRouteCount =
+                        document.getElementById(
+                            "totalRouteCount"
+                        );
+
+
+
+                    function filterRoutes()
+                    {
+
+
+                        if (!routeTableBody ||
+                            !totalRouteCount)
+                        {
+
+                            return;
+
+                        }
+
+
+
+                        const searchValue =
+                            routeSearch
+                            ?
+                            routeSearch.value
+                                .toLowerCase()
+                                .trim()
+                            :
+                            "";
+
+
+
+                        const statusValue =
+                            statusFilter
+                            ?
+                            statusFilter.value
+                                .toLowerCase()
+                            :
+                            "";
+
+
+
+                        const rows =
+                            routeTableBody.querySelectorAll(
+                                ".route-row"
+                            );
+
+
+
+                        let count = 0;
+
+
+
+                        rows.forEach(
+                            function(row)
+                            {
+
+
+                                const text =
+                                    row.innerText
+                                        .toLowerCase();
+
+
+
+                                const status =
+                                    row.getAttribute(
+                                        "data-status"
+                                    )
+                                    ||
+                                    "";
+
+
+
+                                const searchMatch =
+                                    searchValue === ""
+                                    ||
+                                    text.includes(
+                                        searchValue
+                                    );
+
+
+
+                                const statusMatch =
+                                    statusValue === ""
+                                    ||
+                                    status === statusValue;
+
+
+
+                                if (
+                                    searchMatch &&
+                                    statusMatch
+                                )
+                                {
+
+                                    row.style.display = "";
+
+                                    count++;
+
+                                }
+                                else
+                                {
+
+                                    row.style.display = "none";
+
+                                }
+
+
+                            }
+                        );
+
+
+
+                        totalRouteCount.textContent =
+                            count.toString();
+
+
+                    }
+
+
+
+
+                    if (routeSearch)
+                    {
+
+                        routeSearch.addEventListener(
+                            "input",
+                            filterRoutes
+                        );
+
+                    }
+
+
+
+
+                    if (statusFilter)
+                    {
+
+                        statusFilter.addEventListener(
+                            "change",
+                            filterRoutes
+                        );
+
+                    }
+
+
+
+
+                    if (clearFilters)
+                    {
+
+                        clearFilters.addEventListener(
+                            "click",
+                            function()
+                            {
+
+                                if(routeSearch)
+                                {
+                                    routeSearch.value = "";
+                                }
+
+
+                                if(statusFilter)
+                                {
+                                    statusFilter.value = "";
+                                }
+
+
+                                filterRoutes();
+
+                            }
+                        );
+
+                    }
+
+
+                }
+            );
+
+
+
+
+
+            function viewRoute(routeId)
+            {
+
+                alert(
+                    "View Route ID: " + routeId
+                );
+
+            }
+
+
+
+
+
+            function editRoute(routeId)
+            {
+
+                alert(
+                    "Edit Route ID: " + routeId
+                );
+
+            }
+
+
+
+
+
+            // =====================================================
+            // DELETE FIX ONLY
+            // =====================================================
+
+            function deleteRoute(routeId)
+            {
+
+
+                const confirmDelete =
+                    confirm(
+                        "Are you sure you want to delete this route?"
+                    );
+
+
+
+                if (!confirmDelete)
+                {
+
+                    return;
+
+                }
+
+
+
+                const routeIdInput =
+                    document.getElementById(
+                        "deleteRouteId"
+                    );
+
+
+
+                const deleteForm =
+                    document.getElementById(
+                        "deleteRouteForm"
+                    );
+
+
+
+                if (!routeIdInput ||
+                    !deleteForm)
+                {
+
+                    return;
+
+                }
+
+
+
+                routeIdInput.value =
+                    routeId;
+
+
+
+                deleteForm.submit();
+
+
+            }
+
+
+
+    </script>
+
+    
+    <!-- =====================================================
+     PROFESSIONAL NOTIFICATION SYSTEM
+====================================================== -->
+    @{
+
+        string notificationType = "";
+
+        string notificationTitle = "";
+
+        string notificationIcon = "";
+
+        string notificationMessage = "";
+
+
+
+        if (!string.IsNullOrWhiteSpace(successMessage))
+        {
+
+            notificationType = "success";
+
+            notificationTitle = "Success";
+
+            notificationIcon = "✓";
+
+            notificationMessage = successMessage;
+
+        }
+        else if (!string.IsNullOrWhiteSpace(errorMessage))
+        {
+
+            notificationType = "error";
+
+            notificationTitle = "Error";
+
+            notificationIcon = "!";
+
+            notificationMessage = errorMessage;
+
+        }
+        else if (!string.IsNullOrWhiteSpace(warningMessage))
+        {
+
+            notificationType = "warning";
+
+            notificationTitle = "Warning";
+
+            notificationIcon = "!";
+
+            notificationMessage = warningMessage;
+
+        }
+        else if (!string.IsNullOrWhiteSpace(informationMessage))
+        {
+
+            notificationType = "information";
+
+            notificationTitle = "Information";
+
+            notificationIcon = "i";
+
+            notificationMessage = informationMessage;
+
+        }
+
+    }
+
+
+
+
+
+    @if (!string.IsNullOrWhiteSpace(notificationMessage))
+    {
+
+        <div id="routeNotificationToast"
+             class="route-notification-toast @notificationType"
+             role="status"
+             aria-live="polite">
+
+
+
+            <div class="route-notification-icon">
+
+                @notificationIcon
+
+            </div>
+
+
+
+            <div class="route-notification-content">
+
+
+                <div class="route-notification-title">
+
+                    @notificationTitle
+
+                </div>
+
+
+
+                <div class="route-notification-message">
+
+                    @notificationMessage
+
+                </div>
+
+
+            </div>
+
+
+
+            <button type="button"
+                    class="route-notification-close"
+                    id="routeNotificationClose">
+
+                ×
+
+            </button>
+
+
+
+        </div>
+
+
+
+        <script>
+
+
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    function ()
+                    {
+
+
+                        const toast =
+                            document.getElementById(
+                                "routeNotificationToast"
+                            );
+
+
+                        const closeButton =
+                            document.getElementById(
+                                "routeNotificationClose"
+                            );
+
+
+
+                        if (!toast)
+                        {
+
+                            return;
+
+                        }
+
+
+
+                        setTimeout(
+                            function()
+                            {
+
+                                toast.classList.add(
+                                    "show"
+                                );
+
+                            },
+                            100
+                        );
+
+
+
+                        function hideToast()
+                        {
+
+                            toast.classList.remove(
+                                "show"
+                            );
+
+                        }
+
+
+
+                        if(closeButton)
+                        {
+
+                            closeButton.addEventListener(
+                                "click",
+                                hideToast
+                            );
+
+                        }
+
+
+
+                        setTimeout(
+                            hideToast,
+                            4000
+                        );
+
+
+
+                    }
+                );
+
+
+
+        </script>
+
+    }
+
+
+
+</body>
+
+</html>

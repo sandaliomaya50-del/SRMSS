@@ -1,0 +1,1479 @@
+﻿/* =========================================================
+   SRMSS VEHICLE MANAGEMENT CSS
+   CONTENT ONLY
+   SIDEBAR + HEADER ARE FROM SCHEDULE CSS
+========================================================= */
+
+
+/* =========================================================
+   VEHICLE PAGE CONTAINER
+========================================================= */
+
+
+.vehicle-management-card,
+.vehicle-list-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+
+.page-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+    .page-heading h1 {
+        margin: 0;
+        font-size: 25px;
+        font-weight: 700;
+        color: #123B5D;
+    }
+
+
+
+
+
+    .page-heading p {
+        margin-top: 6px;
+        margin-bottom: 0;
+        font-size: 15px;
+        color: #777777;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ADD VEHICLE CARD HEADER
+========================================================= */
+
+
+.vehicle-card-header {
+    margin-bottom: 25px;
+}
+
+
+
+
+
+.vehicle-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+
+    .vehicle-card-title img {
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+    .vehicle-card-title h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #123B5D;
+    }
+/* =========================================================
+   VEHICLE FORM GRID
+========================================================= */
+
+
+.vehicle-form-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px 25px;
+}
+
+
+
+
+
+
+
+.vehicle-form-group {
+    width: 100%;
+}
+
+
+
+
+
+    .vehicle-form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+
+
+
+
+
+
+    .vehicle-form-group label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333333;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE INPUT BOX
+========================================================= */
+
+
+.vehicle-input-box {
+    width: 100%;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #D5D5D5;
+    border-radius: 7px;
+    background: #ffffff;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   INPUT ICONS
+========================================================= */
+
+
+    .vehicle-input-box img {
+        width: 26px;
+        height: 26px;
+        object-fit: contain;
+        margin-left: 13px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+
+
+        /* =========================================================
+   SEATING CAPACITY + MILEAGE ICON SIZE
+========================================================= */
+
+
+        .vehicle-input-box img[src*="seat-capacity-icon"],
+        .vehicle-input-box img[src*="mileage-icon"] {
+            width: 64px !important;
+            height: 64px !important;
+            object-fit: contain;
+            margin-left: 13px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   TEXT INPUT
+========================================================= */
+
+
+    .vehicle-input-box input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 0 14px 0 0;
+        font-size: 14px;
+        color: #333333;
+        box-sizing: border-box;
+    }
+
+
+
+
+
+        .vehicle-input-box input::placeholder {
+            color: #999999;
+        }
+
+
+
+
+
+        .vehicle-input-box input:focus {
+            outline: none;
+        }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   SELECT BOX
+========================================================= */
+
+
+    .vehicle-input-box select {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding-right: 12px;
+        font-size: 14px;
+        color: #333333;
+        cursor: pointer;
+    }
+
+
+
+
+
+        .vehicle-input-box select option {
+            color: #333333;
+        }
+
+
+
+
+
+    .vehicle-input-box:focus-within {
+        border-color: #123B5D;
+    }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   TEXTAREA BOX
+========================================================= */
+
+
+    .vehicle-input-box textarea {
+        width: 100%;
+        height: 80px;
+        resize: none;
+        border: none;
+        outline: none;
+        background: transparent;
+        padding: 12px 14px 12px 0;
+        font-size: 14px;
+        font-family: inherit;
+        color: #333333;
+        box-sizing: border-box;
+    }
+
+
+
+
+
+        .vehicle-input-box textarea::placeholder {
+            color: #999999;
+        }
+
+
+
+
+
+    .vehicle-input-box:has(textarea) {
+        height: 100px;
+        align-items: flex-start;
+    }
+
+
+
+
+
+        .vehicle-input-box:has(textarea) img {
+            margin-top: 14px;
+        }
+
+
+/* =========================================================
+   UPLOAD VEHICLE IMAGE SECTION
+========================================================= */
+
+
+.vehicle-upload-section {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-upload-box {
+    width: 100%;
+    min-height: 230px;
+    border: 1px dashed #D5D5D5;
+    border-radius: 10px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   UPLOAD ICON
+========================================================= */
+
+
+.upload-vehicle-icon {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   UPLOAD TITLE
+========================================================= */
+
+
+.vehicle-upload-box h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #123B5D;
+}
+
+
+
+
+
+.vehicle-upload-box p {
+    margin: 8px 0 18px;
+    font-size: 14px;
+    color: #777777;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   UPLOAD BUTTON
+========================================================= */
+
+
+.upload-image-button {
+    height: 40px;
+    padding: 0 22px;
+    background: #1E73BE;
+    color: #ffffff;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+
+
+
+
+    .upload-image-button:hover {
+        background: #155A96;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   IMAGE PREVIEW
+========================================================= */
+
+
+.vehicle-image-preview {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+    .vehicle-image-preview img {
+        max-width: 180px;
+        max-height: 130px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FORM ACTION AREA
+========================================================= */
+
+
+.vehicle-form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESET BUTTON
+========================================================= */
+
+
+.reset-button {
+    height: 41px;
+    min-width: 110px;
+    border: 1px solid #D5D5D5;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SAVE VEHICLE BUTTON
+========================================================= */
+
+
+.save-vehicle-button {
+    height: 41px;
+    min-width: 140px;
+    border: none;
+    border-radius: 7px;
+    background: #1E73BE;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    z-index: 9999;
+    pointer-events: auto;
+}
+
+
+
+
+
+    .save-vehicle-button:hover {
+        background: #155A96;
+    }
+
+
+/* =========================================================
+   VEHICLE LIST CARD
+========================================================= */
+
+
+.vehicle-list-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE LIST HEADER
+========================================================= */
+
+
+.vehicle-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE LIST TITLE
+========================================================= */
+
+
+.vehicle-list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 20px;
+    color: #123B5D;
+    font-weight: 700;
+}
+
+
+
+
+
+    .vehicle-list-title img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+.vehicle-list-header p {
+    margin: 5px 0 0;
+    color: #777777;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FILTER BAR
+========================================================= */
+
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SEARCH BOX
+========================================================= */
+
+
+.filter-search {
+    flex: 1;
+}
+
+
+
+
+
+    .filter-search input {
+        width: 100%;
+        height: 41px;
+        border: 1px solid #D5D5D5;
+        border-radius: 7px;
+        padding: 0 14px;
+        font-size: 14px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+
+
+
+
+        .filter-search input::placeholder {
+            color: #999999;
+        }
+
+
+
+
+
+        .filter-search input:focus {
+            border-color: #123B5D;
+        }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FILTER SELECT
+========================================================= */
+
+
+.filter-select {
+    height: 41px;
+    min-width: 170px;
+    border: 1px solid #D5D5D5;
+    border-radius: 7px;
+    padding: 0 12px;
+    background: #ffffff;
+    font-size: 14px;
+    color: #333333;
+    outline: none;
+}
+
+
+
+
+
+    .filter-select:focus {
+        border-color: #123B5D;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CLEAR FILTER BUTTON
+========================================================= */
+
+
+.clear-filter-button {
+    height: 41px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 7px;
+    background: #eeeeee;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+    .clear-filter-button:hover {
+        background: #dddddd;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE TABLE
+========================================================= */
+
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+
+
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+
+
+
+
+    .schedule-table thead th {
+        height: 45px;
+        background: #f7f9fc;
+        color: #333333;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: left;
+        padding: 0 12px;
+        border-bottom: 1px solid #E5E5E5;
+        white-space: nowrap;
+    }
+
+
+
+
+
+    .schedule-table tbody td {
+        height: 55px;
+        padding: 10px 12px;
+        font-size: 14px;
+        color: #555555;
+        border-bottom: 1px solid #eeeeee;
+        vertical-align: middle;
+    }
+
+
+
+
+
+    .schedule-table tbody tr:hover {
+        background: #fafafa;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE IMAGE IN TABLE
+========================================================= */
+
+
+.vehicle-table-image {
+    width: 55px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   STATUS BADGE
+========================================================= */
+
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 85px;
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 20px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+
+
+
+    .status-badge.unavailable {
+        background: #FFEBEE;
+        color: #C62828;
+    }
+
+
+
+
+
+    .status-badge.maintenance {
+        background: #FFF3E0;
+        color: #EF6C00;
+    }
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+.action-button {
+    height: 30px;
+    min-width: 45px;
+    padding: 0 10px;
+    border: none;
+    border-radius: 6px;
+    background: #E3F2FD;
+    color: #1565C0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+
+
+    .action-button:hover {
+        background: #BBDEFB;
+    }
+
+
+
+
+
+    .action-button.delete {
+        background: #FFEBEE;
+        color: #C62828;
+    }
+
+
+
+
+
+        .action-button.delete:hover {
+            background: #FFCDD2;
+        }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   EMPTY TABLE
+========================================================= */
+
+
+.empty-row {
+    text-align: center;
+    height: 80px;
+    color: #999999;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   TABLE FOOTER
+========================================================= */
+
+
+.table-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+.total-records {
+    font-size: 14px;
+    color: #555555;
+}
+
+
+
+
+
+    .total-records strong {
+        color: #123B5D;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+.page-button {
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    border: 1px solid #D5D5D5;
+    background: #ffffff;
+    color: #555555;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
+
+
+    .page-button:hover {
+        background: #f1f1f1;
+    }
+
+
+
+
+
+    .page-button.active {
+        background: #1E73BE;
+        color: #ffffff;
+        border-color: #1E73BE;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+
+@media(max-width:1200px) {
+
+
+    .vehicle-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+
+    .filter-bar {
+        flex-wrap: wrap;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:900px) {
+
+
+    .page-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+
+
+
+    .vehicle-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+
+
+
+    .filter-search {
+        width: 100%;
+    }
+
+
+
+
+
+    .filter-select {
+        width: 100%;
+    }
+
+
+
+
+
+    .clear-filter-button {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:700px) {
+
+
+    .vehicle-management-card,
+    .vehicle-list-card {
+        padding: 18px;
+    }
+
+
+
+
+
+    .vehicle-form-actions {
+        flex-direction: column;
+    }
+
+
+
+
+
+    .reset-button,
+    .save-vehicle-button {
+        width: 100%;
+    }
+
+
+
+
+
+    .table-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}
+/* =========================================================
+   FINAL VEHICLE PAGE CLEANUP
+========================================================= */
+
+
+.vehicle-management-card *,
+.vehicle-list-card * {
+    box-sizing: border-box;
+}
+
+
+
+
+
+.vehicle-management-card button,
+.vehicle-list-card button,
+.vehicle-management-card input,
+.vehicle-list-card input,
+.vehicle-management-card select {
+    font-family: inherit;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   VEHICLE NOTIFICATION SYSTEM
+========================================================= */
+
+
+.vehicle-notification {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 390px;
+    min-height: 75px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 18px;
+    z-index: 1000;
+    overflow: hidden;
+    pointer-events: none;
+    animation: vehicleNotificationShow .4s ease forwards;
+}
+
+
+
+
+
+
+
+
+
+    .vehicle-notification::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 5px;
+        height: 100%;
+    }
+
+
+
+
+
+    .vehicle-notification.success::before {
+        background: #28a745;
+    }
+
+
+
+
+
+    .vehicle-notification.error::before {
+        background: #dc3545;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SUCCESS ICON
+========================================================= */
+
+
+.notification-icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #28a745;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+
+
+
+
+    .notification-icon-circle::after {
+        content: "✓";
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MESSAGE TEXT
+========================================================= */
+
+
+.notification-content {
+    flex: 1;
+}
+
+
+
+
+
+    .notification-content h4 {
+        display: none;
+    }
+
+
+
+
+
+    .notification-content p {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #333333;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+
+.notification-close {
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    color: #777777;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+.vehicle-notification.hide {
+    animation: vehicleNotificationHide .4s forwards;
+}
+
+
+
+
+
+
+
+
+
+@keyframes vehicleNotificationShow {
+
+
+    from {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+
+
+
+
+
+
+
+@keyframes vehicleNotificationHide {
+
+
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+
+    to {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:600px) {
+
+
+    .vehicle-notification {
+        width: calc(100% - 30px);
+        right: 15px;
+        top: 15px;
+    }
+}

@@ -1,0 +1,1308 @@
+﻿/* =========================================================
+   BASIC SETTINGS
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: #f5f8fc;
+    color: #102b49;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 276px;
+    height: 100vh;
+    background: #062e52;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+
+/* =========================================================
+   SIDEBAR BACKGROUND IMAGE
+========================================================= */
+
+.sidebar-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   SIDEBAR CONTENT
+========================================================= */
+
+.sidebar-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 15px;
+}
+
+
+/* =========================================================
+   SIDEBAR LOGO
+========================================================= */
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 22px;
+}
+
+    .sidebar-logo > img {
+        width: 57px;
+        height: 57px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+.sidebar-brand-text {
+    margin-left: 9px;
+}
+
+    .sidebar-brand-text h2 {
+        color: #ffffff;
+        font-size: 27px;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .sidebar-brand-text span {
+        display: block;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 8.5px;
+        line-height: 1.35;
+        margin-top: 5px;
+    }
+
+
+/* =========================================================
+   SIDEBAR MENU
+========================================================= */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+
+    /* Hide scrollbar */
+
+    .sidebar-menu::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    .sidebar-menu::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
+    }
+
+
+/* =========================================================
+   MENU ITEM
+========================================================= */
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+
+    /* =========================================================
+   MENU ICON
+========================================================= */
+
+    .menu-item img {
+        width: 21px;
+        height: 21px;
+        object-fit: contain;
+        margin-right: 13px;
+        flex-shrink: 0;
+    }
+
+
+    /* =========================================================
+   MENU HOVER
+========================================================= */
+
+    .menu-item:hover {
+        background: rgba(37, 127, 202, 0.35);
+        color: #ffffff;
+        transform: translateX(2px);
+    }
+
+
+    /* =========================================================
+   ACTIVE MENU
+========================================================= */
+
+    .menu-item.active {
+        background: linear-gradient(90deg, #0c66aa, #1674bc);
+        color: #ffffff;
+        box-shadow: 0 5px 14px rgba(0, 0, 0, 0.14);
+    }
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+
+/* =========================================================
+   SIDEBAR SLOGAN
+========================================================= */
+
+.sidebar-slogan {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px 0;
+}
+
+    .sidebar-slogan strong {
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.5;
+    }
+
+    .sidebar-slogan span {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+    width: calc(100% - 276px);
+    min-height: 100vh;
+    margin-left: 276px;
+    padding: 0 24px 30px;
+    background: #f6f9fd;
+}
+
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+.top-header {
+    width: 100%;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    width: 390px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: #eef4fa;
+    border-radius: 20px;
+}
+
+.search-icon {
+    font-size: 15px;
+    color: #5d7892;
+    margin-right: 9px;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #233d56;
+    font-size: 12px;
+}
+
+    .search-box input::placeholder {
+        color: #8b9bae;
+    }
+
+
+/* =========================================================
+   HEADER RIGHT
+========================================================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification-button {
+    position: relative;
+    width: 39px;
+    height: 39px;
+    border: none;
+    border-radius: 50%;
+    background: #eef5fb;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.notification-count {
+    position: absolute;
+    right: -1px;
+    top: -2px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e53935;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ADMIN PROFILE
+========================================================= */
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.admin-avatar {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #0d4170;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-information {
+    display: flex;
+    flex-direction: column;
+}
+
+    .admin-information strong {
+        color: #163550;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .admin-information span {
+        color: #8796a6;
+        font-size: 9px;
+        margin-top: 3px;
+    }
+
+.profile-arrow {
+    color: #6d8195;
+    font-size: 13px;
+    margin-left: 2px;
+}
+
+
+/* =========================================================
+   WELCOME SECTION
+========================================================= */
+
+.welcome-section {
+    min-height: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.welcome-text h1 {
+    color: #102d4b;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.welcome-text p {
+    color: #71859a;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+
+/* =========================================================
+   WELCOME RIGHT SIDE
+========================================================= */
+
+.welcome-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   DATE BANNER
+========================================================= */
+
+.date-banner {
+    position: relative;
+    width: 350px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    background: linear-gradient(90deg, #e8f5ff, #ffffff);
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+    .date-banner::after {
+        content: "";
+        position: absolute;
+        right: -35px;
+        top: -50px;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 22px solid rgba(20, 113, 190, 0.12);
+    }
+
+.date-icon {
+    position: relative;
+    z-index: 2;
+    font-size: 22px;
+}
+
+.date-banner > div:last-child {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.date-banner strong {
+    color: #1b4b73;
+    font-size: 12px;
+}
+
+.date-banner span {
+    color: #73869a;
+    font-size: 10px;
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   DASHBOARD BOTTOM IMAGE
+========================================================= */
+
+.dashboard-bottom-image {
+    width: 270px;
+    height: 88px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.dashboard-bottom-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* =========================================================
+   STATISTICS SECTION
+========================================================= */
+
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(150px, 1fr)) 1.5fr;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   STAT CARD
+========================================================= */
+
+.stat-card {
+    min-height: 130px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 17px;
+    background: #ffffff;
+    border: 1px solid #e8eef4;
+    border-radius: 13px;
+    box-shadow: 0 2px 8px rgba(26, 60, 90, 0.03);
+}
+
+
+/* =========================================================
+   STAT ICON
+========================================================= */
+
+.stat-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+    .stat-icon img {
+        width: 23px;
+        height: 23px;
+        object-fit: contain;
+    }
+
+.blue-icon {
+    background: #e7f2ff;
+}
+
+.green-icon {
+    background: #e1f8ed;
+}
+
+.purple-icon {
+    background: #f0e8ff;
+}
+
+.orange-icon {
+    background: #fff1dd;
+}
+
+
+/* =========================================================
+   STAT CONTENT
+========================================================= */
+
+.stat-content {
+    display: flex;
+    flex-direction: column;
+}
+
+    .stat-content span {
+        color: #526b83;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+
+    .stat-content strong {
+        color: #112e4b;
+        font-size: 26px;
+        line-height: 1;
+        margin-top: 8px;
+    }
+
+    .stat-content small {
+        font-size: 8px;
+        margin-top: 7px;
+    }
+
+.green-text {
+    color: #20a66a;
+}
+
+
+/* =========================================================
+   TRIP STATUS CARD
+========================================================= */
+
+.trip-status-card {
+    min-height: 130px;
+    padding: 16px;
+    background: #ffffff;
+    border: 1px solid #e8eef4;
+    border-radius: 13px;
+    box-shadow: 0 2px 8px rgba(26, 60, 90, 0.03);
+}
+
+    .trip-status-card h3 {
+        color: #263f58;
+        font-size: 12px;
+        margin-bottom: 14px;
+    }
+
+.trip-status-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.trip-status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #e7edf2;
+}
+
+    .trip-status-item:last-child {
+        border-right: none;
+    }
+
+.status-circle {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+.green-circle {
+    background: #e0f7ec;
+    color: #18a269;
+}
+
+.orange-circle {
+    background: #fff0d8;
+    color: #e9991b;
+}
+
+.blue-circle {
+    background: #e5f1ff;
+    color: #2174bf;
+}
+
+.trip-status-item strong {
+    color: #183853;
+    font-size: 19px;
+}
+
+.trip-status-item span {
+    color: #70849a;
+    font-size: 9px;
+    margin-top: 3px;
+}
+
+.trip-status-item small {
+    color: #20a66a;
+    font-size: 8px;
+    margin-top: 4px;
+}
+
+.trip-status-item .orange-percentage {
+    color: #e9991b;
+}
+
+
+/* =========================================================
+   MIDDLE SECTION
+========================================================= */
+
+.middle-section {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+
+/* =========================================================
+   DASHBOARD CARD
+========================================================= */
+
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e7edf3;
+    border-radius: 13px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(26, 60, 90, 0.03);
+}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.card-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 13px;
+}
+
+    .card-title-row h3 {
+        color: #183b5b;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .card-title-row a {
+        color: #1774bf;
+        font-size: 9px;
+        font-weight: 600;
+    }
+
+    .card-title-row select {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #5d7187;
+        font-size: 9px;
+        cursor: pointer;
+    }
+
+
+/* =========================================================
+   UTILIZATION
+========================================================= */
+
+.utilization-content {
+    display: flex;
+    align-items: center;
+    gap: 27px;
+    min-height: 155px;
+}
+
+
+/* =========================================================
+   DONUT CHART
+========================================================= */
+
+.donut-chart {
+    width: 145px;
+    height: 145px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: conic-gradient(#1475c7 0deg 281deg, #e1e7ed 281deg 360deg);
+}
+
+.donut-center {
+    width: 103px;
+    height: 103px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border-radius: 50%;
+}
+
+    .donut-center strong {
+        color: #173a59;
+        font-size: 22px;
+    }
+
+    .donut-center span {
+        color: #75879a;
+        font-size: 7px;
+        margin-top: 3px;
+    }
+
+
+/* =========================================================
+   UTILIZATION LIST
+========================================================= */
+
+.utilization-list {
+    width: 100%;
+}
+
+.utilization-row {
+    display: grid;
+    grid-template-columns: 9px 1fr 24px 30px;
+    align-items: center;
+    gap: 7px;
+    margin: 10px 0;
+    font-size: 9px;
+}
+
+.legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.service-dot {
+    background: #1475c7;
+}
+
+.maintenance-dot {
+    background: #356fd4;
+}
+
+.idle-dot {
+    background: #f39a22;
+}
+
+.out-dot {
+    background: #ed4641;
+}
+
+.utilization-row span:nth-child(2) {
+    color: #50667d;
+}
+
+.utilization-row strong {
+    color: #213e59;
+    font-size: 10px;
+}
+
+.utilization-row small {
+    color: #7b8da0;
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   TRIPS OVERVIEW
+========================================================= */
+
+.trips-overview-card {
+    min-height: 190px;
+}
+
+.chart-legend {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #657990;
+    font-size: 8px;
+}
+
+    .chart-legend span {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .chart-legend i {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        border-radius: 50%;
+    }
+
+.blue-dot {
+    background: #1475c7;
+}
+
+.orange-dot {
+    background: #f4a021;
+}
+
+
+/* =========================================================
+   BAR CHART
+========================================================= */
+
+.bar-chart {
+    height: 145px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 7px;
+    padding: 5px 8px 0;
+    border-bottom: 1px solid #e5ebf0;
+}
+
+.bar-group {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    padding-bottom: 22px;
+}
+
+.bar {
+    width: 9px;
+    min-height: 4px;
+    border-radius: 4px 4px 0 0;
+}
+
+.blue-bar {
+    background: #1475c7;
+}
+
+.light-blue-bar {
+    background: #d7e7f5;
+}
+
+.bar-group span {
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    color: #7c8e9f;
+    font-size: 7px;
+}
+
+
+/* =========================================================
+   BOTTOM SECTION
+========================================================= */
+
+.bottom-section {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 0.85fr;
+    gap: 14px;
+}
+
+
+/* =========================================================
+   RECENT ACTIVITIES
+========================================================= */
+
+.activity-list {
+    width: 100%;
+}
+
+.activity-row {
+    display: grid;
+    grid-template-columns: 29px 1fr auto;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+    .activity-row:last-child {
+        border-bottom: none;
+    }
+
+.activity-icon {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.green-bg {
+    background: #e2f7ed;
+}
+
+.orange-bg {
+    background: #fff0da;
+}
+
+.purple-bg {
+    background: #f0e7ff;
+}
+
+.activity-information {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+    .activity-information strong {
+        color: #2d465e;
+        font-size: 8.5px;
+        font-weight: 600;
+    }
+
+    .activity-information small {
+        color: #8191a2;
+        font-size: 7.5px;
+        margin-top: 3px;
+    }
+
+.activity-badge {
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: 7px;
+    white-space: nowrap;
+}
+
+.success-badge {
+    background: #e2f8ed;
+    color: #20a66a;
+}
+
+.maintenance-badge {
+    background: #e5f1ff;
+    color: #2876bd;
+}
+
+.schedule-badge {
+    background: #f0e8ff;
+    color: #8054cd;
+}
+
+.driver-badge {
+    background: #e3f8ee;
+    color: #249d68;
+}
+
+
+/* =========================================================
+   TOP ROUTES TABLE
+========================================================= */
+
+.routes-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    .routes-table th {
+        color: #8a99a9;
+        text-align: left;
+        font-size: 7.5px;
+        font-weight: 500;
+        padding: 5px 4px;
+        border-bottom: 1px solid #edf1f5;
+    }
+
+    .routes-table td {
+        color: #425a70;
+        font-size: 8px;
+        padding: 7px 4px;
+        border-bottom: 1px solid #f0f3f6;
+    }
+
+    .routes-table tr:last-child td {
+        border-bottom: none;
+    }
+
+.on-time-status {
+    color: #20a66a;
+    font-size: 7.5px;
+    white-space: nowrap;
+}
+
+.delayed-status {
+    color: #ec971b;
+    font-size: 7.5px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   QUICK ACTIONS
+========================================================= */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+    .quick-actions button {
+        min-height: 48px;
+        display: grid;
+        grid-template-columns: 25px 1fr 8px;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 8px;
+        border: 1px solid #e5edf4;
+        border-radius: 8px;
+        background: #f4f8fc;
+        cursor: pointer;
+        text-align: left;
+        transition: 0.2s ease;
+    }
+
+        .quick-actions button:hover {
+            background: #e9f4fc;
+            transform: translateY(-1px);
+        }
+
+        .quick-actions button img {
+            width: 23px;
+            height: 23px;
+            object-fit: contain;
+            padding: 4px;
+            background: #ffffff;
+            border-radius: 6px;
+        }
+
+        .quick-actions button span {
+            color: #38536c;
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .quick-actions button b {
+            color: #7890a6;
+            font-size: 15px;
+        }
+
+
+/* =========================================================
+   RESPONSIVE - 1200px
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .stats-section {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .trip-status-card {
+        grid-column: span 2;
+    }
+
+    .bottom-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .quick-actions-card {
+        grid-column: span 2;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 950px
+========================================================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+        width: 235px;
+    }
+
+    .main-content {
+        width: calc(100% - 235px);
+        margin-left: 235px;
+    }
+
+    .middle-section {
+        grid-template-columns: 1fr;
+    }
+
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions-card {
+        grid-column: auto;
+    }
+
+    .date-banner {
+        width: 280px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 700px
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    .sidebar-content {
+        height: auto;
+    }
+
+    .sidebar-menu {
+        overflow: visible;
+    }
+
+    .sidebar-bottom {
+        margin-top: 10px;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 12px 25px;
+    }
+
+    .top-header {
+        height: auto;
+        padding: 15px 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .search-box {
+        width: 100%;
+    }
+
+    .header-right {
+        justify-content: flex-end;
+    }
+
+    .welcome-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .welcome-right {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .date-banner {
+        width: 100%;
+    }
+
+    .dashboard-bottom-image {
+        width: 100%;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .trip-status-card {
+        grid-column: auto;
+    }
+
+    .bottom-section {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions-card {
+        grid-column: auto;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 450px
+========================================================= */
+
+@media (max-width: 450px) {
+
+    .sidebar-logo {
+        padding-left: 3px;
+    }
+
+        .sidebar-logo > img {
+            width: 50px;
+            height: 50px;
+        }
+
+    .sidebar-brand-text h2 {
+        font-size: 24px;
+    }
+
+    .sidebar-brand-text span {
+        font-size: 7.5px;
+    }
+
+    .menu-item {
+        font-size: 12px;
+    }
+
+    .welcome-text h1 {
+        font-size: 21px;
+    }
+
+    .utilization-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+}

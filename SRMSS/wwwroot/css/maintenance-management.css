@@ -1,0 +1,1750 @@
+﻿/* =========================================================
+   MAINTENANCE MANAGEMENT CSS
+   MATCH VEHICLE MANAGEMENT DESIGN
+   ========================================================= */
+
+
+
+
+
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1f2937;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+
+.main-content {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PAGE CONTAINER
+   ========================================================= */
+
+
+.page-container {
+    width: 100%;
+    padding: 25px 30px 40px 30px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PAGE HEADING
+   ========================================================= */
+
+
+.page-heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+.page-heading-left h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: #123B5D;
+}
+
+
+
+
+
+
+
+.page-heading-left p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE MANAGEMENT CARD
+   ========================================================= */
+
+
+.vehicle-management-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE HISTORY CARD
+   ========================================================= */
+
+
+.vehicle-list-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+
+.vehicle-card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+
+
+
+
+
+    .vehicle-card-title img {
+        width: 45px;
+        height: 45px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+    .vehicle-card-title h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #123B5D;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE HISTORY TITLE
+   ========================================================= */
+
+
+.vehicle-list-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+
+
+
+
+
+
+.vehicle-list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #123B5D;
+}
+
+
+
+
+
+
+
+    .vehicle-list-title img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+.vehicle-list-header p {
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #777777;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE RECORD CARD
+   ========================================================= */
+
+
+.vehicle-management-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FORM GRID
+   ========================================================= */
+
+
+.vehicle-form-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+
+.vehicle-form-group {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+    .vehicle-form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+
+
+
+
+
+
+    /* =========================================================
+   FORM LABEL
+   ========================================================= */
+
+
+    .vehicle-form-group label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #444444;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   INPUT BOX
+   ========================================================= */
+
+
+.vehicle-input-box {
+    width: 100%;
+    height: 52px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 12px;
+    position: relative;
+}
+
+
+
+
+
+
+
+    .vehicle-input-box:focus-within {
+        border-color: #1E73BE;
+    }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   INPUT ELEMENTS
+   ========================================================= */
+
+
+    .vehicle-input-box input,
+    .vehicle-input-box select,
+    .vehicle-input-box textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        color: #333333;
+        font-family: inherit;
+    }
+
+
+
+
+
+
+
+    .vehicle-input-box textarea {
+        resize: none;
+        padding-top: 15px;
+    }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   INPUT ICON BASE
+   ========================================================= */
+
+
+    .vehicle-input-box img {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   MAINTENANCE INPUT ELEMENTS
+   ========================================================= */
+
+
+    .vehicle-input-box input,
+    .vehicle-input-box select,
+    .vehicle-input-box textarea {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+        color: #333333;
+        font-family: inherit;
+    }
+
+
+
+
+
+
+
+    .vehicle-input-box textarea {
+        min-height: 90px;
+        resize: none;
+        padding-top: 12px;
+    }
+
+
+
+
+
+
+
+        .vehicle-input-box input::placeholder,
+        .vehicle-input-box textarea::placeholder {
+            color: #999999;
+        }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   SELECT DROPDOWN
+   ========================================================= */
+
+
+    .vehicle-input-box select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        padding-right: 35px;
+    }
+
+
+
+
+
+
+
+        .vehicle-input-box select option {
+            font-size: 14px;
+            padding: 10px;
+        }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   DATE INPUTS
+   ========================================================= */
+
+
+    .vehicle-input-box input[type="date"] {
+        cursor: pointer;
+        color: #444444;
+    }
+
+
+
+
+
+
+
+        .vehicle-input-box input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+        }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   MAINTENANCE FIELD ICONS
+   ========================================================= */
+
+
+    /* Vehicle Registration Number */
+
+
+    .vehicle-input-box img[src*="registration-number-icon"] {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+    /* Maintenance Type */
+
+
+    .vehicle-input-box img[src*="profile-settings-icon"] {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+    /* Maintenance Date */
+
+
+    .vehicle-input-box img[src*="expiry-date-icon"] {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+    /* Maintenance Status */
+
+
+    .vehicle-input-box img[src*="route-list-icon"] {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FULL WIDTH NOTES FIELD
+   ========================================================= */
+
+
+.vehicle-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+
+
+
+
+
+
+    .vehicle-form-group.full-width .vehicle-input-box {
+        min-height: 110px;
+        align-items: flex-start;
+        padding-top: 12px;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE SPECIFIC ICONS
+   ========================================================= */
+
+
+/* Maintenance Cost */
+
+
+.vehicle-input-box img[src*="maintenance_cost_icon"] {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+/* Service Provider / Garage */
+
+
+.vehicle-input-box img[src*="garage_icon_black"] {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+/* Description / Notes */
+
+
+.vehicle-input-box img[src*="note-document-icon"] {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SERVICE RECORD UPLOAD SECTION
+   ========================================================= */
+
+
+.vehicle-upload-section {
+    width: 100%;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-upload-box {
+    width: 100%;
+    min-height: 230px;
+    background: #ffffff;
+    border: 2px dashed #d7d7d7;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+
+
+
+
+
+
+
+
+    /* Service Icon */
+
+
+    .vehicle-upload-box .upload-vehicle-icon {
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+        margin-bottom: 15px;
+    }
+
+
+
+
+
+
+
+    .vehicle-upload-box h3 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #123B5D;
+    }
+
+
+
+
+
+
+
+    .vehicle-upload-box p {
+        margin: 8px 0 18px;
+        font-size: 14px;
+        color: #777777;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   UPLOAD BUTTON
+   ========================================================= */
+
+
+.upload-image-button {
+    height: 40px;
+    min-width: 150px;
+    padding: 0 22px;
+    border-radius: 8px;
+    background: #1E73BE;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .upload-image-button:hover {
+        background: #155A96;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE FORM BUTTONS
+   ========================================================= */
+
+
+.vehicle-form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+
+
+
+
+
+
+.reset-button {
+    height: 42px;
+    min-width: 110px;
+    border: 1px solid #d5d5d5;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #444444;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .reset-button:hover {
+        background: #f5f5f5;
+    }
+
+
+
+
+
+
+
+.save-vehicle-button {
+    height: 42px;
+    min-width: 180px;
+    border: none;
+    border-radius: 8px;
+    background: #1E73BE;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .save-vehicle-button:hover {
+        background: #155A96;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE HISTORY SECTION
+   ========================================================= */
+
+
+.vehicle-list-card {
+    width: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE HISTORY HEADER
+   ========================================================= */
+
+
+.vehicle-list-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+.vehicle-list-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #123B5D;
+}
+
+
+
+
+
+
+
+    .vehicle-list-title img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FILTER BAR
+   ========================================================= */
+
+
+.filter-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SEARCH BOX
+   ========================================================= */
+
+
+.filter-search {
+    width: 320px;
+    height: 42px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding-left: 42px;
+}
+
+
+
+
+
+
+
+    .filter-search::before {
+        content: "";
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 18px;
+        height: 18px;
+        background-image: url('/Images/search-icon.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+    }
+
+
+
+
+
+
+
+    .filter-search input {
+        width: 100%;
+        height: 100%;
+        border: none;
+        outline: none;
+        background: transparent;
+        font-size: 14px;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FILTER SELECT
+   ========================================================= */
+
+
+.filter-select {
+    height: 42px;
+    min-width: 170px;
+    padding: 0 15px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .filter-select:focus {
+        border-color: #1E73BE;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   CLEAR FILTER BUTTON
+   ========================================================= */
+
+
+.clear-filter-button {
+    height: 42px;
+    padding: 0 22px;
+    border: none;
+    border-radius: 8px;
+    background: #f1f1f1;
+    color: #555555;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .clear-filter-button:hover {
+        background: #e5e5e5;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE HISTORY TABLE
+   ========================================================= */
+
+
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+
+    .schedule-table thead th {
+        height: 48px;
+        background: #f7f9fc;
+        color: #555555;
+        font-size: 13px;
+        font-weight: 700;
+        text-align: left;
+        padding: 0 15px;
+        border-bottom: 1px solid #e5e5e5;
+        white-space: nowrap;
+    }
+
+
+
+
+
+
+
+
+
+    /* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+
+    .schedule-table tbody td {
+        height: 58px;
+        padding: 12px 15px;
+        font-size: 14px;
+        color: #444444;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+
+
+
+
+
+
+    .schedule-table tbody tr:hover {
+        background: #fafafa;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   EMPTY RECORD MESSAGE
+   ========================================================= */
+
+
+.empty-row {
+    text-align: center;
+    height: 80px;
+    color: #888888;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAINTENANCE STATUS BADGE
+   ========================================================= */
+
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 85px;
+    height: 28px;
+    padding: 0 14px;
+    border-radius: 20px;
+    background: #E8F5E9;
+    color: #2E7D32;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+
+
+
+.action-button {
+    height: 30px;
+    min-width: 45px;
+    padding: 0 12px;
+    border: none;
+    border-radius: 6px;
+    background: #E3F2FD;
+    color: #1565C0;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+    .action-button:hover {
+        background: #BBDEFB;
+    }
+
+
+
+
+
+
+
+    .action-button.delete {
+        background: #FFEBEE;
+        color: #C62828;
+    }
+
+
+
+
+
+
+
+        .action-button.delete:hover {
+            background: #FFCDD2;
+        }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   TABLE FOOTER
+   ========================================================= */
+
+
+.table-footer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+.total-records {
+    font-size: 14px;
+    color: #555555;
+}
+
+
+
+
+
+
+
+    .total-records strong {
+        color: #123B5D;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SIDEBAR SUPPORT
+   SAME AS VEHICLE MANAGEMENT
+   ========================================================= */
+
+
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+.sidebar-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+
+
+
+
+.sidebar-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   TOP HEADER SUPPORT
+   ========================================================= */
+
+
+.top-header {
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ADMIN PROFILE
+   ========================================================= */
+
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+
+
+
+.admin-avatar img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+
+
+
+
+
+
+.admin-details {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+.admin-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #123B5D;
+}
+
+
+
+
+
+
+
+.admin-role {
+    font-size: 12px;
+    color: #777777;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   NOTIFICATION SUPPORT
+   ========================================================= */
+
+
+.vehicle-notification {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 390px;
+    min-height: 75px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 18px;
+    z-index: 9999;
+}
+
+
+
+
+
+
+
+.notification-icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+
+
+
+
+
+
+.notification-content h4 {
+    margin: 0;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+.notification-content p {
+    margin: 5px 0 0;
+    font-size: 14px;
+}
+
+
+
+
+
+
+
+.notification-close {
+    border: none;
+    background: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+
+@media(max-width:1200px) {
+
+
+    .vehicle-form-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+
+
+
+
+
+
+
+@media(max-width:992px) {
+
+
+    .sidebar {
+        display: none;
+    }
+
+
+
+
+
+
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+
+
+
+
+
+
+    .vehicle-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+@media(max-width:768px) {
+
+
+    .page-container {
+        padding: 20px;
+    }
+
+
+
+
+
+
+
+    .top-header {
+        padding: 0 15px;
+    }
+
+
+
+
+
+
+
+    .vehicle-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+
+
+
+
+
+
+    .vehicle-notification {
+        width: calc(100% - 40px);
+        right: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+@media(max-width:480px) {
+
+
+    .page-heading-left h1 {
+        font-size: 22px;
+    }
+
+
+
+
+
+
+
+    .vehicle-upload-box {
+        padding: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   END OF MAINTENANCE MANAGEMENT CSS
+   ========================================================= */

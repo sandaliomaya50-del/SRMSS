@@ -1,0 +1,1354 @@
+﻿@model IEnumerable<SRMSS.Models.ScheduleListViewModel>
+
+@{
+    Layout = null;
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>Schedule List - SRMSS</title>
+
+    <link rel="stylesheet"
+          href="~/css/schedule-list.css" />
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         HIDDEN DELETE FORM
+    ====================================================== -->
+
+    <form id="deleteScheduleForm"
+          asp-controller="ScheduleList"
+          asp-action="Delete"
+          method="post"
+          style="display:none;">
+
+        @Html.AntiForgeryToken()
+
+        <input type="hidden"
+               id="deleteScheduleId"
+               name="scheduleId" />
+
+    </form>
+
+
+
+    <!-- =====================================================
+         MASTER SRMSS SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Dashboard Left Panel" />
+
+
+        <div class="sidebar-content">
+
+
+            <!-- SIDEBAR LOGO -->
+
+            <div class="sidebar-logo">
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+                <div class="sidebar-brand-text">
+
+
+                    <h2>
+                        SRMSS
+                    </h2>
+
+
+                    <span>
+                        Smart Route Management<br />
+                        and Scheduling System
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SIDEBAR MENU -->
+
+            <nav class="sidebar-menu">
+
+
+                <a href="/Dashboard"
+                   class="menu-item">
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Dashboard" />
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+
+                <a href="/RouteManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/location-icon.png"
+                         alt="Route Management" />
+
+                    <span>
+                        Route Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/RouteList"
+                   class="menu-item">
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Route List" />
+
+                    <span>
+                        Route List
+                    </span>
+
+                </a>
+
+
+
+                <a href="/ScheduleManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/schedule-management-icon.png"
+                         alt="Schedule Management" />
+
+                    <span>
+                        Schedule Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/ScheduleList"
+                   class="menu-item active">
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Schedule List" />
+
+                    <span>
+                        Schedule List
+                    </span>
+
+                </a>
+
+
+
+                <a href="/VehicleManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/bus-icon.png"
+                         alt="Bus Vehicle Management" />
+
+                    <span>
+                        Bus/Vehicle Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/DriverManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/driver-management-icon.png"
+                         alt="Driver Management" />
+
+                    <span>
+                        Driver Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/FuelManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/fuel-management-icon.png"
+                         alt="Fuel Management" />
+
+                    <span>
+                        Fuel Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/MaintenanceManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/maintenance-management-icon.png"
+                         alt="Maintenance Management" />
+
+                    <span>
+                        Maintenance Management
+                    </span>
+
+                </a>
+
+                <a href="/DepotDashboard"
+                   class="menu-item">
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Depot Dashboard" />
+
+                    <span>
+                        Depot Dashboard
+                    </span>
+
+                </a>
+
+
+
+                <a href="/Reports"
+                   class="menu-item">
+
+                    <img src="~/Images/reports-analytics-icon.png"
+                         alt="Reports and Analytics" />
+
+                    <span>
+                        Reports &amp; Analytics
+                    </span>
+
+                </a>
+
+
+
+                <a href="/UserManagement"
+                   class="menu-item">
+
+                    <img src="~/Images/user-icon.png"
+                         alt="User Management" />
+
+                    <span>
+                        User Management
+                    </span>
+
+                </a>
+
+
+
+                <a href="/Profile"
+                   class="menu-item">
+
+                    <img src="~/Images/profile-settings-icon.png"
+                         alt="Profile and Settings" />
+
+                    <span>
+                        Profile / Settings
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+
+            <!-- SIDEBAR BOTTOM -->
+
+            <div class="sidebar-bottom">
+
+
+                <div class="sidebar-slogan">
+
+
+                    <strong>
+                        Smart Transport.
+                    </strong>
+
+                    <span>
+                        Better Routes.
+                    </span>
+
+                    <span>
+                        Efficient Operations.
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOP HEADER -->
+
+        <header class="top-header">
+
+
+            <div class="header-search">
+
+                <input type="text"
+                       id="headerSearch"
+                       placeholder="Search..." />
+
+            </div>
+
+
+
+            <div class="header-right">
+
+
+                <button type="button"
+                        class="notification-button"
+                        aria-label="Notifications">
+
+                    <span class="notification-icon">
+                        ♧
+                    </span>
+
+                    <span class="notification-dot"></span>
+
+                </button>
+
+
+
+                <div class="admin-profile">
+
+
+                    <div class="admin-avatar">
+
+                        <img src="~/Images/user-icon.png"
+                             alt="Admin" />
+
+                    </div>
+
+
+                    <div class="admin-details">
+
+                        <span class="admin-name">
+                            Admin
+                        </span>
+
+                        <span class="admin-role">
+                            System Administrator
+                        </span>
+
+                    </div>
+
+
+                    <span class="admin-arrow">
+                        ▾
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             PAGE CONTAINER
+        ====================================================== -->
+
+        <div class="page-container">
+
+
+            <!-- PAGE HEADING -->
+
+            <div class="page-heading">
+
+
+                <div class="page-heading-left">
+
+                    <h1>
+                        Schedule List
+                    </h1>
+
+                    <p>
+                        View and manage all transport schedules.
+                    </p>
+
+                </div>
+
+
+
+                <a href="/ScheduleManagement"
+                   class="add-schedule-button">
+
+                    <span class="plus">
+                        +
+                    </span>
+
+                    <span>
+                        Add Schedule
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SCHEDULE LIST CARD
+            ================================================== -->
+
+            <section class="schedule-list-card">
+
+
+                <!-- FILTER BAR -->
+
+                <div class="filter-bar">
+
+
+                    <div class="filter-search">
+
+                        <input type="text"
+                               id="scheduleSearch"
+                               placeholder="Search by route, bus, driver, or schedule ID..." />
+
+                    </div>
+
+
+
+                    <input type="date"
+                           id="dateFilter"
+                           class="filter-date" />
+
+
+
+                    <select id="routeFilter"
+                            class="filter-select">
+
+                        <option value="">
+                            All Routes
+                        </option>
+
+                        @if (Model != null)
+                        {
+                            foreach (var route in Model
+                                .Select(x => x.Route)
+                                .Where(x => !string.IsNullOrWhiteSpace(x))
+                                .Distinct()
+                                .OrderBy(x => x))
+                            {
+                                <option value="@route">
+                                    @route
+                                </option>
+                            }
+                        }
+
+                    </select>
+
+
+
+                    <button type="button"
+                            id="clearFilters"
+                            class="clear-filter-button">
+
+                        Clear
+
+                    </button>
+
+
+                </div>
+
+                <!-- =================================================
+                     TABLE
+                ================================================== -->
+
+                <div class="table-wrapper">
+
+
+                    <table class="schedule-table"
+                           id="scheduleTable">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>#</th>
+
+                                <th>Schedule ID</th>
+
+                                <th>Route</th>
+
+                                <th>Bus</th>
+
+                                <th>Driver</th>
+
+                                <th>Departure Time</th>
+
+                                <th>Arrival Time</th>
+
+                                <th>Date</th>
+
+                                <th>Schedule Status</th>
+
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+
+                        <tbody id="scheduleTableBody">
+
+
+                            @{
+                                int rowNumber = 1;
+                            }
+
+
+                            @if (Model?.Any() == true)
+                            {
+
+                                foreach (var schedule in Model)
+                                {
+
+                                    var status =
+                                        string.IsNullOrWhiteSpace(
+                                            schedule.ScheduleStatus)
+                                            ? "Unknown"
+                                            : schedule.ScheduleStatus;
+
+
+                                    var statusClass =
+                                        status.ToLower() switch
+                                        {
+                                            "on time" => "on-time",
+                                            "delayed" => "delayed",
+                                            "completed" => "completed",
+                                            "scheduled" => "scheduled",
+                                            _ => "scheduled"
+                                        };
+
+
+                                    <tr class="schedule-row"
+                                        data-route="@((schedule.Route ?? string.Empty).ToLower())"
+                                        data-date="@schedule.Date.ToString("yyyy-MM-dd")">
+
+
+                                        <td>
+
+                                            <span class="row-number">
+                                                @rowNumber
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-code">
+                                                @schedule.ScheduleCode
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-text">
+                                                @schedule.Route
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-text">
+                                                @schedule.Bus
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-text">
+                                                @schedule.Driver
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-time">
+                                                @schedule.DepartureTime
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-time">
+                                                @schedule.ArrivalTime
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="schedule-date">
+                                                @schedule.Date.ToString("dd MMM yyyy")
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+                                            <span class="status-badge @statusClass">
+                                                @status
+                                            </span>
+
+                                        </td>
+
+
+
+                                        <td>
+
+
+                                            <div class="action-buttons">
+
+
+                                                <button type="button"
+                                                        class="action-button"
+                                                        title="View"
+                                                        onclick="viewSchedule(@schedule.ScheduleId)">
+
+                                                    👁
+
+                                                </button>
+
+
+
+                                                <button type="button"
+                                                        class="action-button"
+                                                        title="Edit"
+                                                        onclick="editSchedule(@schedule.ScheduleId)">
+
+                                                    ✎
+
+                                                </button>
+
+
+
+                                                <button type="button"
+                                                        class="action-button delete"
+                                                        title="Delete"
+                                                        onclick="deleteSchedule(@schedule.ScheduleId)">
+
+                                                    🗑
+
+                                                </button>
+
+
+                                            </div>
+
+
+                                        </td>
+
+
+                                    </tr>
+
+
+                                    rowNumber++;
+
+                                }
+
+                            }
+
+                            else
+
+                            {
+
+                                <tr class="empty-row">
+
+
+                                    <td colspan="10">
+
+
+                                        <div class="empty-message">
+
+
+                                            <div class="empty-message-icon">
+                                                ▱
+                                            </div>
+
+
+                                            <div class="empty-message-text">
+                                                No schedules found.
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </td>
+
+
+                                </tr>
+
+                            }
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+                <!-- =================================================
+                     TABLE FOOTER
+                ================================================== -->
+
+                <div class="table-footer">
+
+
+                    <div class="total-records">
+
+                        Total Schedules:
+
+                        <strong id="totalScheduleCount">
+                            @(Model?.Count() ?? 0)
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="pagination">
+
+
+                        <button type="button"
+                                class="page-button"
+                                id="previousPage">
+
+                            ‹
+
+                        </button>
+
+
+
+                        <button type="button"
+                                class="page-button active">
+
+                            1
+
+                        </button>
+
+
+
+                        <button type="button"
+                                class="page-button"
+                                id="nextPage">
+
+                            ›
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+
+        document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+
+        const scheduleSearch =
+        document.getElementById(
+        "scheduleSearch"
+        );
+
+
+        const dateFilter =
+        document.getElementById(
+        "dateFilter"
+        );
+
+
+        const routeFilter =
+        document.getElementById(
+        "routeFilter"
+        );
+
+
+        const clearFilters =
+        document.getElementById(
+        "clearFilters"
+        );
+
+
+        const scheduleTableBody =
+        document.getElementById(
+        "scheduleTableBody"
+        );
+
+
+        const totalScheduleCount =
+        document.getElementById(
+        "totalScheduleCount"
+        );
+
+
+        const headerSearch =
+        document.getElementById(
+        "headerSearch"
+        );
+
+
+
+        function filterSchedules() {
+
+
+        if (!scheduleSearch ||
+        !dateFilter ||
+        !routeFilter ||
+        !scheduleTableBody ||
+        !totalScheduleCount) {
+
+        return;
+
+        }
+
+
+        const searchValue =
+        scheduleSearch.value
+        .toLowerCase()
+        .trim();
+
+
+        const dateValue =
+        dateFilter.value;
+
+
+        const routeValue =
+        routeFilter.value
+        .toLowerCase()
+        .trim();
+
+
+        const rows =
+        scheduleTableBody.querySelectorAll(
+        ".schedule-row"
+        );
+
+
+        let visibleCount = 0;
+
+
+
+        rows.forEach(
+        function (row) {
+
+
+        const rowText =
+        row.innerText
+        .toLowerCase();
+
+
+        const rowRoute =
+        row.getAttribute(
+        "data-route"
+        ) || "";
+
+
+        const rowDate =
+        row.getAttribute(
+        "data-date"
+        ) || "";
+
+
+        const matchesSearch =
+        searchValue === "" ||
+        rowText.includes(
+        searchValue
+        );
+
+
+        const matchesRoute =
+        routeValue === "" ||
+        rowRoute === routeValue;
+
+
+        const matchesDate =
+        dateValue === "" ||
+        rowDate === dateValue;
+
+
+
+        if (
+        matchesSearch &&
+        matchesRoute &&
+        matchesDate
+        ) {
+
+        row.style.display = "";
+
+        visibleCount++;
+
+        }
+        else {
+
+        row.style.display = "none";
+
+        }
+
+
+        }
+        );
+
+
+        totalScheduleCount.textContent =
+        visibleCount.toString();
+
+
+        }
+
+
+
+        if (scheduleSearch) {
+
+        scheduleSearch.addEventListener(
+        "input",
+        filterSchedules
+        );
+
+        }
+
+
+
+        if (dateFilter) {
+
+        dateFilter.addEventListener(
+        "change",
+        filterSchedules
+        );
+
+        }
+
+
+
+        if (routeFilter) {
+
+        routeFilter.addEventListener(
+        "change",
+        filterSchedules
+        );
+
+            }
+
+                    if (
+                        clearFilters &&
+                        scheduleSearch &&
+                        dateFilter &&
+                        routeFilter
+                    ) {
+
+                        clearFilters.addEventListener(
+                            "click",
+                            function () {
+
+
+                                scheduleSearch.value = "";
+
+
+                                dateFilter.value = "";
+
+
+                                routeFilter.value = "";
+
+
+                                filterSchedules();
+
+
+                            }
+                        );
+
+                    }
+
+
+
+                    if (
+                        headerSearch &&
+                        scheduleSearch
+                    ) {
+
+                        headerSearch.addEventListener(
+                            "input",
+                            function () {
+
+
+                                scheduleSearch.value =
+                                    headerSearch.value;
+
+
+                                filterSchedules();
+
+
+                            }
+                        );
+
+                    }
+
+
+                }
+            );
+
+
+
+            function viewSchedule(scheduleId)
+            {
+
+                alert(
+                    "View Schedule ID: " +
+                    scheduleId
+                );
+
+            }
+
+
+
+            function editSchedule(scheduleId)
+            {
+
+                alert(
+                    "Edit Schedule ID: " +
+                    scheduleId
+                );
+
+            }
+
+
+
+            function deleteSchedule(scheduleId)
+            {
+
+                const confirmDelete =
+                    confirm(
+                        "Are you sure you want to delete this schedule?"
+                    );
+
+
+                if (!confirmDelete) {
+
+                    return;
+
+                }
+
+
+                const scheduleIdInput =
+                    document.getElementById(
+                        "deleteScheduleId"
+                    );
+
+
+                const deleteForm =
+                    document.getElementById(
+                        "deleteScheduleForm"
+                    );
+
+
+                if (
+                    !scheduleIdInput ||
+                    !deleteForm
+                ) {
+
+                    return;
+
+                }
+
+
+                scheduleIdInput.value =
+                    scheduleId;
+
+
+                deleteForm.submit();
+
+            }
+
+
+    </script>
+
+    <!-- =====================================================
+         PROFESSIONAL NOTIFICATION SYSTEM
+    ====================================================== -->
+    @{
+        string notificationType = "";
+        string notificationTitle = "";
+        string notificationIcon = "";
+        string notificationMessage = "";
+
+
+        if (!string.IsNullOrWhiteSpace(successMessage))
+        {
+            notificationType = "success";
+            notificationTitle = "Success";
+            notificationIcon = "✓";
+            notificationMessage = successMessage;
+        }
+        else if (!string.IsNullOrWhiteSpace(errorMessage))
+        {
+            notificationType = "error";
+            notificationTitle = "Error";
+            notificationIcon = "!";
+            notificationMessage = errorMessage;
+        }
+        else if (!string.IsNullOrWhiteSpace(warningMessage))
+        {
+            notificationType = "warning";
+            notificationTitle = "Warning";
+            notificationIcon = "!";
+            notificationMessage = warningMessage;
+        }
+        else if (!string.IsNullOrWhiteSpace(informationMessage))
+        {
+            notificationType = "information";
+            notificationTitle = "Information";
+            notificationIcon = "i";
+            notificationMessage = informationMessage;
+        }
+    }
+
+
+
+    @if (!string.IsNullOrWhiteSpace(notificationMessage))
+    {
+
+        <div id="scheduleNotificationToast"
+             class="schedule-notification-toast @notificationType"
+             role="status"
+             aria-live="polite">
+
+
+            <div class="schedule-notification-icon">
+
+                @notificationIcon
+
+            </div>
+
+
+
+            <div class="schedule-notification-content">
+
+
+                <div class="schedule-notification-title">
+
+                    @notificationTitle
+
+                </div>
+
+
+
+                <div class="schedule-notification-message">
+
+                    @notificationMessage
+
+                </div>
+
+
+            </div>
+
+
+
+            <button type="button"
+                    class="schedule-notification-close"
+                    id="scheduleNotificationClose"
+                    aria-label="Close notification">
+
+                ×
+
+            </button>
+
+
+        </div>
+
+    }
+
+    @if (!string.IsNullOrWhiteSpace(notificationMessage))
+    {
+
+        <script>
+
+
+                document.addEventListener(
+                    "DOMContentLoaded",
+                    function () {
+
+
+                        const toast =
+                            document.getElementById(
+                                "scheduleNotificationToast"
+                            );
+
+
+                        const closeButton =
+                            document.getElementById(
+                                "scheduleNotificationClose"
+                            );
+
+
+                        if (!toast) {
+
+                            return;
+
+                        }
+
+
+
+                        setTimeout(
+                            function () {
+
+
+                                toast.classList.add(
+                                    "show"
+                                );
+
+
+                            },
+                            100
+                        );
+
+
+
+                        const hideToast =
+                            function () {
+
+
+                                toast.classList.remove(
+                                    "show"
+                                );
+
+
+                            };
+
+
+
+                        if (closeButton) {
+
+
+                            closeButton.addEventListener(
+                                "click",
+                                hideToast
+                            );
+
+
+                        }
+
+
+
+                        setTimeout(
+                            hideToast,
+                            4000
+                        );
+
+
+                    }
+                );
+
+
+        </script>
+
+    }
+
+
+</body>
+
+</html>

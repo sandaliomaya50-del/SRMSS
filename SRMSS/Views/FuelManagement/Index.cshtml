@@ -1,0 +1,2821 @@
+﻿@model IEnumerable<SRMSS.Models.FuelRecord>
+
+
+@{
+
+    Layout = null;
+
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+
+}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+
+    <title>
+
+        Fuel Management - SRMSS
+
+    </title>
+
+
+
+
+
+    <link rel="stylesheet"
+          href="~/css/dashboard.css" />
+
+
+
+    <link rel="stylesheet"
+          href="~/css/fuel-management.css" />
+
+
+
+</head>
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     NOTIFICATION SYSTEM
+===================================================== -->
+
+
+
+
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+
+    <div class="vehicle-notification success">
+
+
+
+        <div class="notification-icon-circle">
+
+
+            ✓
+
+
+        </div>
+
+
+
+
+
+        <div class="notification-content">
+
+
+
+            <p>
+
+                @successMessage
+
+
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeFuelNotification()">
+
+
+
+            ×
+
+
+
+        </button>
+
+
+
+    </div>
+
+}
+
+
+
+
+
+
+
+
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+
+    <div class="vehicle-notification error">
+
+
+
+        <div class="notification-icon-circle">
+
+
+            !
+
+
+        </div>
+
+
+
+
+
+        <div class="notification-content">
+
+
+
+            <p>
+
+                @errorMessage
+
+
+            </p>
+
+
+
+        </div>
+
+
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeFuelNotification()">
+
+
+
+            ×
+
+
+
+        </button>
+
+
+
+    </div>
+
+}
+
+
+    @if (!string.IsNullOrEmpty(warningMessage))
+    {
+
+        <div class="vehicle-notification warning">
+
+
+
+            <div class="notification-icon-circle">
+
+                !
+
+            </div>
+
+
+
+
+
+            <div class="notification-content">
+
+
+                <p>
+
+                    @warningMessage
+
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <button type="button"
+                    class="notification-close"
+                    onclick="closeFuelNotification()">
+
+
+
+                ×
+
+
+
+            </button>
+
+
+
+        </div>
+
+    }
+
+
+
+
+
+
+
+
+    @if (!string.IsNullOrEmpty(informationMessage))
+    {
+
+        <div class="vehicle-notification information">
+
+
+
+            <div class="notification-icon-circle">
+
+                i
+
+            </div>
+
+
+
+
+
+            <div class="notification-content">
+
+
+                <p>
+
+                    @informationMessage
+
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <button type="button"
+                    class="notification-close"
+                    onclick="closeFuelNotification()">
+
+
+
+                ×
+
+
+
+            </button>
+
+
+
+        </div>
+
+    }
+
+
+
+
+
+
+
+    <!-- =====================================================
+     PAGE WRAPPER START
+===================================================== -->
+
+
+    <div class="srmss-page">
+
+
+
+
+
+
+
+        <!-- =====================================================
+     SRMSS SIDEBAR
+===================================================== -->
+
+
+        <aside class="sidebar">
+
+
+
+            <img src="~/Images/dashboard-left-panel.png"
+                 class="sidebar-background"
+                 alt="SRMSS Sidebar" />
+
+
+
+
+
+            <div class="sidebar-content">
+
+
+
+
+
+
+
+                <div class="sidebar-logo">
+
+
+
+                    <img src="~/Images/srms-logo.png"
+                         alt="SRMSS Logo" />
+
+
+
+
+
+                    <div class="sidebar-brand-text">
+
+
+
+                        <h2>
+
+                            SRMSS
+
+                        </h2>
+
+
+
+
+
+
+
+                        <span>
+
+                            Smart Route Management<br />
+
+                            and Scheduling System
+
+                        </span>
+
+
+
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <nav class="sidebar-menu">
+
+
+
+
+
+
+
+                    <a href="/Dashboard"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Dashboard" />
+
+
+
+                        <span>
+
+                            Dashboard
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/RouteManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Route Management" />
+
+
+
+                        <span>
+
+                            Route Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/RouteList"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Route List" />
+
+
+
+                        <span>
+
+                            Route List
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/ScheduleManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/schedule-management-icon.png"
+                             alt="Schedule Management" />
+
+
+
+                        <span>
+
+                            Schedule Management
+
+                        </span>
+
+
+
+                    </a>
+                    
+                    <a href="/ScheduleList"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Schedule List" />
+
+
+
+                        <span>
+
+                            Schedule List
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/VehicleManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/bus-icon.png"
+                             alt="Bus/Vehicle Management" />
+
+
+
+                        <span>
+
+                            Bus/Vehicle Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/DriverManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/driver-management-icon.png"
+                             alt="Driver Management" />
+
+
+
+                        <span>
+
+                            Driver Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/FuelManagement"
+                       class="menu-item active">
+
+
+
+                        <img src="~/Images/fuel-management-icon.png"
+                             alt="Fuel Management" />
+
+
+
+                        <span>
+
+                            Fuel Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/MaintenanceManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/maintenance-management-icon.png"
+                             alt="Maintenance Management" />
+
+
+
+                        <span>
+
+                            Maintenance Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/DepotDashboard"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Depot Dashboard" />
+
+
+
+                        <span>
+
+                            Depot Dashboard
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/Reports"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/reports-analytics-icon.png"
+                             alt="Reports & Analytics" />
+
+
+
+                        <span>
+
+                            Reports & Analytics
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/UserManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="User Management" />
+
+
+
+                        <span>
+
+                            User Management
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <a href="/Profile"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/profile-settings-icon.png"
+                             alt="Profile / Settings" />
+
+
+
+                        <span>
+
+                            Profile / Settings
+
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+                </nav>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </aside>
+
+
+
+
+
+
+
+
+        <!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+
+        <main class="main-content">
+
+
+
+
+
+
+
+            <!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+
+            <header class="top-header">
+
+
+
+
+
+
+                <div class="header-search">
+
+
+
+                    <span class="header-search-icon"></span>
+
+
+
+
+
+                    <input type="text"
+                           id="headerSearch"
+                           placeholder="Search..." />
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+                <div class="header-right">
+
+
+
+
+
+
+
+                    <button type="button"
+                            class="notification-button">
+
+
+
+                        <span class="notification-icon">
+
+
+                            ♧
+
+
+                        </span>
+
+
+
+                        <span class="notification-dot"></span>
+
+
+
+                    </button>
+
+
+
+
+
+
+
+
+
+                    <div class="admin-profile">
+
+
+
+
+
+
+
+                        <div class="admin-avatar">
+
+
+
+                            <img src="~/Images/user-icon.png"
+                                 alt="Admin" />
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="admin-details">
+
+
+
+                            <span class="admin-name">
+
+
+                                Admin
+
+
+                            </span>
+
+
+
+
+
+
+
+                            <span class="admin-role">
+
+
+                                System Administrator
+
+
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <span class="admin-arrow">
+
+
+                            ▾
+
+
+                        </span>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+            </header>
+            
+
+<!-- =====================================================
+     PAGE CONTAINER
+===================================================== -->
+
+
+<div class="page-container">
+
+
+
+
+
+
+
+<!-- =====================================================
+     PAGE HEADING
+===================================================== -->
+
+
+<div class="page-heading">
+
+
+
+
+
+    <div class="page-heading-left">
+
+
+
+
+
+        <h1>
+
+            Fuel Management
+
+        </h1>
+
+
+
+
+
+
+
+        <p>
+
+            Manage and monitor all fuel records in the system.
+
+        </p>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     FUEL SUMMARY CARDS
+===================================================== -->
+
+
+<div class="fuel-summary-grid">
+
+
+
+
+
+
+    <div class="fuel-summary-card">
+
+
+        <img src="~/Images/total-fuel-record-icon.png"
+             alt="Total Fuel Records" />
+
+
+
+        <div class="fuel-summary-content">
+
+
+            <h3>
+
+                Total Fuel Records
+
+            </h3>
+
+
+
+            <span>
+
+                @(Model?.Count() ?? 0)
+
+            </span>
+
+
+
+            <div class="fuel-performance">
+
+
+                <span class="performance-arrow">
+
+                    ↑
+
+                </span>
+
+
+
+                <span>
+
+                    +12% vs last month
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="fuel-summary-card">
+
+
+        <img src="~/Images/total-fuel-record-icon.png"
+             alt="Total Fuel Cost" />
+
+
+
+        <div class="fuel-summary-content">
+
+
+            <h3>
+
+                Total Fuel Cost
+
+            </h3>
+
+
+
+            <span>
+
+                LKR @(Model?.Sum(x => x.FuelCost) ?? 0)
+
+            </span>
+
+
+
+            <div class="fuel-performance">
+
+
+                <span class="performance-arrow">
+
+                    ↑
+
+                </span>
+
+
+
+                <span>
+
+                    +8% vs last month
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="fuel-summary-card">
+
+
+        <img src="~/Images/fuel-drop-icon.png"
+             alt="Total Fuel Consumed" />
+
+
+
+        <div class="fuel-summary-content">
+
+
+            <h3>
+
+                Total Fuel Consumed
+
+            </h3>
+
+
+
+            <span>
+
+                @(Model?.Sum(x => x.FuelQuantity) ?? 0) L
+
+            </span>
+
+
+
+            <div class="fuel-performance">
+
+
+                <span class="performance-arrow">
+
+                    ↑
+
+                </span>
+
+
+
+                <span>
+
+                    +6% vs last month
+
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div class="fuel-summary-card">
+
+
+        <img src="~/Images/distance-km-icon.png"
+             alt="Avg Fuel Efficiency" />
+
+
+
+        <div class="fuel-summary-content">
+
+
+            <h3>
+
+                Avg. Fuel Efficiency
+
+            </h3>
+
+
+
+            <span>
+
+                @(Model != null && Model.Any()
+                    ? Math.Round(Model.Average(x => x.Mileage), 2)
+                    : 0)
+
+                KM
+
+            </span>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     ADD FUEL RECORD CARD
+===================================================== -->
+
+
+<section class="vehicle-management-card">
+
+
+
+<div class="vehicle-card-header">
+
+
+
+    <div class="vehicle-card-title">
+
+
+
+        <img src="~/Images/fuel-records-icon.png"
+             alt="Fuel Records" />
+
+
+
+        <h2>
+
+            Add Fuel Record
+
+        </h2>
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<form asp-action="Create"
+      method="post"
+      enctype="multipart/form-data">
+
+
+@Html.AntiForgeryToken()
+
+
+
+
+
+
+<div class="vehicle-form-grid">
+
+
+
+
+
+
+
+<!-- =====================================================
+     SELECT VEHICLE
+===================================================== -->
+
+
+<div class="vehicle-form-group">
+
+
+<label>
+
+    Select Vehicle
+
+</label>
+
+
+
+
+
+
+
+<div class="vehicle-input-box vehicle-select-box">
+
+
+
+<img src="~/Images/registration-number-icon.png"
+     alt="Vehicle" />
+
+
+
+
+
+
+
+<select id="VehicleId"
+        name="VehicleId"
+        required>
+
+
+<option value="">
+
+    Select Vehicle
+
+</option>
+
+
+
+
+
+@if (ViewBag.Vehicles != null)
+{
+
+    foreach (var vehicle in ViewBag.Vehicles)
+    {
+
+        <option value="@vehicle.VehicleId">
+
+            @vehicle.RegistrationNumber - @vehicle.VehicleType
+
+        </option>
+
+    }
+
+}
+
+
+
+</select>
+
+
+
+
+
+
+
+<span class="select-arrow">
+
+    ▾
+
+</span>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+                            <!-- =====================================================
+     SELECT FUEL TYPE
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Select Fuel Type
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/black-fuel-drop-icon.png"
+                                         alt="Fuel Type" />
+
+
+
+
+
+
+
+                                    <select name="FuelType"
+                                            required>
+
+
+
+                                        <option value="">
+
+                                            Select Fuel Type
+
+                                        </option>
+
+
+
+                                        <option value="Diesel">
+
+                                            Diesel
+
+                                        </option>
+
+
+
+                                        <option value="Petrol">
+
+                                            Petrol
+
+                                        </option>
+
+
+
+                                        <option value="CNG">
+
+                                            CNG
+
+                                        </option>
+
+
+
+                                    </select>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     FUEL QUANTITY
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Enter Quantity Liters
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/fuel-quantity-icon.png"
+                                         alt="Fuel Quantity" />
+
+
+
+
+
+                                    <input type="number"
+                                           name="FuelQuantity"
+                                           step="0.01"
+                                           placeholder="Enter quantity liters"
+                                           required />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     FUEL COST
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Enter Cost in LKR
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/fuel-cost-icon.png"
+                                         alt="Fuel Cost" />
+
+
+
+
+
+                                    <input type="number"
+                                           name="FuelCost"
+                                           step="0.01"
+                                           placeholder="Enter cost in LKR"
+                                           required />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     FUEL CONSUMPTION
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Enter Fuel Consumption
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/mileage-icon.png"
+                                         alt="Fuel Consumption" />
+
+
+
+
+
+                                    <input type="number"
+                                           name="FuelConsumption"
+                                           step="0.01"
+                                           placeholder="Enter fuel consumption" />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     MILEAGE
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Enter Mileage in KM
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/mileage-icon.png"
+                                         alt="Mileage" />
+
+
+
+
+
+                                    <input type="number"
+                                           name="Mileage"
+                                           step="0.01"
+                                           placeholder="Enter mileage in km" />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     FUEL STATION
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Enter Fuel Station
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/fuel-quantity-icon.png"
+                                         alt="Fuel Station" />
+
+
+
+
+
+                                    <input type="text"
+                                           name="FuelStation"
+                                           placeholder="Enter fuel station" />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     FUEL DATE
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Fuel Date
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/date-icon.png"
+                                         alt="Fuel Date" />
+
+
+
+
+
+                                    <input type="date"
+                                           name="FuelDate"
+                                           value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     RECEIPT NUMBER
+===================================================== -->
+
+
+                            <div class="vehicle-form-group">
+
+
+                                <label>
+
+                                    Receipt Number
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/note-document-icon.png"
+                                         alt="Receipt Number" />
+
+
+
+
+
+                                    <input type="text"
+                                           name="ReceiptNumber"
+                                           placeholder="Enter receipt number" />
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <!-- =====================================================
+     ADDITIONAL NOTES
+===================================================== -->
+
+
+                            <div class="vehicle-form-group full-width">
+
+
+                                <label>
+
+                                    Enter Additional Notes
+
+                                </label>
+
+
+
+
+
+                                <div class="vehicle-input-box">
+
+
+
+                                    <img src="~/Images/note-document-icon.png"
+                                         alt="Additional Notes" />
+
+
+
+
+
+                                    <textarea name="AdditionalNotes"
+                                              placeholder="Enter additional notes"></textarea>
+
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                        <!-- END VEHICLE FORM GRID -->
+                        <!-- =====================================================
+     RECEIPT UPLOAD SECTION
+===================================================== -->
+
+
+                        <div class="vehicle-upload-section">
+
+
+
+                            <div class="vehicle-upload-box">
+
+
+
+                                <img src="~/Images/upload-icon.png"
+                                     class="upload-vehicle-icon"
+                                     alt="Upload Receipt" />
+
+
+
+
+
+                                <h3>
+
+                                    Upload Fuel Receipt
+
+                                </h3>
+
+
+
+
+
+                                <p>
+
+                                    Upload receipt image for fuel record
+
+                                </p>
+
+
+
+
+
+                                <label class="upload-image-button">
+
+
+                                    Upload Receipt
+
+
+
+
+                                    <input type="file"
+                                           name="ReceiptImage"
+                                           accept="image/*"
+                                           hidden />
+
+
+
+                                </label>
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================================
+     FORM ACTION BUTTONS
+===================================================== -->
+
+
+                        <div class="vehicle-form-actions">
+
+
+
+
+
+                            <button type="reset"
+                                    class="reset-button">
+
+
+                                Reset
+
+
+                            </button>
+
+
+
+
+
+
+
+                            <button type="submit"
+                                    class="save-vehicle-button">
+
+
+                                Save Fuel Record
+
+
+                            </button>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </form>
+
+
+
+
+
+
+
+
+                </section>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================================
+     FUEL RECORDS SECTION
+===================================================== -->
+
+
+                <section class="vehicle-list-card">
+
+
+
+
+
+
+
+                    <div class="vehicle-list-header">
+
+
+
+
+
+
+                        <div class="vehicle-list-title">
+
+
+
+                            <img src="~/Images/fuel-records-icon.png"
+                                 alt="Fuel Records" />
+
+
+
+
+                            <h2>
+
+                                Fuel Records
+
+                            </h2>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="driver-list-actions">
+
+
+
+
+
+
+                            <div class="header-search fuel-table-search">
+
+
+
+                                <span class="search-icon"></span>
+
+
+
+
+
+                                <input type="text"
+                                       id="fuelSearch"
+                                       placeholder="Search fuel records..." />
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                            <select class="driver-status-filter"
+                                    id="fuelStatusFilter">
+
+
+
+                                <option value="">
+
+                                    All Status
+
+                                </option>
+
+
+
+                                <option value="Active">
+
+                                    Active
+
+                                </option>
+
+
+
+                                <option value="Inactive">
+
+                                    Inactive
+
+                                </option>
+
+
+
+                            </select>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+                    
+                    <!-- =====================================================
+     TABLE
+===================================================== -->
+
+
+                    <div class="table-wrapper">
+
+
+
+
+
+                        <table class="schedule-table">
+
+
+
+
+
+                            <thead>
+
+
+                                <tr>
+
+
+
+                                    <th>
+
+                                        Vehicle
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Date
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Fuel Type
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Quantity
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Cost
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Mileage
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Status
+
+                                    </th>
+
+
+
+
+                                    <th>
+
+                                        Actions
+
+                                    </th>
+
+
+
+                                </tr>
+
+
+
+                            </thead>
+
+
+
+
+
+
+
+
+                            <tbody>
+
+
+
+
+                                @if (Model != null && Model.Any())
+                                {
+
+
+                                    foreach (var fuel in Model)
+                                    {
+
+
+                                        <tr>
+
+
+
+                                            <td>
+
+
+                                                @(fuel.Vehicle != null
+                                                    ? fuel.Vehicle.RegistrationNumber
+                                                    : "N/A")
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+                                                @fuel.FuelDate.ToString("yyyy-MM-dd")
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+                                                @fuel.FuelType
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+                                                @fuel.FuelQuantity L
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+                                                LKR @fuel.FuelCost
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+                                                @fuel.Mileage KM
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+
+                                                <span class="status-badge">
+
+
+                                                    Active
+
+
+                                                </span>
+
+
+
+                                            </td>
+
+
+
+
+
+
+
+                                            <td>
+
+
+
+
+                                                <div class="action-buttons">
+
+
+
+
+
+
+                                                    <a asp-action="Details"
+                                                       asp-route-id="@fuel.FuelRecordId"
+                                                       class="action-button">
+
+
+                                                        View
+
+
+                                                    </a>
+
+
+
+
+
+
+
+
+                                                    <a asp-action="Edit"
+                                                       asp-route-id="@fuel.FuelRecordId"
+                                                       class="action-button">
+
+
+                                                        Edit
+
+
+                                                    </a>
+
+
+
+
+
+
+
+
+                                                    <form asp-action="Delete"
+                                                          asp-route-id="@fuel.FuelRecordId"
+                                                          method="post"
+                                                          style="display:inline;">
+
+
+
+                                                        @Html.AntiForgeryToken()
+
+
+
+
+
+
+                                                        <button type="submit"
+                                                                class="action-button delete"
+                                                                onclick="return confirm('Delete this fuel record?');">
+
+
+                                                            Delete
+
+
+                                                        </button>
+
+
+
+
+                                                    </form>
+
+
+
+
+
+                                                </div>
+
+
+
+                                            </td>
+
+
+
+
+
+                                        </tr>
+
+
+                                    }
+
+
+
+                                }
+                                else
+                                {
+
+
+                                    <tr>
+
+
+                                        <td colspan="8"
+                                            class="empty-row">
+
+
+                                            No fuel records found.
+
+
+                                        </td>
+
+
+                                    </tr>
+
+
+                                }
+
+
+
+
+
+                            </tbody>
+
+
+
+
+
+
+                        </table>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!-- =====================================================
+     TABLE FOOTER
+===================================================== -->
+
+
+                    <div class="table-footer">
+
+
+
+
+
+                        <div class="total-records">
+
+
+                            Total Records:
+
+
+                            <strong>
+
+                                @(Model?.Count() ?? 0)
+
+                            </strong>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="pagination">
+
+
+
+
+
+                            <button type="button"
+                                    class="page-button active">
+
+
+                                1
+
+
+                            </button>
+
+
+
+
+
+
+
+                            <button type="button"
+                                    class="page-button">
+
+
+                                2
+
+
+                            </button>
+
+
+
+
+
+
+
+                            <button type="button"
+                                    class="page-button">
+
+
+                                3
+
+
+                            </button>
+
+
+
+
+
+
+
+                            <button type="button"
+                                    class="page-button">
+
+
+                                Next
+
+
+                            </button>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </section>
+
+
+
+
+
+
+
+            </div>
+            <!-- END PAGE CONTAINER -->
+
+
+
+
+
+
+
+        </main>
+        <!-- END MAIN CONTENT -->
+
+
+
+
+
+
+
+    </div>
+    <!-- END SRMSS PAGE WRAPPER -->
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+            function closeFuelNotification()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+
+                if(notification)
+                {
+
+
+                    notification.classList.add("hide");
+
+
+
+                    setTimeout(function()
+                    {
+
+
+                        notification.remove();
+
+
+                    },400);
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+
+            setTimeout(function()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+
+                if(notification)
+                {
+
+
+                    closeFuelNotification();
+
+
+                }
+
+
+
+            },5000);
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

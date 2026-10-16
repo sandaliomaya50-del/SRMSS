@@ -1,0 +1,1161 @@
+﻿@{
+    ViewData["Title"] = "SRMSS Dashboard";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet"
+          href="~/css/dashboard.css"
+          asp-append-version="true" />
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- =====================================================
+             LEFT SIDEBAR
+        ====================================================== -->
+
+        <aside class="sidebar">
+
+            <img src="~/Images/dashboard-left-panel.png"
+                 class="sidebar-background"
+                 alt="SRMSS Dashboard Left Panel" />
+
+            <div class="sidebar-content">
+
+                <!-- LOGO -->
+
+                <div class="sidebar-logo">
+
+                    <img src="~/Images/srms-logo.png"
+                         alt="SRMSS Logo" />
+
+                    <div class="sidebar-brand-text">
+
+                        <h2>SRMSS</h2>
+
+                        <span>
+                            Smart Route Management<br />
+                            and Scheduling System
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- MENU -->
+
+                <nav class="sidebar-menu">
+
+                    <a href="/Dashboard"
+                       class="menu-item active">
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Dashboard" />
+
+                        <span>Dashboard</span>
+
+                    </a>
+
+                    <a href="/RouteManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Route Management" />
+
+                        <span>Route Management</span>
+
+                    </a>
+
+                    <a href="/RouteList"
+                       class="menu-item">
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Route List" />
+
+                        <span>Route List</span>
+
+                    </a>
+
+                    <a href="/ScheduleManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/schedule-management-icon.png"
+                             alt="Schedule Management" />
+
+                        <span>Schedule Management</span>
+
+                    </a>
+
+                    <a href="/ScheduleList"
+                       class="menu-item">
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Schedule List" />
+
+                        <span>Schedule List</span>
+
+                    </a>
+
+                    <a href="/VehicleManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/bus-icon.png"
+                             alt="Bus Vehicle Management" />
+
+                        <span>Bus/Vehicle Management</span>
+
+                    </a>
+
+                    <a href="/DriverManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/driver-management-icon.png"
+                             alt="Driver Management" />
+
+                        <span>Driver Management</span>
+
+                    </a>
+
+                    <a href="/FuelManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/fuel-management-icon.png"
+                             alt="Fuel Management" />
+
+                        <span>Fuel Management</span>
+
+                    </a>
+
+                    <a href="/MaintenanceManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/maintenance-management-icon.png"
+                             alt="Maintenance Management" />
+
+                        <span>Maintenance Management</span>
+
+                    </a>
+
+                    <a href="/DepotDashboard"
+                       class="menu-item">
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Depot Dashboard" />
+
+                        <span>Depot Dashboard</span>
+
+                    </a>
+
+                    <a href="/Reports"
+                       class="menu-item">
+
+                        <img src="~/Images/reports-analytics-icon.png"
+                             alt="Reports and Analytics" />
+
+                        <span>Reports &amp; Analytics</span>
+
+                    </a>
+
+                    <a href="/UserManagement"
+                       class="menu-item">
+
+                        <img src="~/Images/user-icon.png"
+                             alt="User Management" />
+
+                        <span>User Management</span>
+
+                    </a>
+
+                    <a href="/Profile"
+                       class="menu-item">
+
+                        <img src="~/Images/profile-settings-icon.png"
+                             alt="Profile and Settings" />
+
+                        <span>Profile / Settings</span>
+
+                    </a>
+
+                </nav>
+
+                <!-- SIDEBAR BOTTOM -->
+
+                <div class="sidebar-bottom">
+
+                    <div class="sidebar-slogan">
+
+                        <strong>
+                            Smart Transport.
+                        </strong>
+
+                        <span>
+                            Better Routes.
+                        </span>
+
+                        <span>
+                            Efficient Operations.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main class="main-content">
+
+            <!-- TOP HEADER -->
+
+            <header class="top-header">
+
+                <div class="search-box">
+
+                    <span class="search-icon">
+                        🔍
+                    </span>
+
+                    <input type="text"
+                           placeholder="Search here..." />
+
+                </div>
+
+                <div class="header-right">
+
+                    <button type="button"
+                            class="notification-button">
+
+                        🔔
+
+                        <span class="notification-count">
+                            3
+                        </span>
+
+                    </button>
+
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+                            A
+                        </div>
+
+                        <div class="admin-information">
+
+                            <strong>
+                                Admin
+                            </strong>
+
+                            <span>
+                                System Administrator
+                            </span>
+
+                        </div>
+
+                        <span class="profile-arrow">
+                            ▾
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- WELCOME SECTION -->
+
+            <section class="welcome-section">
+
+                <div class="welcome-text">
+
+                    <h1>
+                        Welcome back, Admin! 👋
+                    </h1>
+
+                    <p>
+                        Here's what's happening with your transport operations today.
+                    </p>
+
+                </div>
+
+                <div class="welcome-right">
+
+                    <div class="date-banner">
+
+                        <div class="date-icon">
+                            📅
+                        </div>
+
+                        <div>
+
+                            <strong>
+                                @DateTime.Now.ToString("dddd, dd MMMM yyyy")
+                            </strong>
+
+                            <span>
+                                @DateTime.Now.ToString("hh:mm tt")
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                    <div class="dashboard-bottom-image">
+
+                        <img src="~/Images/dashboard-bottom.png"
+                             class="dashboard-bottom-img"
+                             alt="Dashboard Bottom" />
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 STATISTICS CARDS
+            ====================================================== -->
+
+            <section class="stats-section">
+
+                <!-- TOTAL ROUTES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon blue-icon">
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Routes" />
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Total Routes
+                        </span>
+
+                        <strong>
+                            @ViewBag.TotalRoutes
+                        </strong>
+
+                        <small class="green-text">
+                            Database records
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIVE BUSES -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green-icon">
+
+                        <img src="~/Images/bus-icon.png"
+                             alt="Active Buses" />
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Active Buses
+                        </span>
+
+                        <strong>
+                            @ViewBag.TotalBuses
+                        </strong>
+
+                        <small class="green-text">
+                            Database records
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AVAILABLE DRIVERS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon purple-icon">
+
+                        <img src="~/Images/driver-management-icon.png"
+                             alt="Available Drivers" />
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Available Drivers
+                        </span>
+
+                        <strong>
+                            @ViewBag.TotalDrivers
+                        </strong>
+
+                        <small class="green-text">
+                            Database records
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TODAY'S TRIPS -->
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange-icon">
+
+                        <img src="~/Images/schedule-management-icon.png"
+                             alt="Today's Trips" />
+
+                    </div>
+
+                    <div class="stat-content">
+
+                        <span>
+                            Today's Trips
+                        </span>
+
+                        <strong>
+                            @ViewBag.TotalSchedules
+                        </strong>
+
+                        <small class="green-text">
+                            Scheduled trips
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRIP STATUS -->
+
+                <div class="trip-status-card">
+
+                    <h3>
+                        ◷ On-Time / Delayed / Completed
+                    </h3>
+
+                    <div class="trip-status-container">
+
+                        <div class="trip-status-item">
+
+                            <div class="status-circle green-circle">
+                                ✓
+                            </div>
+
+                            <strong>
+                                @ViewBag.OnTimeTrips
+                            </strong>
+
+                            <span>
+                                On-Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="trip-status-item">
+
+                            <div class="status-circle orange-circle">
+                                ◷
+                            </div>
+
+                            <strong>
+                                @ViewBag.DelayedTrips
+                            </strong>
+
+                            <span>
+                                Delayed
+                            </span>
+
+                        </div>
+
+
+                        <div class="trip-status-item">
+
+                            <div class="status-circle blue-circle">
+                                ✓
+                            </div>
+
+                            <strong>
+                                @ViewBag.CompletedTrips
+                            </strong>
+
+                            <span>
+                                Completed
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 MIDDLE DASHBOARD
+            ====================================================== -->
+
+            <section class="middle-section">
+
+
+                <!-- VEHICLE UTILIZATION -->
+
+                <div class="dashboard-card utilization-card">
+
+                    <div class="card-title-row">
+
+                        <h3>
+                            🚌 Vehicle Utilization
+                        </h3>
+
+                        <select>
+
+                            <option>
+                                This Week
+                            </option>
+
+                            <option>
+                                This Month
+                            </option>
+
+                            <option>
+                                This Year
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="utilization-content">
+
+                        <div class="donut-chart">
+
+                            <div class="donut-center">
+
+                                <strong>
+                                    @ViewBag.TotalBuses
+                                </strong>
+
+                                <span>
+                                    Total Buses
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="utilization-list">
+
+                            <div class="utilization-row">
+
+                                <span class="legend-dot service-dot"></span>
+
+                                <span>
+                                    Active Buses
+                                </span>
+
+                                <strong>
+                                    @ViewBag.TotalBuses
+                                </strong>
+
+                            </div>
+
+
+                            <div class="utilization-row">
+
+                                <span class="legend-dot maintenance-dot"></span>
+
+                                <span>
+                                    Under Maintenance
+                                </span>
+
+                                <strong>
+                                    @ViewBag.MaintenanceCount
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TODAY'S TRIPS OVERVIEW -->
+
+                <div class="dashboard-card trips-overview-card">
+
+                    <div class="card-title-row">
+
+                        <h3>
+                            📈 Today's Trips Overview
+                        </h3>
+
+                        <div class="chart-legend">
+
+                            <span>
+                                <i class="blue-dot"></i>
+                                On-Time
+                            </span>
+
+                            <span>
+                                <i class="orange-dot"></i>
+                                Delayed
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="bar-chart">
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 75%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 45%;">
+                            </div>
+
+                            <span>6 AM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 65%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 43%;">
+                            </div>
+
+                            <span>8 AM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 70%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 45%;">
+                            </div>
+
+                            <span>10 AM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 38%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 25%;">
+                            </div>
+
+                            <span>12 PM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 55%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 45%;">
+                            </div>
+
+                            <span>2 PM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 72%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 48%;">
+                            </div>
+
+                            <span>4 PM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 52%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 40%;">
+                            </div>
+
+                            <span>6 PM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 42%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 22%;">
+                            </div>
+
+                            <span>8 PM</span>
+
+                        </div>
+
+                        <div class="bar-group">
+
+                            <div class="bar blue-bar"
+                                 style="height: 50%;">
+                            </div>
+
+                            <div class="bar light-blue-bar"
+                                 style="height: 25%;">
+                            </div>
+
+                            <span>10 PM</span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 BOTTOM SECTION
+            ====================================================== -->
+
+            <section class="bottom-section">
+
+
+                <!-- RECENT ACTIVITIES -->
+
+                <div class="dashboard-card recent-activities-card">
+
+                    <div class="card-title-row">
+
+                        <h3>
+                            ◷ Recent Activities
+                        </h3>
+
+                        <a href="#">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div class="activity-list">
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon green-bg">
+                                🚌
+                            </div>
+
+                            <div class="activity-information">
+
+                                <strong>
+                                    Bus activity recorded
+                                </strong>
+
+                                <small>
+                                    Today
+                                </small>
+
+                            </div>
+
+                            <span class="activity-badge success-badge">
+                                On Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon orange-bg">
+                                ⚠
+                            </div>
+
+                            <div class="activity-information">
+
+                                <strong>
+                                    Maintenance records available
+                                </strong>
+
+                                <small>
+                                    Today
+                                </small>
+
+                            </div>
+
+                            <span class="activity-badge maintenance-badge">
+                                Maintenance
+                            </span>
+
+                        </div>
+
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon purple-bg">
+                                📅
+                            </div>
+
+                            <div class="activity-information">
+
+                                <strong>
+                                    Schedules available
+                                </strong>
+
+                                <small>
+                                    Today
+                                </small>
+
+                            </div>
+
+                            <span class="activity-badge schedule-badge">
+                                Schedule
+                            </span>
+
+                        </div>
+
+
+                        <div class="activity-row">
+
+                            <div class="activity-icon green-bg">
+                                👤
+                            </div>
+
+                            <div class="activity-information">
+
+                                <strong>
+                                    Drivers registered
+                                </strong>
+
+                                <small>
+                                    Current database records
+                                </small>
+
+                            </div>
+
+                            <span class="activity-badge driver-badge">
+                                Driver
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOP ROUTES -->
+
+                <div class="dashboard-card top-routes-card">
+
+                    <div class="card-title-row">
+
+                        <h3>
+                            📍 Routes
+                        </h3>
+
+                        <a href="/RouteList">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <table class="routes-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>#</th>
+
+                                <th>Route</th>
+
+                                <th>Distance</th>
+
+                                <th>Status</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            <tr>
+
+                                <td>1</td>
+
+                                <td>Colombo - Matara</td>
+
+                                <td>160 km</td>
+
+                                <td>
+                                    <span class="on-time-status">
+                                        ● Active
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>2</td>
+
+                                <td>Colombo - Galle</td>
+
+                                <td>120 km</td>
+
+                                <td>
+                                    <span class="on-time-status">
+                                        ● Active
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>3</td>
+
+                                <td>Kandy - Colombo</td>
+
+                                <td>115 km</td>
+
+                                <td>
+                                    <span class="on-time-status">
+                                        ● Active
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>4</td>
+
+                                <td>Matara - Weligama</td>
+
+                                <td>25 km</td>
+
+                                <td>
+                                    <span class="on-time-status">
+                                        ● Active
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>5</td>
+
+                                <td>Badulla - Colombo</td>
+
+                                <td>230 km</td>
+
+                                <td>
+                                    <span class="on-time-status">
+                                        ● Active
+                                    </span>
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- QUICK ACTIONS -->
+
+                <div class="dashboard-card quick-actions-card">
+
+                    <div class="card-title-row">
+
+                        <h3>
+                            ⚡ Quick Actions
+                        </h3>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+                        <button type="button"
+                                onclick="window.location.href='/RouteManagement'">
+
+                            <img src="~/Images/location-icon.png"
+                                 alt="Add Route" />
+
+                            <span>
+                                Add Route
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+
+                        <button type="button"
+                                onclick="window.location.href='/ScheduleManagement'">
+
+                            <img src="~/Images/schedule-management-icon.png"
+                                 alt="Create Schedule" />
+
+                            <span>
+                                Create Schedule
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+
+                        <button type="button"
+                                onclick="window.location.href='/VehicleManagement'">
+
+                            <img src="~/Images/bus-icon.png"
+                                 alt="Add Bus" />
+
+                            <span>
+                                Add Bus
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+
+                        <button type="button"
+                                onclick="window.location.href='/DriverManagement'">
+
+                            <img src="~/Images/driver-management-icon.png"
+                                 alt="Add Driver" />
+
+                            <span>
+                                Add Driver
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+
+                        <button type="button"
+                                onclick="window.location.href='/FuelManagement'">
+
+                            <img src="~/Images/fuel-management-icon.png"
+                                 alt="Fuel Log" />
+
+                            <span>
+                                Fuel Log
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+
+                        <button type="button"
+                                onclick="window.location.href='/MaintenanceManagement'">
+
+                            <img src="~/Images/maintenance-management-icon.png"
+                                 alt="Maintenance Log" />
+
+                            <span>
+                                Maintenance Log
+                            </span>
+
+                            <b>›</b>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>
+

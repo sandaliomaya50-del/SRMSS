@@ -1,0 +1,2093 @@
+﻿@model IEnumerable<SRMSS.Models.Driver>
+
+
+@{
+
+    Layout = null;
+
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+
+}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+
+    <title>
+
+        Driver Management - SRMSS
+
+    </title>
+
+
+
+
+
+    <!-- MASTER CSS -->
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-management.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-list.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/driver-management.css" />
+
+
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+<!-- =====================================================
+     DRIVER NOTIFICATION SYSTEM
+===================================================== -->
+
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+
+
+    <div class="vehicle-notification success">
+
+
+        <div class="notification-icon-circle"></div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Success
+
+            </h4>
+
+
+
+            <p>
+
+                @successMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeDriverNotification()">
+
+
+            ×
+
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+
+
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+
+
+    <div class="vehicle-notification error">
+
+
+        <div class="notification-icon-circle">
+
+
+            !
+
+
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Error
+
+            </h4>
+
+
+
+            <p>
+
+                @errorMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeDriverNotification()">
+
+
+            ×
+
+
+        </button>
+
+
+    </div>
+
+
+}
+    <!-- =====================================================
+     SRMSS SIDEBAR
+===================================================== -->
+
+
+    <aside class="sidebar">
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Sidebar" />
+
+
+
+        <div class="sidebar-content">
+
+
+
+            <div class="sidebar-logo">
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+
+                <div class="sidebar-brand-text">
+
+
+                    <h2>
+                        SRMSS
+                    </h2>
+
+
+
+                    <span>
+                        Smart Route Management<br />
+                        and Scheduling System
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+            <nav class="sidebar-menu">
+
+
+
+                <a href="/Dashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Dashboard" />
+
+
+                    <span>
+                        Dashboard
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/RouteManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/location-icon.png"
+                         alt="Route Management" />
+
+
+                    <span>
+                        Route Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/RouteList"
+                   class="menu-item">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Route List" />
+
+
+                    <span>
+                        Route List
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/ScheduleManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/schedule-management-icon.png"
+                         alt="Schedule Management" />
+
+
+                    <span>
+                        Schedule Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/ScheduleList"
+                   class="menu-item">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Schedule List" />
+
+
+                    <span>
+                        Schedule List
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/VehicleManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/bus-icon.png"
+                         alt="Vehicle Management" />
+
+
+                    <span>
+                        Bus/Vehicle Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <!-- DRIVER MANAGEMENT ACTIVE -->
+
+
+                <a href="/DriverManagement"
+                   class="menu-item active">
+
+
+                    <img src="~/Images/driver-management-icon.png"
+                         alt="Driver Management" />
+
+
+                    <span>
+                        Driver Management
+                    </span>
+
+
+                </a>
+                <a href="/FuelManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/fuel-management-icon.png"
+                         alt="Fuel Management" />
+
+
+                    <span>
+
+                        Fuel Management
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/MaintenanceManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/maintenance-management-icon.png"
+                         alt="Maintenance Management" />
+
+
+                    <span>
+
+                        Maintenance Management
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/DepotDashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Depot Dashboard" />
+
+
+                    <span>
+
+                        Depot Dashboard
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/Reports"
+                   class="menu-item">
+
+
+                    <img src="~/Images/reports-analytics-icon.png"
+                         alt="Reports Analytics" />
+
+
+                    <span>
+
+                        Reports &amp; Analytics
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/UserManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/user-icon.png"
+                         alt="User Management" />
+
+
+                    <span>
+
+                        User Management
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+
+
+                <a href="/Profile"
+                   class="menu-item">
+
+
+                    <img src="~/Images/profile-settings-icon.png"
+                         alt="Profile Settings" />
+
+
+                    <span>
+
+                        Profile / Settings
+
+                    </span>
+
+
+                </a>
+
+
+
+
+
+            </nav>
+
+
+
+        </div>
+
+
+    </aside>
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+
+    <main class="main-content">
+
+
+
+
+
+
+
+        <!-- =====================================================
+     TOP HEADER
+===================================================== -->
+
+
+        <header class="top-header">
+
+
+
+            <div class="header-search">
+
+
+                <input type="text"
+                       id="headerSearch"
+                       placeholder="Search..." />
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="header-right">
+
+
+
+                <button type="button"
+                        class="notification-button"
+                        aria-label="Notifications">
+
+
+                    <span class="notification-icon">
+
+                        ♧
+
+                    </span>
+
+
+
+                    <span class="notification-dot"></span>
+
+
+                </button>
+
+
+
+
+
+
+
+                <div class="admin-profile">
+
+
+
+                    <div class="admin-avatar">
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="Admin" />
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="admin-details">
+
+
+                        <span class="admin-name">
+
+                            Admin
+
+                        </span>
+
+
+
+
+
+                        <span class="admin-role">
+
+                            System Administrator
+
+                        </span>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <span class="admin-arrow">
+
+                        ▾
+
+                    </span>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </header>
+
+
+
+
+
+
+
+
+
+        <!-- =====================================================
+     PAGE CONTAINER
+===================================================== -->
+
+
+        <div class="page-container">
+
+
+
+
+
+
+
+            <!-- =====================================================
+     PAGE HEADING
+===================================================== -->
+
+
+            <div class="page-heading">
+
+
+                <div class="page-heading-left">
+
+
+                    <h1>
+
+                        Driver Management
+
+                    </h1>
+
+
+
+                    <p>
+
+                        Manage and monitor all drivers in the system.
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+            
+
+<!-- =====================================================
+     ADD NEW DRIVER CARD
+===================================================== -->
+
+
+<section class="vehicle-management-card">
+
+
+
+    <div class="vehicle-card-header">
+
+
+        <div class="vehicle-card-title">
+
+
+            <img src="~/Images/add-driver-icon.png"
+                 alt="Add New Driver" />
+
+
+
+            <h2>
+
+                Add New Driver
+
+            </h2>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <form asp-action="Create"
+          asp-controller="DriverManagement"
+          method="post"
+          enctype="multipart/form-data">
+
+
+        @Html.AntiForgeryToken()
+
+
+
+
+
+
+
+        <div class="vehicle-form-grid">
+
+
+
+
+
+
+
+            <!-- DRIVER NAME -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Driver Name
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/driver-availability-icon.png"
+                         alt="Driver Name" />
+
+
+
+                    <input type="text"
+                           name="DriverName"
+                           placeholder="Enter driver name" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- CONTACT NUMBER -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Contact Number
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/contact-number-icon.png"
+                         alt="Contact Number" />
+
+
+
+                    <input type="text"
+                           name="PhoneNumber"
+                           placeholder="Enter contact number" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- LICENCE NUMBER -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Licence Number
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/licence-number-icon.png"
+                         alt="Licence Number" />
+
+
+
+                    <input type="text"
+                           name="LicenseNumber"
+                           placeholder="Enter licence number" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- EMAIL ADDRESS -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Email Address
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/email-icon.png"
+                         alt="Email Address" />
+
+
+
+                    <input type="email"
+                           name="Email"
+                           placeholder="Enter email address" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- EXPIRY DATE -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Expiry Date
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/expiry-date-icon.png"
+                         alt="Expiry Date" />
+
+
+
+                    <input type="date"
+                           name="LicenseExpiryDate" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- ASSIGNED ROUTE -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Assigned Route
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/select-route-icon.png"
+                         alt="Select Route" />
+
+
+
+                    <select name="AssignedRoute">
+
+
+                        <option value="">
+
+                            Select route
+
+                        </option>
+
+
+
+                        @if(ViewBag.Routes != null)
+                        {
+
+
+                            foreach(var route in ViewBag.Routes)
+                            {
+
+
+                                <option value="@route.RouteName">
+
+                                    @route.RouteName
+
+                                </option>
+
+
+                            }
+
+
+                        }
+
+
+                    </select>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- WORKING TIME -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Working Time
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/working-time-icon.png"
+                         alt="Working Time" />
+
+
+
+                    <input type="text"
+                           name="WorkingHours"
+                           placeholder="Enter working time" />
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- AVAILABILITY -->
+
+
+            <div class="vehicle-form-group">
+
+
+                <label>
+
+                    Availability
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/driver-availability-icon.png"
+                         alt="Availability" />
+
+
+
+                    <select name="Status">
+
+
+                        <option value="">
+
+                            Select Availability
+
+                        </option>
+
+
+
+                        <option value="Available">
+
+                            Available
+
+                        </option>
+
+
+
+                        <option value="Unavailable">
+
+                            Unavailable
+
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+            <!-- ADDITIONAL NOTES -->
+
+
+            <div class="vehicle-form-group full-width">
+
+
+                <label>
+
+                    Enter Additional Notes
+
+                </label>
+
+
+
+                <div class="vehicle-input-box">
+
+
+                    <img src="~/Images/note-document-icon.png"
+                         alt="Additional Notes" />
+
+
+
+                    <textarea name="Notes"
+                              placeholder="Enter additional notes"></textarea>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+        
+                    <!-- =====================================================
+     DRIVER PHOTO UPLOAD
+===================================================== -->
+
+
+                    <div class="vehicle-upload-section">
+
+
+
+                        <div class="vehicle-upload-box">
+
+
+
+                            <img src="~/Images/driver-photo-upload-icon.png"
+                                 alt="Driver Photo Upload"
+                                 class="upload-vehicle-icon" />
+
+
+
+
+
+                            <h3>
+
+                                Upload Driver Photo
+
+                            </h3>
+
+
+
+
+
+                            <p>
+
+                                Click to upload driver photo
+
+                            </p>
+
+
+
+
+
+                            <label class="upload-image-button">
+
+
+                                Browse Image
+
+
+
+
+
+                                <input type="file"
+                                       name="DriverImage"
+                                       accept="image/*"
+                                       hidden />
+
+
+                            </label>
+
+
+
+
+
+
+
+                            <div class="vehicle-image-preview">
+
+
+                                <img id="driverPreview"
+                                     src="#"
+                                     alt="Driver Preview"
+                                     style="display:none;" />
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!-- =====================================================
+     FORM BUTTONS
+===================================================== -->
+
+
+                    <div class="vehicle-form-actions">
+
+
+
+                        <button type="reset"
+                                class="reset-button">
+
+
+                            Reset
+
+
+                        </button>
+
+
+
+
+
+
+
+                        <button type="submit"
+                                class="save-vehicle-button">
+
+
+                            Save Driver
+
+
+                        </button>
+
+
+
+                    </div>
+
+
+
+
+
+                </form>
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            <!-- =====================================================
+     DRIVER LIST CARD
+===================================================== -->
+
+
+            <section class="vehicle-list-card">
+
+
+
+
+
+                <div class="vehicle-list-header">
+
+
+
+
+
+                    <div class="page-heading-left">
+
+
+
+
+
+                        <h2 class="vehicle-list-title">
+
+
+                            <img src="~/Images/add-driver-icon.png"
+                                 alt="Driver List" />
+
+
+
+                            Driver List
+
+
+                        </h2>
+
+
+
+
+
+
+
+                        <p>
+
+                            View and manage all registered drivers.
+
+                        </p>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <!-- SEARCH + STATUS + ADD DRIVER -->
+
+
+                    <div class="driver-list-actions">
+
+
+
+                        <input type="text"
+                               class="driver-search-box"
+                               placeholder="Search by driver ID, name, or contact..." />
+
+
+
+
+
+
+
+                        <select class="driver-status-filter">
+
+
+                            <option value="">
+
+                                All Statuses
+
+                            </option>
+
+
+
+                            <option value="Available">
+
+                                Available
+
+                            </option>
+
+
+
+                            <option value="Unavailable">
+
+                                Unavailable
+
+                            </option>
+
+
+
+                        </select>
+
+
+
+
+
+
+
+                        <a href="/DriverManagement"
+                           class="add-schedule-button">
+
+
+                            <span class="plus">
+
+                                +
+
+                            </span>
+
+
+
+                            Add Driver
+
+
+                        </a>
+
+
+
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================================
+     DRIVER TABLE
+===================================================== -->
+
+
+                <div class="table-wrapper">
+
+
+                    <table class="schedule-table">
+
+
+                        <thead>
+
+
+                            <tr>
+
+
+                                <th>
+
+                                    #
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Photo
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Driver Name
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Contact Number
+
+                                </th>
+
+
+
+                                <th>
+
+                                    License Number
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Email Address
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Assigned Route
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Working Time
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Status
+
+                                </th>
+
+
+
+                                <th>
+
+                                    Actions
+
+                                </th>
+
+
+                            </tr>
+
+
+                        </thead>
+                        
+                        <tbody>
+
+
+                            @if (Model != null && Model.Any())
+                            {
+
+
+                                int count = 1;
+
+
+
+                                foreach (var driver in Model)
+                                {
+
+
+                                    <tr>
+
+
+
+                                        <td>
+
+                                            @count
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+
+                                            @if (!string.IsNullOrEmpty(driver.DriverImage))
+                                            {
+
+
+                                                <img src="@driver.DriverImage"
+                                                     class="driver-table-image"
+                                                     alt="Driver Photo" />
+
+
+                                            }
+                                            else
+                                            {
+
+
+                                                <img src="~/Images/user-icon.png"
+                                                     class="driver-table-image"
+                                                     alt="Driver" />
+
+
+                                            }
+
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.DriverName
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.PhoneNumber
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.LicenseNumber
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.Email
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.AssignedRoute
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @driver.WorkingHours
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+
+                                            @if (driver.Status == "Available")
+                                            {
+
+
+                                                <span class="status-badge">
+
+                                                    Available
+
+                                                </span>
+
+
+                                            }
+                                            else
+                                            {
+
+
+                                                <span class="status-badge">
+
+                                                    @driver.Status
+
+                                                </span>
+
+
+                                            }
+
+
+                                        </td>
+
+
+
+
+
+
+
+
+
+                                        <td>
+
+
+                                            <div class="action-buttons">
+
+
+
+
+
+                                                <a href="/DriverManagement/Details/@driver.DriverId"
+                                                   class="action-button">
+
+
+                                                    View
+
+
+                                                </a>
+
+
+
+
+
+
+
+                                                <a href="/DriverManagement/Edit/@driver.DriverId"
+                                                   class="action-button">
+
+
+                                                    Edit
+
+
+                                                </a>
+
+
+
+
+
+
+
+                                                <form asp-action="Delete"
+                                                      asp-controller="DriverManagement"
+                                                      method="post">
+
+
+                                                    @Html.AntiForgeryToken()
+
+
+
+                                                    <input type="hidden"
+                                                           name="id"
+                                                           value="@driver.DriverId" />
+
+
+
+
+
+                                                    <button type="submit"
+                                                            class="action-button delete">
+
+
+                                                        Delete
+
+
+                                                    </button>
+
+
+
+                                                </form>
+
+
+
+
+
+                                            </div>
+
+
+                                        </td>
+
+
+                                    </tr>
+
+
+
+                                    count++;
+
+
+                                }
+
+
+                            }
+                            else
+                            {
+
+
+                                <tr>
+
+
+                                    <td colspan="10"
+                                        class="empty-row">
+
+
+                                        No drivers found.
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            }
+
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================================
+     PAGINATION
+===================================================== -->
+
+
+                <div class="table-footer">
+
+
+                    <div class="total-records">
+
+
+                        Total Drivers:
+
+
+                        <strong>
+
+                            @(Model?.Count() ?? 0)
+
+                        </strong>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="pagination">
+
+
+                        <button class="page-button">
+
+                            ‹
+
+                        </button>
+
+
+
+                        <button class="page-button active">
+
+                            1
+
+                        </button>
+
+
+
+                        <button class="page-button">
+
+                            ›
+
+                        </button>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+            function closeDriverNotification()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+
+                if(notification)
+                {
+
+
+                    notification.classList.add("hide");
+
+
+
+                    setTimeout(
+                        function()
+                        {
+
+
+                            notification.remove();
+
+
+                        },
+                        400
+                    );
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function()
+                {
+
+
+                    const notification =
+                        document.querySelector(
+                            ".vehicle-notification"
+                        );
+
+
+
+                    if(notification)
+                    {
+
+
+                        setTimeout(
+                            function()
+                            {
+
+
+                                closeDriverNotification();
+
+
+                            },
+                            4000
+                        );
+
+
+                    }
+
+
+                });
+
+
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>

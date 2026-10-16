@@ -1,0 +1,2038 @@
+﻿@model IEnumerable<SRMSS.Models.Vehicle>
+
+
+@{
+
+    Layout = null;
+
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+
+}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+        Bus / Vehicle Management - SRMSS
+    </title>
+
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-management.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-list.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/vehicle-management.css" />
+
+
+</head>
+
+
+
+<body>
+
+
+
+
+<!-- =====================================================
+     VEHICLE NOTIFICATION SYSTEM
+===================================================== -->
+
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+
+
+    <div class="vehicle-notification success">
+
+
+        <div class="notification-icon-circle"></div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+                Success
+            </h4>
+
+
+
+            <p>
+                @successMessage
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+
+
+    <div class="vehicle-notification error">
+
+
+        <div class="notification-icon-circle">
+            !
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+                Error
+            </h4>
+
+
+
+            <p>
+                @errorMessage
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+@if (!string.IsNullOrEmpty(warningMessage))
+{
+
+
+    <div class="vehicle-notification warning">
+
+
+        <div class="notification-icon-circle">
+            !
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+                Warning
+            </h4>
+
+
+
+            <p>
+                @warningMessage
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+@if (!string.IsNullOrEmpty(informationMessage))
+{
+
+
+    <div class="vehicle-notification information">
+
+
+        <div class="notification-icon-circle">
+            i
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+                Information
+            </h4>
+
+
+
+            <p>
+                @informationMessage
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+    <!-- =====================================================
+     SRMSS SIDEBAR
+===================================================== -->
+
+
+    <aside class="sidebar">
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Sidebar" />
+
+
+
+        <div class="sidebar-content">
+
+
+
+            <div class="sidebar-logo">
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+
+                <div class="sidebar-brand-text">
+
+
+                    <h2>
+                        SRMSS
+                    </h2>
+
+
+
+                    <span>
+                        Smart Route Management<br />
+                        and Scheduling System
+                    </span>
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+
+
+            <nav class="sidebar-menu">
+
+
+
+                <a href="/Dashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Dashboard" />
+
+
+                    <span>
+                        Dashboard
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/RouteManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/location-icon.png"
+                         alt="Route Management" />
+
+
+                    <span>
+                        Route Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/RouteList"
+                   class="menu-item">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Route List" />
+
+
+                    <span>
+                        Route List
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/ScheduleManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/schedule-management-icon.png"
+                         alt="Schedule Management" />
+
+
+                    <span>
+                        Schedule Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/ScheduleList"
+                   class="menu-item">
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Schedule List" />
+
+
+                    <span>
+                        Schedule List
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <!-- ACTIVE PAGE -->
+
+
+                <a href="/VehicleManagement"
+                   class="menu-item active">
+
+
+                    <img src="~/Images/bus-icon.png"
+                         alt="Vehicle Management" />
+
+
+                    <span>
+                        Bus/Vehicle Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/DriverManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/driver-management-icon.png"
+                         alt="Driver Management" />
+
+
+                    <span>
+                        Driver Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/FuelManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/fuel-management-icon.png"
+                         alt="Fuel Management" />
+
+
+                    <span>
+                        Fuel Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/MaintenanceManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/maintenance-management-icon.png"
+                         alt="Maintenance Management" />
+
+
+                    <span>
+                        Maintenance Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/DepotDashboard"
+                   class="menu-item">
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Depot Dashboard" />
+
+
+                    <span>
+                        Depot Dashboard
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/Reports"
+                   class="menu-item">
+
+
+                    <img src="~/Images/reports-analytics-icon.png"
+                         alt="Reports Analytics" />
+
+
+                    <span>
+                        Reports &amp; Analytics
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/UserManagement"
+                   class="menu-item">
+
+
+                    <img src="~/Images/user-icon.png"
+                         alt="User Management" />
+
+
+                    <span>
+                        User Management
+                    </span>
+
+
+                </a>
+
+
+
+
+
+                <a href="/Profile"
+                   class="menu-item">
+
+
+                    <img src="~/Images/profile-settings-icon.png"
+                         alt="Profile Settings" />
+
+
+                    <span>
+                        Profile / Settings
+                    </span>
+
+
+                </a>
+
+
+
+            </nav>
+
+
+
+        </div>
+
+
+    </aside>
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+
+    <main class="main-content">
+
+
+
+
+
+        <header class="top-header">
+
+
+
+            <div class="header-search">
+
+
+                <input type="text"
+                       id="headerSearch"
+                       placeholder="Search..." />
+
+
+            </div>
+
+
+
+
+
+
+
+            <div class="header-right">
+
+
+
+                <button type="button"
+                        class="notification-button"
+                        aria-label="Notifications">
+
+
+                    <span class="notification-icon">
+                        ♧
+                    </span>
+
+
+
+                    <span class="notification-dot"></span>
+
+
+                </button>
+
+
+
+
+
+
+
+                <div class="admin-profile">
+
+
+
+                    <div class="admin-avatar">
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="Admin" />
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="admin-details">
+
+
+                        <span class="admin-name">
+                            Admin
+                        </span>
+
+
+
+
+
+                        <span class="admin-role">
+                            System Administrator
+                        </span>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <span class="admin-arrow">
+                        ▾
+                    </span>
+
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </header>
+
+
+
+
+
+        <!-- PAGE CONTAINER START -->
+
+
+        <div class="page-container">
+            <!-- =====================================================
+     PAGE HEADING
+===================================================== -->
+
+
+<div class="page-heading">
+
+
+    <div class="page-heading-left">
+
+
+        <h1>
+            Bus / Vehicle Management
+        </h1>
+
+
+
+        <p>
+            Manage and monitor all buses and vehicles in the system.
+        </p>
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================================
+     ADD NEW VEHICLE CARD
+===================================================== -->
+
+
+<section class="vehicle-management-card">
+
+
+
+<form asp-action="Create"
+      asp-controller="VehicleManagement"
+      method="post"
+      enctype="multipart/form-data">
+
+
+    @Html.AntiForgeryToken()
+
+
+
+
+
+
+
+<div class="vehicle-form-grid">
+
+
+
+
+
+
+
+
+
+<!-- =====================================
+     REGISTRATION NUMBER
+====================================== -->
+
+
+<div class="vehicle-form-group">
+
+
+<label>
+    Registration Number
+</label>
+
+
+
+
+<div class="vehicle-input-box">
+
+
+<img src="~/Images/registration-number-icon.png"
+     alt="Registration Number" />
+
+
+
+
+
+<input type="text"
+       name="RegistrationNumber"
+       placeholder="Enter registration number" />
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================
+     VEHICLE TYPE
+====================================== -->
+
+
+<div class="vehicle-form-group">
+
+
+<label>
+    Vehicle Type
+</label>
+
+
+
+
+
+<div class="vehicle-input-box">
+
+
+<img src="~/Images/bus-icon.png"
+     alt="Vehicle Type" />
+
+
+
+
+
+<select name="VehicleType">
+
+
+<option value="">
+    Select vehicle type
+</option>
+
+
+
+<option value="Bus">
+    Bus
+</option>
+
+
+
+<option value="Mini Bus">
+    Mini Bus
+</option>
+
+
+
+<option value="Van">
+    Van
+</option>
+
+
+
+</select>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================
+     SEATING CAPACITY
+====================================== -->
+
+
+<div class="vehicle-form-group">
+
+
+<label>
+    Seating Capacity
+</label>
+
+
+
+
+
+<div class="vehicle-input-box">
+
+
+<img src="~/Images/seat-capacity-icon.png"
+     alt="Seating Capacity" />
+
+
+
+
+
+<input type="number"
+       name="SeatingCapacity"
+       placeholder="Enter seating capacity" />
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- =====================================
+     CURRENT MILEAGE
+====================================== -->
+
+
+<div class="vehicle-form-group">
+
+
+<label>
+    Current Mileage
+</label>
+
+
+
+
+
+<div class="vehicle-input-box">
+
+
+<img src="~/Images/mileage-icon.png"
+     alt="Current Mileage" />
+
+
+
+
+
+<input type="number"
+       name="CurrentMileage"
+       placeholder="Enter current mileage" />
+
+
+
+</div>
+
+
+</div>
+
+
+                        <!-- =====================================
+     AVAILABILITY
+====================================== -->
+
+
+                        <div class="vehicle-form-group">
+
+
+                            <label>
+                                Availability
+                            </label>
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+                                <img src="~/Images/availability-icon.png"
+                                     alt="Availability" />
+
+
+
+
+
+                                <select name="Availability">
+
+
+                                    <option value="">
+                                        Select availability
+                                    </option>
+
+
+
+                                    <option value="Available">
+                                        Available
+                                    </option>
+
+
+
+                                    <option value="Unavailable">
+                                        Unavailable
+                                    </option>
+
+
+
+                                </select>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+     MAINTENANCE STATUS
+====================================== -->
+
+
+                        <div class="vehicle-form-group">
+
+
+                            <label>
+                                Maintenance Status
+                            </label>
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+                                <img src="~/Images/maintenance-status-icon.png"
+                                     alt="Maintenance Status" />
+
+
+
+
+
+                                <select name="MaintenanceStatus">
+
+
+                                    <option value="">
+                                        Select maintenance
+                                    </option>
+
+
+
+                                    <option value="Good">
+                                        Good
+                                    </option>
+
+
+
+                                    <option value="Service Required">
+                                        Service Required
+                                    </option>
+
+
+
+                                    <option value="Under Maintenance">
+                                        Under Maintenance
+                                    </option>
+
+
+
+                                </select>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+     DRIVER
+====================================== -->
+
+
+                        <div class="vehicle-form-group">
+
+
+                            <label>
+                                Driver
+                            </label>
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+                                <img src="~/Images/driver-icon.png"
+                                     alt="Driver" />
+
+
+
+
+
+                                <select name="Driver"
+                                        id="Driver">
+
+
+                                    <option value="">
+                                        Select driver
+                                    </option>
+
+
+
+
+
+                                    @if (ViewBag.Drivers != null)
+                                    {
+
+
+                                        foreach (var driver in ViewBag.Drivers)
+                                        {
+
+
+                                            <option value="@driver.DriverName">
+
+                                                @driver.DriverName
+
+                                            </option>
+
+
+                                        }
+
+
+                                    }
+
+
+
+                                </select>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+     ADDITIONAL NOTE
+====================================== -->
+
+
+                        <div class="vehicle-form-group full-width">
+
+
+                            <label>
+                                Additional Note
+                            </label>
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+                                <img src="~/Images/note-document-icon.png"
+                                     alt="Additional Note" />
+
+
+
+
+
+                                <textarea name="AdditionalNote"
+                                          placeholder="Enter additional notes"></textarea>
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- VEHICLE FORM GRID END -->
+                    <!-- =====================================
+     UPLOAD VEHICLE IMAGE
+====================================== -->
+
+
+                    <div class="vehicle-upload-section">
+
+
+
+                        <div class="vehicle-upload-box">
+
+
+
+                            <img src="~/Images/upload-vehicle-image-icon.png"
+                                 alt="Upload Vehicle Image"
+                                 class="upload-vehicle-icon" />
+
+
+
+
+
+                            <h3>
+                                Upload Vehicle Image
+                            </h3>
+
+
+
+
+
+                            <p>
+                                Upload a clear image of the vehicle
+                            </p>
+
+
+
+
+
+                            <label class="upload-image-button">
+
+
+                                Browse Image
+
+
+
+
+
+                                <input type="file"
+                                       name="VehicleImage"
+                                       accept="image/*"
+                                       hidden />
+
+
+                            </label>
+
+
+
+
+
+
+
+                            <div class="vehicle-image-preview">
+
+
+                                <img id="vehiclePreview"
+                                     src="#"
+                                     alt="Vehicle Preview"
+                                     style="display:none;" />
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!-- =====================================
+     FORM BUTTONS
+====================================== -->
+
+
+                    <div class="vehicle-form-actions">
+
+
+
+                        <button type="reset"
+                                class="reset-button">
+
+
+                            Reset
+
+
+                        </button>
+
+
+
+
+
+
+
+                        <button type="submit"
+                                class="save-vehicle-button">
+
+
+                            Save Vehicle
+
+
+                        </button>
+
+
+
+                    </div>
+
+
+
+
+
+                </form>
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            <!-- =====================================================
+     VEHICLE LIST CARD
+===================================================== -->
+
+
+            <section class="vehicle-list-card">
+
+
+
+
+
+                <div class="vehicle-list-header">
+
+
+
+
+
+                    <div class="page-heading-left">
+
+
+
+
+
+                        <h2 class="vehicle-list-title">
+
+
+                            <img src="~/Images/add-vehicle-icon.png"
+                                 alt="Vehicle List" />
+
+
+
+                            Vehicle List
+
+
+                        </h2>
+
+
+
+
+
+
+
+                        <p>
+
+                            View and manage all registered vehicles.
+
+                        </p>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <a href="/VehicleManagement/Create"
+                       class="add-schedule-button">
+
+
+                        <span class="plus">
+
+                            +
+
+                        </span>
+
+
+                        Add New Vehicle
+
+
+                    </a>
+
+
+
+
+
+                </div>
+
+                
+                <!-- =====================================
+     FILTER AREA
+====================================== -->
+
+
+                <div class="filter-bar">
+
+
+                    <div class="filter-search">
+
+
+                        <input type="text"
+                               id="vehicleSearch"
+                               placeholder="Search vehicle..." />
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <select class="filter-select"
+                            id="vehicleTypeFilter">
+
+
+                        <option value="">
+                            All Vehicle Types
+                        </option>
+
+
+                        <option value="Bus">
+                            Bus
+                        </option>
+
+
+                        <option value="Mini Bus">
+                            Mini Bus
+                        </option>
+
+
+                        <option value="Van">
+                            Van
+                        </option>
+
+
+                    </select>
+
+
+
+
+
+
+
+                    <select class="filter-select"
+                            id="availabilityFilter">
+
+
+                        <option value="">
+                            All Availability
+                        </option>
+
+
+                        <option value="Available">
+                            Available
+                        </option>
+
+
+                        <option value="Unavailable">
+                            Unavailable
+                        </option>
+
+
+                    </select>
+
+
+
+
+
+
+
+                    <button type="button"
+                            class="clear-filter-button">
+
+
+                        Clear
+
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================
+     VEHICLE TABLE
+====================================== -->
+
+
+                <div class="table-wrapper">
+
+
+                    <table class="schedule-table">
+
+
+                        <thead>
+
+
+                            <tr>
+
+
+                                <th>#</th>
+
+                                <th>Image</th>
+
+                                <th>Registration Number</th>
+
+                                <th>Vehicle Type</th>
+
+                                <th>Seating Capacity</th>
+
+                                <th>Mileage</th>
+
+                                <th>Availability</th>
+
+                                <th>Maintenance</th>
+
+                                <th>Driver</th>
+
+                                <th>Actions</th>
+
+
+                            </tr>
+
+
+                        </thead>
+
+
+
+
+
+
+
+                        <tbody id="vehicleTableBody">
+
+
+
+                            @if (Model != null && Model.Any())
+                            {
+
+
+                                int count = 1;
+
+
+
+                                foreach (var vehicle in Model)
+                                {
+
+
+                                    <tr class="vehicle-row">
+
+
+
+                                        <td>
+
+                                            @count
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+
+                                            @if (!string.IsNullOrEmpty(vehicle.VehicleImage))
+                                            {
+
+
+                                                <img src="@vehicle.VehicleImage"
+                                                     class="vehicle-table-image"
+                                                     alt="Vehicle Image" />
+
+
+                                            }
+                                            else
+                                            {
+
+
+                                                <img src="~/Images/bus-icon.png"
+                                                     class="vehicle-table-image"
+                                                     alt="Vehicle" />
+
+
+                                            }
+
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.RegistrationNumber
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.VehicleType
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.SeatingCapacity
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.CurrentMileage
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+
+                                            <span class="status-badge">
+
+                                                @vehicle.Availability
+
+                                            </span>
+
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.MaintenanceStatus
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+                                            @vehicle.Driver
+
+                                        </td>
+
+
+
+
+
+                                        <td>
+
+
+                                            <div class="action-buttons">
+
+
+
+                                                <a href="/VehicleManagement/Details/@vehicle.VehicleId"
+                                                   class="action-button">
+
+                                                    View
+
+                                                </a>
+
+
+
+
+
+                                                <a href="/VehicleManagement/Edit/@vehicle.VehicleId"
+                                                   class="action-button">
+
+                                                    Edit
+
+                                                </a>
+
+
+
+
+
+
+
+                                                <form asp-action="Delete"
+                                                      asp-controller="VehicleManagement"
+                                                      method="post">
+
+
+                                                    @Html.AntiForgeryToken()
+
+
+
+                                                    <input type="hidden"
+                                                           name="id"
+                                                           value="@vehicle.VehicleId" />
+
+
+
+
+
+                                                    <button type="submit"
+                                                            class="action-button delete">
+
+                                                        Delete
+
+                                                    </button>
+
+
+
+                                                </form>
+
+
+
+                                            </div>
+
+
+                                        </td>
+
+
+
+
+                                    </tr>
+
+
+
+                                    count++;
+
+
+                                }
+
+
+                            }
+                            else
+                            {
+
+
+                                <tr>
+
+
+                                    <td colspan="10"
+                                        class="empty-row">
+
+
+                                        No vehicles found.
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            }
+
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================
+     PAGINATION
+====================================== -->
+
+
+                <div class="table-footer">
+
+
+                    <div class="total-records">
+
+
+                        Total Vehicles:
+
+
+                        <strong>
+
+                            @(Model?.Count() ?? 0)
+
+                        </strong>
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <div class="pagination">
+
+
+                        <button class="page-button">
+
+                            ‹
+
+                        </button>
+
+
+                        <button class="page-button active">
+
+                            1
+
+                        </button>
+
+
+                        <button class="page-button">
+
+                            ›
+
+                        </button>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </section>
+
+
+        </div>
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+            function closeVehicleNotification()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+
+                if(notification)
+                {
+
+
+                    notification.classList.add("hide");
+
+
+
+                    setTimeout(
+                        function()
+                        {
+
+
+                            notification.remove();
+
+
+                        },
+                        400
+                    );
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+
+            document.addEventListener(
+            "DOMContentLoaded",
+            function()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+
+                if(notification)
+                {
+
+
+                    setTimeout(
+                        function()
+                        {
+
+                            closeVehicleNotification();
+
+                        },
+                        4000
+                    );
+
+
+                }
+
+
+            });
+
+
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>

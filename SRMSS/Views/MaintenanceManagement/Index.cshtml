@@ -1,0 +1,2919 @@
+﻿@model IEnumerable<SRMSS.Models.Maintenance>
+
+@{
+
+    Layout = null;
+
+
+    var successMessage =
+        TempData["SuccessMessage"]?.ToString();
+
+
+    var errorMessage =
+        TempData["ErrorMessage"]?.ToString();
+
+
+    var warningMessage =
+        TempData["WarningMessage"]?.ToString();
+
+
+    var informationMessage =
+        TempData["InformationMessage"]?.ToString();
+
+}
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+    <title>
+
+        Maintenance Management - SRMSS
+
+    </title>
+
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-management.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/schedule-list.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/vehicle-management.css" />
+
+
+    <link rel="stylesheet"
+          href="~/css/maintenance-management.css" />
+
+
+</head>
+
+
+<body>
+
+
+
+
+
+<!-- =====================================================
+     MAINTENANCE NOTIFICATION SYSTEM
+===================================================== -->
+
+
+@if (!string.IsNullOrEmpty(successMessage))
+{
+
+
+    <div class="vehicle-notification success">
+
+
+        <div class="notification-icon-circle">
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Success
+
+            </h4>
+
+
+
+            <p>
+
+                @successMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+
+
+    <div class="vehicle-notification error">
+
+
+        <div class="notification-icon-circle">
+
+            !
+
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Error
+
+            </h4>
+
+
+
+            <p>
+
+                @errorMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+
+@if (!string.IsNullOrEmpty(warningMessage))
+{
+
+
+    <div class="vehicle-notification warning">
+
+
+        <div class="notification-icon-circle">
+
+            !
+
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Warning
+
+            </h4>
+
+
+
+            <p>
+
+                @warningMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+
+@if (!string.IsNullOrEmpty(informationMessage))
+{
+
+
+    <div class="vehicle-notification information">
+
+
+        <div class="notification-icon-circle">
+
+            i
+
+        </div>
+
+
+
+        <div class="notification-content">
+
+
+            <h4>
+
+                Information
+
+            </h4>
+
+
+
+            <p>
+
+                @informationMessage
+
+            </p>
+
+
+        </div>
+
+
+
+        <button type="button"
+                class="notification-close"
+                onclick="closeVehicleNotification()">
+
+            ×
+
+        </button>
+
+
+    </div>
+
+
+}
+
+
+
+
+
+
+
+    <!-- =====================================================
+     SRMSS SIDEBAR
+===================================================== -->
+
+
+    <aside class="sidebar">
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Sidebar" />
+
+
+
+
+
+        <div class="sidebar-content">
+
+
+
+
+
+            <div class="sidebar-logo">
+
+
+
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+
+
+
+
+
+                <div class="sidebar-brand-text">
+
+
+
+
+
+                    <h2>
+
+                        SRMSS
+
+                    </h2>
+
+
+
+
+
+
+
+                    <span>
+
+                        Smart Route Management<br />
+
+                        and Scheduling System
+
+                    </span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+            <nav class="sidebar-menu">
+
+
+
+
+
+                <a href="/Dashboard"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Dashboard" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Dashboard
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/RouteManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/location-icon.png"
+                         alt="Route Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Route Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/RouteList"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Route List" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Route List
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/ScheduleManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/schedule-management-icon.png"
+                         alt="Schedule Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Schedule Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/ScheduleList"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/route-list-icon.png"
+                         alt="Schedule List" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Schedule List
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/VehicleManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/bus-icon.png"
+                         alt="Vehicle Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Bus / Vehicle Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/DriverManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/driver-management-icon.png"
+                         alt="Driver Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Driver Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/FuelManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/fuel-management-icon.png"
+                         alt="Fuel Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Fuel Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/MaintenanceManagement"
+                   class="menu-item active">
+
+
+
+
+
+                    <img src="~/Images/maintenance-management-icon.png"
+                         alt="Maintenance Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Maintenance Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/DepotDashboard"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/home-icon.png"
+                         alt="Depot Dashboard" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Depot Dashboard
+
+                    </span>
+
+
+
+
+
+                </a>
+
+                
+
+
+
+
+
+                <a href="/Reports"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/reports-analytics-icon.png"
+                         alt="Reports Analytics" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Reports &amp; Analytics
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/UserManagement"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/user-icon.png"
+                         alt="User Management" />
+
+
+
+
+
+
+
+                    <span>
+
+                        User Management
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+
+                <a href="/Profile"
+                   class="menu-item">
+
+
+
+
+
+                    <img src="~/Images/profile-settings-icon.png"
+                         alt="Profile Settings" />
+
+
+
+
+
+
+
+                    <span>
+
+                        Profile / Settings
+
+                    </span>
+
+
+
+
+
+                </a>
+
+
+
+
+
+
+
+            </nav>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </aside>
+
+
+
+
+
+
+
+
+
+    <!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+
+
+    <main class="main-content">
+
+
+
+
+
+
+
+
+        <header class="top-header">
+
+
+
+
+
+            <div class="header-search">
+
+
+
+
+
+                <input type="text"
+                       id="headerSearch"
+                       placeholder="Search..." />
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+            <div class="header-right">
+
+
+
+
+
+                <button type="button"
+                        class="notification-button"
+                        aria-label="Notifications">
+
+
+
+
+
+                    <span class="notification-icon">
+
+                        ♧
+
+                    </span>
+
+
+
+
+
+
+
+                    <span class="notification-dot"></span>
+
+
+
+
+
+                </button>
+
+
+
+
+
+
+
+
+                <div class="admin-profile">
+
+
+
+
+
+                    <div class="admin-avatar">
+
+
+
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="Admin" />
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="admin-details">
+
+
+
+
+
+                        <span class="admin-name">
+
+                            Admin
+
+                        </span>
+
+
+
+
+
+
+
+                        <span class="admin-role">
+
+                            System Administrator
+
+                        </span>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <span class="admin-arrow">
+
+                        ▾
+
+                    </span>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </header>
+        
+
+
+
+
+
+
+    <!-- PAGE CONTAINER START -->
+
+
+    <div class="page-container">
+
+
+
+
+
+
+
+
+        <!-- =====================================================
+             PAGE HEADING
+        ===================================================== -->
+
+
+        <div class="page-heading">
+
+
+
+
+
+            <div class="page-heading-left">
+
+
+
+
+
+                <h1>
+
+                    Maintenance Management
+
+                </h1>
+
+
+
+
+
+
+
+
+                <p>
+
+                    Manage and monitor all vehicle maintenance records in the system.
+
+                </p>
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- =====================================================
+             ADD MAINTENANCE RECORD CARD
+        ===================================================== -->
+
+
+
+        <section class="vehicle-management-card">
+
+
+
+
+
+            <form asp-action="Create"
+                  asp-controller="MaintenanceManagement"
+                  method="post">
+
+
+
+                @Html.AntiForgeryToken()
+
+
+
+
+
+
+
+                <div class="vehicle-form-grid">
+
+
+
+
+
+
+
+                    <!-- =====================================
+                         VEHICLE REGISTRATION NUMBER
+                    ====================================== -->
+
+
+
+                    <div class="vehicle-form-group">
+
+
+
+
+
+                        <label>
+
+                            Vehicle Registration Number
+
+                        </label>
+
+
+
+
+
+
+
+
+                        <div class="vehicle-input-box">
+
+
+
+
+
+                            <img src="~/Images/registration-number-icon.png"
+                                 alt="Vehicle Registration Number" />
+
+
+
+
+
+
+
+
+                            <select name="VehicleId">
+
+
+
+
+
+                                <option value="">
+
+                                    Select Vehicle
+
+                                </option>
+
+
+
+
+
+
+
+
+                                @if (ViewBag.Vehicles != null)
+                                {
+
+
+                                    foreach (var vehicle in ViewBag.Vehicles)
+                                    {
+
+
+                                        <option value="@vehicle.VehicleId">
+
+                                            @vehicle.RegistrationNumber - @vehicle.VehicleType
+
+                                        </option>
+
+
+                                    }
+
+
+                                }
+
+
+
+
+
+
+
+                            </select>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                    
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         MAINTENANCE TYPE
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Maintenance Type
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/profile-settings-icon.png"
+                                     alt="Maintenance Type" />
+
+
+
+
+
+
+
+
+                                <select name="MaintenanceType">
+
+
+
+
+
+                                    <option value="">
+
+                                        Select Maintenance Type
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Engine Service">
+
+                                        Engine Service
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Oil Change">
+
+                                        Oil Change
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Repair">
+
+                                        Repair
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Inspection">
+
+                                        Inspection
+
+                                    </option>
+
+
+
+
+
+
+
+                                </select>
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         MAINTENANCE DATE
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Maintenance Date
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/expiry-date-icon.png"
+                                     alt="Maintenance Date" />
+
+
+
+
+
+
+
+
+                                <input type="date"
+                                       name="MaintenanceDate" />
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         NEXT SERVICE DATE
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Next Service Date
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/expiry-date-icon.png"
+                                     alt="Next Service Date" />
+
+
+
+
+
+
+
+
+                                <input type="date"
+                                       name="NextServiceDate" />
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+                        
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         MAINTENANCE STATUS
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Maintenance Status
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/route-list-icon.png"
+                                     alt="Maintenance Status" />
+
+
+
+
+
+
+
+
+                                <select name="Status">
+
+
+
+
+
+                                    <option value="">
+
+                                        Select Status
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Pending">
+
+                                        Pending
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="In Progress">
+
+                                        In Progress
+
+                                    </option>
+
+
+
+
+
+
+
+                                    <option value="Completed">
+
+                                        Completed
+
+                                    </option>
+
+
+
+
+
+
+
+                                </select>
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         MAINTENANCE COST
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Maintenance Cost
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/maintenance_cost_icon.png"
+                                     alt="Maintenance Cost" />
+
+
+
+
+
+
+
+
+                                <input type="number"
+                                       step="0.01"
+                                       name="Cost"
+                                       placeholder="Enter maintenance cost" />
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         SERVICE PROVIDER / GARAGE
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group">
+
+
+
+
+
+                            <label>
+
+                                Service Provider / Garage
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/garage_icon_black.png"
+                                     alt="Service Provider Garage" />
+
+
+
+
+
+
+
+
+                                <input type="text"
+                                       name="ServiceProvider"
+                                       placeholder="Enter garage or service provider" />
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                        
+
+
+
+
+
+
+
+                        <!-- =====================================
+                         DESCRIPTION / ADDITIONAL NOTES
+                    ====================================== -->
+
+
+
+                        <div class="vehicle-form-group full-width">
+
+
+
+
+
+                            <label>
+
+                                Description / Additional Notes
+
+                            </label>
+
+
+
+
+
+
+
+
+                            <div class="vehicle-input-box">
+
+
+
+
+
+                                <img src="~/Images/note-document-icon.png"
+                                     alt="Additional Notes" />
+
+
+
+
+
+
+
+
+                                <textarea name="Description"
+                                          placeholder="Enter description or additional notes"></textarea>
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- MAINTENANCE FORM GRID END -->
+                    <!-- =====================================================
+                     MAINTENANCE SERVICE RECORD SECTION
+                ===================================================== -->
+
+
+
+                    <div class="vehicle-upload-section">
+
+
+
+
+
+                        <div class="vehicle-upload-box">
+
+
+
+
+
+                            <img src="~/Images/service_icon.png"
+                                 alt="Vehicle Service Record"
+                                 class="upload-vehicle-icon" />
+
+
+
+
+
+
+
+
+                            <h3>
+
+                                Vehicle Service Record
+
+                            </h3>
+
+
+
+
+
+
+
+
+                            <p>
+
+                                Upload maintenance service record or document
+
+                            </p>
+
+
+
+
+
+
+
+
+                            <label class="upload-image-button">
+
+
+
+                                Browse File
+
+
+
+
+
+
+
+
+                                <input type="file"
+                                       name="ServiceRecord"
+                                       accept="image/*,.pdf"
+                                       hidden />
+
+
+
+
+
+
+
+                            </label>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+                    
+
+
+
+
+
+
+
+                    <!-- =====================================================
+                     FORM BUTTONS
+                ===================================================== -->
+
+
+
+                    <div class="vehicle-form-actions">
+
+
+
+
+
+                        <button type="reset"
+                                class="reset-button">
+
+
+                            Reset
+
+
+                        </button>
+
+
+
+
+
+
+
+
+                        <button type="submit"
+                                class="save-vehicle-button">
+
+
+                            Save Maintenance Record
+
+
+                        </button>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </form>
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            <!-- =====================================================
+             MAINTENANCE HISTORY CARD
+        ===================================================== -->
+
+
+
+            <section class="vehicle-list-card">
+
+
+
+
+
+                <div class="vehicle-list-header">
+
+
+
+
+
+                    <div class="page-heading-left">
+
+
+
+
+
+                        <h2 class="vehicle-list-title">
+
+
+
+
+
+                            <img src="~/Images/maintenance_icon.png"
+                                 alt="Maintenance History" />
+
+
+
+
+
+
+
+                            Maintenance History
+
+
+
+
+
+                        </h2>
+
+
+
+
+
+
+
+
+                        <p>
+
+                            View and manage all vehicle maintenance records.
+
+                        </p>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                    <a href="@Url.Action("Create", "MaintenanceManagement")"
+                       class="add-schedule-button">
+
+
+
+                        <span class="plus">
+
+                            +
+
+                        </span>
+
+
+
+                        Add Maintenance Record
+
+
+
+                    </a>
+
+
+
+
+
+
+
+                </div>
+
+                
+
+
+
+
+
+
+
+                <!-- =====================================
+             FILTER AREA
+        ===================================== -->
+
+
+
+                <div class="filter-bar">
+
+
+
+
+
+                    <div class="filter-search">
+
+
+
+
+
+                        <input type="text"
+                               id="maintenanceSearch"
+                               placeholder="Search maintenance..." />
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <select class="filter-select"
+                            id="maintenanceStatusFilter">
+
+
+
+
+
+                        <option value="">
+
+                            All Status
+
+                        </option>
+
+
+
+
+
+
+
+                        <option value="Pending">
+
+                            Pending
+
+                        </option>
+
+
+
+
+
+
+
+                        <option value="In Progress">
+
+                            In Progress
+
+                        </option>
+
+
+
+
+
+
+
+                        <option value="Completed">
+
+                            Completed
+
+                        </option>
+
+
+
+
+
+
+
+                    </select>
+
+
+
+
+
+
+
+
+                    <button type="button"
+                            class="clear-filter-button">
+
+
+
+
+
+                        Clear
+
+
+
+
+
+                    </button>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================
+             MAINTENANCE TABLE
+        ===================================== -->
+
+
+
+                <div class="table-wrapper">
+
+
+
+
+
+                    <table class="schedule-table">
+
+
+
+
+
+                        <thead>
+
+
+                            <tr>
+
+
+
+                                <th>
+
+                                    #
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Vehicle
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Maintenance Type
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Maintenance Date
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Next Service Date
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Cost
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Status
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Description
+
+                                </th>
+
+
+
+
+
+                                <th>
+
+                                    Actions
+
+                                </th>
+
+
+
+                            </tr>
+
+
+
+                        </thead>
+
+
+
+
+
+
+
+
+                        <tbody id="maintenanceTableBody">
+
+                            
+
+
+
+
+
+                            @if (Model != null && Model.Any())
+                            {
+
+
+                                int count = 1;
+
+
+
+                                foreach (var maintenance in Model)
+                                {
+
+
+                                    <tr class="maintenance-row">
+
+
+
+
+
+                                        <td>
+
+                                            @count
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @(maintenance.BusId)
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            Maintenance
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @maintenance.MaintenanceDate.ToString("yyyy-MM-dd")
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @(maintenance.CompletedDate.HasValue
+                                                ? maintenance.CompletedDate.Value.ToString("yyyy-MM-dd")
+                                                : "-")
+
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            LKR @maintenance.Cost
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            <span class="status-badge">
+
+                                                @maintenance.Status
+
+                                            </span>
+
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+                                            @maintenance.Description
+
+                                        </td>
+
+
+
+
+
+
+
+                                        <td>
+
+
+
+
+
+                                            <div class="action-buttons">
+
+
+
+
+
+                                                <a href="/MaintenanceManagement/Details/@maintenance.MaintenanceId"
+                                                   class="action-button">
+
+
+                                                    View
+
+
+                                                </a>
+
+
+
+
+
+
+
+
+                                                <a href="/MaintenanceManagement/Edit/@maintenance.MaintenanceId"
+                                                   class="action-button">
+
+
+                                                    Edit
+
+
+                                                </a>
+
+
+
+
+
+
+
+
+                                                <form asp-action="Delete"
+                                                      asp-controller="MaintenanceManagement"
+                                                      method="post">
+
+
+
+                                                    @Html.AntiForgeryToken()
+
+
+
+
+
+
+                                                    <input type="hidden"
+                                                           name="id"
+                                                           value="@maintenance.MaintenanceId" />
+
+
+
+
+
+
+
+                                                    <button type="submit"
+                                                            class="action-button delete">
+
+
+                                                        Delete
+
+
+                                                    </button>
+
+
+
+                                                </form>
+
+
+
+
+
+                                            </div>
+
+
+
+                                        </td>
+
+
+
+
+
+                                    </tr>
+
+
+
+                                    count++;
+
+
+                                }
+
+
+
+                            }
+                            else
+                            {
+
+
+                                <tr>
+
+
+                                    <td colspan="9"
+                                        class="empty-row">
+
+
+                                        No maintenance records found.
+
+
+                                    </td>
+
+
+                                </tr>
+
+
+                            }
+
+
+
+
+
+                        </tbody>
+
+
+
+
+
+
+                    </table>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- =====================================
+             TABLE FOOTER
+        ===================================== -->
+
+
+
+                <div class="table-footer">
+
+
+
+
+
+                    <div class="total-records">
+
+
+                        Total Maintenance Records:
+
+
+                        <strong>
+
+                            @(Model?.Count() ?? 0)
+
+                        </strong>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="pagination">
+
+
+
+
+
+                        <button class="page-button">
+
+
+                            ‹
+
+
+                        </button>
+
+
+
+
+
+
+
+                        <button class="page-button active">
+
+
+                            1
+
+
+                        </button>
+
+
+
+
+
+
+
+                        <button class="page-button">
+
+
+                            ›
+
+
+                        </button>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+        </div>
+        <!-- PAGE CONTAINER END -->
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+            function closeVehicleNotification()
+            {
+
+
+                const notification =
+                    document.querySelector(
+                        ".vehicle-notification"
+                    );
+
+
+                if(notification)
+                {
+
+
+                    notification.classList.add("hide");
+
+
+                    setTimeout(
+                        function()
+                        {
+
+
+                            notification.remove();
+
+
+                        },
+                        400
+                    );
+
+
+                }
+
+
+            }
+
+
+
+
+
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function()
+                {
+
+
+                    const notification =
+                        document.querySelector(
+                            ".vehicle-notification"
+                        );
+
+
+                    if(notification)
+                    {
+
+
+                        setTimeout(
+                            function()
+                            {
+
+
+                                closeVehicleNotification();
+
+
+                            },
+                            4000
+                        );
+
+
+                    }
+
+
+                });
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

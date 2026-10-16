@@ -1,0 +1,1914 @@
+﻿@{
+    ViewData["Title"] = "Reports & Analytics";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Reports & Analytics</title>
+
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="stylesheet" href="/css/reports.css" />
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- =====================================================
+             SIDEBAR
+             ===================================================== -->
+        <aside class="sidebar">
+
+            <img src="/Images/sidebar-background.png"
+                 class="sidebar-background"
+                 alt="" />
+
+            <div class="sidebar-content">
+
+                <!-- =====================================================
+                     LOGO
+                     ===================================================== -->
+                <div class="sidebar-logo">
+                    <img src="/Images/logo.png"
+                         alt="SRMSS Logo" />
+
+                    <div class="sidebar-logo-text">
+                        <h2>SRMSS</h2>
+                        <p>
+                            Smart Route Management<br />
+                            and Scheduling System
+                        </p>
+                    </div>
+                </div>
+
+
+                <!-- =====================================================
+                     SIDEBAR MENU
+                     ===================================================== -->
+                <nav class="sidebar-menu">
+
+
+                    <!-- Dashboard -->
+                    <a href="/Dashboard"
+                       class="menu-item">
+
+                        <img src="/Images/home-icon.png"
+                             alt="" />
+
+                        <span>Dashboard</span>
+                    </a>
+
+
+                    <!-- Route Management -->
+                    <a href="/RouteManagement"
+                       class="menu-item">
+
+                        <img src="/Images/location-icon.png"
+                             alt="" />
+
+                        <span>Route Management</span>
+                    </a>
+
+
+                    <!-- Route List -->
+                    <a href="/Routes"
+                       class="menu-item">
+
+                        <img src="/Images/route-list-icon.png"
+                             alt="" />
+
+                        <span>Route List</span>
+                    </a>
+
+
+                    <!-- Schedule Management -->
+                    <a href="/ScheduleManagement"
+                       class="menu-item">
+
+                        <img src="/Images/schedule-management-icon.png"
+                             alt="" />
+
+                        <span>Schedule Management</span>
+                    </a>
+
+
+                    <!-- Schedule List -->
+                    <a href="/Schedules"
+                       class="menu-item">
+
+                        <img src="/Images/route-list-icon.png"
+                             alt="" />
+
+                        <span>Schedule List</span>
+                    </a>
+
+
+                    <!-- Bus / Vehicle Management -->
+                    <a href="/Bus"
+                       class="menu-item">
+
+                        <img src="/Images/bus-icon.png"
+                             alt="" />
+
+                        <span>Bus/Vehicle Management</span>
+                    </a>
+
+
+                    <!-- Driver Management -->
+                    <a href="/Driver"
+                       class="menu-item">
+
+                        <img src="/Images/driver-management-icon.png"
+                             alt="" />
+
+                        <span>Driver Management</span>
+                    </a>
+
+
+                    <!-- Fuel Management -->
+                    <a href="/Fuel"
+                       class="menu-item">
+
+                        <img src="/Images/fuel-management-icon.png"
+                             alt="" />
+
+                        <span>Fuel Management</span>
+                    </a>
+                    <!-- Maintenance Management -->
+                    <a href="/Maintenance"
+                       class="menu-item">
+
+                        <img src="/Images/maintenance-management-icon.png"
+                             alt="" />
+
+                        <span>Maintenance Management</span>
+                    </a>
+
+
+                    <!-- Depot Dashboard -->
+                    <a href="/DepotDashboard"
+                       class="menu-item">
+
+                        <img src="/Images/home-icon.png"
+                             alt="" />
+
+                        <span>Depot Dashboard</span>
+                    </a>
+
+
+                    <!-- Reports & Analytics -->
+                    <a href="/Reports"
+                       class="menu-item active">
+
+                        <img src="/Images/reports-analytics-icon.png"
+                             alt="" />
+
+                        <span>Reports & Analytics</span>
+                    </a>
+
+
+                    <!-- User Management -->
+                    <a href="/UserManagement"
+                       class="menu-item">
+
+                        <img src="/Images/user-icon.png"
+                             alt="" />
+
+                        <span>User Management</span>
+                    </a>
+
+
+                    <!-- Profile / Settings -->
+                    <a href="/Profile"
+                       class="menu-item">
+
+                        <img src="/Images/profile-settings-icon.png"
+                             alt="" />
+
+                        <span>Profile / Settings</span>
+                    </a>
+
+                </nav>
+
+
+                <!-- =====================================================
+                     SIDEBAR BOTTOM TEXT
+                     ===================================================== -->
+                <div class="sidebar-bottom-text">
+                    <strong>Smart Transport.</strong>
+                    <span>Better Routes.</span>
+                    <span>Efficient Operations.</span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+             ===================================================== -->
+        <main class="main-content">
+
+
+            <!-- =====================================================
+                 TOP HEADER
+                 ===================================================== -->
+            <header class="top-header">
+
+
+                <!-- Search -->
+                <div class="search-box">
+
+                    <span class="search-icon">⌕</span>
+
+                    <input type="text"
+                           placeholder="Search here..." />
+
+                </div>
+
+
+                <!-- Header Right -->
+                <div class="header-right">
+
+
+                    <!-- Notification -->
+                    <button type="button"
+                            class="notification-button">
+
+                        <img src="/Images/alert-bell-blue.png"
+                             class="notification-icon"
+                             alt="" />
+
+                        <span class="notification-count">3</span>
+
+                    </button>
+
+
+                    <!-- Admin Profile -->
+                    <div class="admin-profile">
+
+                        <div class="admin-avatar">
+                            A
+                        </div>
+
+                        <div class="admin-details">
+                            <strong>Admin</strong>
+                            <span>System Administrator</span>
+                        </div>
+
+                        <span class="admin-dropdown">⌄</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+            <!-- =====================================================
+                 REPORTS TITLE SECTION
+                 ===================================================== -->
+            <section class="reports-title-section">
+
+                <div class="reports-title-left">
+
+                    <img src="/Images/schedule-summary-ico.png"
+                         class="reports-title-icon"
+                         alt="" />
+
+                    <div class="reports-title-text">
+
+                        <h1>Reports & Analytics</h1>
+
+                        <p>
+                            Monitor transport performance and generate reports.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reports-title-right">
+
+                    <button type="button"
+                            class="export-pdf-button"
+                            id="exportPdfButton">
+
+                        <span class="export-pdf-icon">⇩</span>
+
+                        <span>Export PDF</span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 REPORT FILTERS
+                 ===================================================== -->
+            <section class="reports-filter-panel">
+
+
+                <!-- Report Type -->
+                <div class="reports-filter-group">
+
+                    <label for="reportType">
+                        Report Type
+                    </label>
+
+                    <div class="reports-select-wrapper">
+
+                        <span class="reports-select-leading-icon">▣</span>
+
+                        <select id="reportType"
+                                name="reportType">
+
+                            <option value="all">
+                                All Reports
+                            </option>
+
+                            <option value="trip">
+                                Trip Completion
+                            </option>
+
+                            <option value="route">
+                                Route Performance
+                            </option>
+
+                            <option value="fuel">
+                                Fuel Consumption
+                            </option>
+
+                            <option value="maintenance">
+                                Maintenance Summary
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Date Range -->
+                <div class="reports-filter-group">
+
+                    <label for="dateRange">
+                        Date Range
+                    </label>
+
+                    <div class="reports-select-wrapper">
+
+                        <span class="reports-select-leading-icon">▣</span>
+
+                        <select id="dateRange"
+                                name="dateRange">
+
+                            <option value="apr-2025"
+                                    selected>
+                                01 Apr 2025 - 30 Apr 2025
+                            </option>
+
+                            <option value="mar-2025">
+                                01 Mar 2025 - 31 Mar 2025
+                            </option>
+
+                            <option value="feb-2025">
+                                01 Feb 2025 - 28 Feb 2025
+                            </option>
+
+                            <option value="jan-2025">
+                                01 Jan 2025 - 31 Jan 2025
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Route -->
+                <div class="reports-filter-group">
+
+                    <label for="routeFilter">
+                        Route
+                    </label>
+
+                    <div class="reports-select-wrapper">
+
+                        <img src="/Images/location-icon.png"
+                             class="reports-select-image-icon"
+                             alt="" />
+
+                        <select id="routeFilter"
+                                name="routeFilter">
+
+                            <option value="all">
+                                All Routes
+                            </option>
+
+                            <option value="R-01">
+                                Route R-01
+                            </option>
+
+                            <option value="R-02">
+                                Route R-02
+                            </option>
+
+                            <option value="R-03">
+                                Route R-03
+                            </option>
+
+                            <option value="R-04">
+                                Route R-04
+                            </option>
+
+                            <option value="R-05">
+                                Route R-05
+                            </option>
+
+                            <option value="R-06">
+                                Route R-06
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Filter Buttons -->
+                <div class="reports-filter-actions">
+
+                    <button type="button"
+                            class="apply-filter-button"
+                            id="applyFiltersButton">
+
+                        <span class="apply-filter-icon">✓</span>
+
+                        <span>Apply Filters</span>
+
+                    </button>
+
+
+                    <button type="button"
+                            class="reset-filter-button"
+                            id="resetFiltersButton">
+
+                        <span class="reset-filter-icon">↻</span>
+
+                        <span>Reset</span>
+
+                    </button>
+
+                </div>
+
+            </section>
+            <!-- =====================================================
+                 SUMMARY CARDS
+                 ===================================================== -->
+            <section class="reports-summary-section">
+
+
+                <!-- Completed Trips -->
+                <div class="reports-summary-card completed-trips-card">
+
+                    <div class="reports-summary-card-left">
+
+                        <div class="reports-summary-icon completed-summary-icon">
+
+                            <img src="/Images/Green_Tick.png"
+                                 alt="" />
+
+                        </div>
+
+
+                        <div class="reports-summary-content">
+
+                            <span class="reports-summary-label">
+                                Completed Trips
+                            </span>
+
+                            <strong class="reports-summary-value">
+                                @ViewBag.CompletedTrips
+                            </strong>
+
+                            <div class="reports-summary-change positive-change">
+
+                                <span class="reports-summary-arrow">↑</span>
+
+                                <span class="reports-summary-percentage">
+                                    @ViewBag.CompletedPercentage%
+                                </span>
+
+                                <small>
+                                    of total trips
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- On-Time Trips -->
+                <div class="reports-summary-card ontime-trips-card">
+
+                    <div class="reports-summary-card-left">
+
+                        <div class="reports-summary-icon ontime-summary-icon">
+
+                            <img src="/Images/Orange_Clock.png"
+                                 alt="" />
+
+                        </div>
+
+
+                        <div class="reports-summary-content">
+
+                            <span class="reports-summary-label">
+                                On-Time Trips
+                            </span>
+
+                            <strong class="reports-summary-value">
+                                @ViewBag.OnTimeTrips
+                            </strong>
+
+                            <div class="reports-summary-change positive-change">
+
+                                <span class="reports-summary-arrow">↑</span>
+
+                                <span class="reports-summary-percentage">
+                                    @ViewBag.OnTimePercentage%
+                                </span>
+
+                                <small>
+                                    of total trips
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Delayed Trips -->
+                <div class="reports-summary-card delayed-trips-card">
+
+                    <div class="reports-summary-card-left">
+
+                        <div class="reports-summary-icon delayed-summary-icon">
+
+                            <img src="/Images/Red_Warning.png"
+                                 alt="" />
+
+                        </div>
+
+
+                        <div class="reports-summary-content">
+
+                            <span class="reports-summary-label">
+                                Delayed Trips
+                            </span>
+
+                            <strong class="reports-summary-value">
+                                @ViewBag.DelayedTrips
+                            </strong>
+
+                            <div class="reports-summary-change delayed-change">
+
+                                <span class="reports-summary-arrow">↓</span>
+
+                                <span class="reports-summary-percentage">
+                                    @ViewBag.DelayedPercentage%
+                                </span>
+
+                                <small>
+                                    of total trips
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Total Trips -->
+                <div class="reports-summary-card total-trips-card">
+
+                    <div class="reports-summary-card-left">
+
+                        <div class="reports-summary-icon total-summary-icon">
+
+                            <img src="/Images/Blue_Location.png"
+                                 alt="" />
+
+                        </div>
+
+
+                        <div class="reports-summary-content">
+
+                            <span class="reports-summary-label">
+                                Total Trips
+                            </span>
+
+                            <strong class="reports-summary-value">
+                                @ViewBag.TotalTrips
+                            </strong>
+
+                            <div class="reports-summary-change positive-change">
+
+                                <span class="reports-summary-arrow">●</span>
+
+                                <span class="reports-summary-percentage">
+                                    @ViewBag.TotalRoutes
+                                </span>
+
+                                <small>
+                                    active routes
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================================================
+                 ANALYTICS SECTION
+                 ===================================================== -->
+            <section class="reports-analytics-section">
+
+
+                <!-- =================================================
+                     TRIP COMPLETION OVERVIEW
+                     ================================================= -->
+                <div class="reports-analytics-card trip-completion-card">
+
+
+                    <div class="reports-analytics-card-header">
+
+                        <div class="reports-analytics-title">
+
+                            <img src="/Images/blue-loading-spinner.png"
+                                 alt="" />
+
+                            <h3>
+                                Trip Completion Overview
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="trip-completion-body">
+
+
+                        <!-- Donut Chart -->
+                        <div class="trip-completion-chart-area">
+
+                            <div class="trip-completion-donut">
+
+                                <div class="trip-completion-donut-center">
+
+                                    <strong>
+                                        @ViewBag.TotalTrips
+                                    </strong>
+
+                                    <span>
+                                        Total Trips
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Completion Details -->
+                        <div class="trip-completion-details">
+
+
+                            <!-- Completed -->
+                            <div class="trip-completion-detail-row">
+
+                                <div class="trip-completion-detail-left">
+
+                                    <span class="completion-legend-color completion-green"></span>
+
+                                    <span class="completion-detail-label">
+                                        Completed
+                                    </span>
+
+                                </div>
+
+                                <div class="trip-completion-detail-right">
+
+                                    <strong>
+                                        @ViewBag.CompletedTrips
+                                    </strong>
+
+                                    <small>
+                                        @ViewBag.CompletedPercentage%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- On-Time -->
+                            <div class="trip-completion-detail-row">
+
+                                <div class="trip-completion-detail-left">
+
+                                    <span class="completion-legend-color completion-orange"></span>
+
+                                    <span class="completion-detail-label">
+                                        On-Time
+                                    </span>
+
+                                </div>
+
+                                <div class="trip-completion-detail-right">
+
+                                    <strong>
+                                        @ViewBag.OnTimeTrips
+                                    </strong>
+
+                                    <small>
+                                        @ViewBag.OnTimePercentage%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Delayed -->
+                            <div class="trip-completion-detail-row">
+
+                                <div class="trip-completion-detail-left">
+
+                                    <span class="completion-legend-color completion-red"></span>
+
+                                    <span class="completion-detail-label">
+                                        Delayed
+                                    </span>
+
+                                </div>
+
+                                <div class="trip-completion-detail-right">
+
+                                    <strong>
+                                        @ViewBag.DelayedTrips
+                                    </strong>
+
+                                    <small>
+                                        @ViewBag.DelayedPercentage%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Cancelled -->
+                            <div class="trip-completion-detail-row">
+
+                                <div class="trip-completion-detail-left">
+
+                                    <span class="completion-legend-color completion-grey"></span>
+
+                                    <span class="completion-detail-label">
+                                        Cancelled
+                                    </span>
+
+                                </div>
+
+                                <div class="trip-completion-detail-right">
+
+                                    <strong>
+                                        @ViewBag.CancelledTrips
+                                    </strong>
+
+                                    <small>
+                                        @ViewBag.CancelledPercentage%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- =================================================
+                     TRIPS BY ROUTE
+                     ================================================= -->
+                <div class="reports-analytics-card trips-by-route-card">
+
+
+                    <div class="reports-analytics-card-header">
+
+                        <div class="reports-analytics-title">
+
+                            <img src="/Images/Blue_Location.png"
+                                 alt="" />
+
+                            <h3>
+                                Trips by Route
+                            </h3>
+
+                        </div>
+
+
+                        <div class="route-chart-legend">
+
+                            <div class="route-legend-item">
+
+                                <span class="route-legend-color route-completed-color"></span>
+
+                                <span>
+                                    Completed
+                                </span>
+
+                            </div>
+
+
+                            <div class="route-legend-item">
+
+                                <span class="route-legend-color route-ontime-color"></span>
+
+                                <span>
+                                    On-Time
+                                </span>
+
+                            </div>
+
+
+                            <div class="route-legend-item">
+
+                                <span class="route-legend-color route-delayed-color"></span>
+
+                                <span>
+                                    Delayed
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="route-chart-container">
+
+
+                        <!-- Y Axis -->
+                        <div class="route-chart-y-axis">
+
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+
+                        </div>
+
+
+                        <!-- Main Chart -->
+                        <div class="route-chart-main">
+
+
+                            <!-- Grid Lines -->
+                            <span class="route-grid-line route-grid-line-1"></span>
+                            <span class="route-grid-line route-grid-line-2"></span>
+                            <span class="route-grid-line route-grid-line-3"></span>
+                            <span class="route-grid-line route-grid-line-4"></span>
+                            <span class="route-grid-line route-grid-line-5"></span>
+
+
+                            <!-- Route 01 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 76%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 66%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 24%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-01
+                                </span>
+
+                            </div>
+
+
+                            <!-- Route 02 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 88%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 73%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 20%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-02
+                                </span>
+
+                            </div>
+
+
+                            <!-- Route 03 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 69%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 60%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 31%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-03
+                                </span>
+
+                            </div>
+
+
+                            <!-- Route 04 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 82%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 70%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 22%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-04
+                                </span>
+
+                            </div>
+
+
+                            <!-- Route 05 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 74%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 63%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 28%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-05
+                                </span>
+
+                            </div>
+
+
+                            <!-- Route 06 -->
+                            <div class="route-chart-group">
+
+                                <div class="route-chart-bars">
+
+                                    <div class="route-bar route-completed-bar"
+                                         style="height: 92%;">
+                                    </div>
+
+                                    <div class="route-bar route-ontime-bar"
+                                         style="height: 79%;">
+                                    </div>
+
+                                    <div class="route-bar route-delayed-bar"
+                                         style="height: 18%;">
+                                    </div>
+
+                                </div>
+
+                                <span class="route-chart-label">
+                                    R-06
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- =================================================
+                     FUEL CONSUMPTION
+                     ================================================= -->
+                <div class="reports-analytics-card fuel-consumption-card">
+
+
+                    <div class="reports-analytics-card-header">
+
+                        <div class="reports-analytics-title">
+
+                            <img src="/Images/fuel-management-icon.png"
+                                 alt="" />
+
+                            <h3>
+                                Fuel Consumption
+                            </h3>
+
+                        </div>
+
+
+                        <div class="fuel-chart-legend">
+
+                            <div class="fuel-legend-item">
+
+                                <span class="fuel-legend-color fuel-used-color"></span>
+
+                                <span>
+                                    Fuel Used
+                                </span>
+
+                            </div>
+
+
+                            <div class="fuel-legend-item">
+
+                                <span class="fuel-legend-color fuel-cost-color"></span>
+
+                                <span>
+                                    Fuel Cost
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Fuel Summary -->
+                    <div class="fuel-summary-row">
+
+                        <div class="fuel-summary-block">
+
+                            <span class="fuel-summary-label">
+                                Total Fuel Cost
+                            </span>
+
+                            <strong class="fuel-summary-value">
+                                LKR @Convert.ToDecimal(ViewBag.TotalFuelCost).ToString("N2")
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Fuel Chart -->
+                    <div class="fuel-chart-container">
+
+
+                        <!-- Y Axis -->
+                        <div class="fuel-chart-y-axis">
+
+                            <span>100</span>
+                            <span>80</span>
+                            <span>60</span>
+                            <span>40</span>
+                            <span>20</span>
+                            <span>0</span>
+
+                        </div>
+
+
+                        <!-- Main Fuel Chart -->
+                        <div class="fuel-chart-main">
+
+
+                            <!-- Grid Lines -->
+                            <span class="fuel-grid-line fuel-grid-line-1"></span>
+                            <span class="fuel-grid-line fuel-grid-line-2"></span>
+                            <span class="fuel-grid-line fuel-grid-line-3"></span>
+                            <span class="fuel-grid-line fuel-grid-line-4"></span>
+                            <span class="fuel-grid-line fuel-grid-line-5"></span>
+
+
+                            <!-- SVG Lines -->
+                            <svg class="fuel-chart-svg"
+                                 viewBox="0 0 600 130"
+                                 preserveAspectRatio="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+
+
+                                <!-- Fuel Used -->
+                                <polyline class="fuel-used-line"
+                                          points="
+                                10,96
+                                105,80
+                                200,87
+                                295,60
+                                390,70
+                                485,42
+                                590,54" />
+
+
+                                <!-- Fuel Cost -->
+                                <polyline class="fuel-cost-line"
+                                          points="
+                                10,105
+                                105,90
+                                200,97
+                                295,73
+                                390,82
+                                485,59
+                                590,66" />
+
+
+                                <!-- Fuel Used Points -->
+                                <circle class="fuel-used-point"
+                                        cx="10"
+                                        cy="96"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="105"
+                                        cy="80"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="200"
+                                        cy="87"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="295"
+                                        cy="60"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="390"
+                                        cy="70"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="485"
+                                        cy="42"
+                                        r="4" />
+
+                                <circle class="fuel-used-point"
+                                        cx="590"
+                                        cy="54"
+                                        r="4" />
+
+
+                                <!-- Fuel Cost Points -->
+                                <circle class="fuel-cost-point"
+                                        cx="10"
+                                        cy="105"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="105"
+                                        cy="90"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="200"
+                                        cy="97"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="295"
+                                        cy="73"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="390"
+                                        cy="82"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="485"
+                                        cy="59"
+                                        r="4" />
+
+                                <circle class="fuel-cost-point"
+                                        cx="590"
+                                        cy="66"
+                                        r="4" />
+
+                            </svg>
+
+
+                            <!-- X Axis -->
+                            <div class="fuel-chart-x-axis">
+
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                                <span>Sun</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+            <!-- =====================================================
+                 RECENT REPORTS
+                 ===================================================== -->
+            <section class="recent-reports-section">
+
+
+                <!-- =================================================
+                     RECENT REPORTS HEADER
+                     ================================================= -->
+                <div class="recent-reports-header">
+
+                    <div class="recent-reports-title">
+
+                        <img src="/Images/Blue_Document.png"
+                             alt="" />
+
+                        <h3>
+                            Recent Reports
+                        </h3>
+
+                    </div>
+
+
+                    <span class="recent-reports-view-all">
+                        View All
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     RECENT REPORTS TABLE
+                     ================================================= -->
+                <div class="recent-reports-table-wrapper">
+
+                    <table class="recent-reports-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Report Name
+                                </th>
+
+                                <th>
+                                    Report Type
+                                </th>
+
+                                <th>
+                                    Period
+                                </th>
+
+                                <th>
+                                    Generated Date
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th class="reports-action-column">
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- =========================================
+                                 REPORT ROW 01
+                                 ========================================= -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="recent-report-name-cell">
+
+                                        <div class="recent-report-icon blue-report-icon">
+
+                                            <img src="/Images/blue-loading-spinner.png"
+                                                 alt="" />
+
+                                        </div>
+
+
+                                        <div class="recent-report-name-text">
+
+                                            <strong>
+                                                Trip Completion Report
+                                            </strong>
+
+                                            <small>
+                                                Overall trip completion performance
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-type">
+                                        Trip
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    01 Apr 2025 - 30 Apr 2025
+                                </td>
+
+
+                                <td>
+                                    30 Apr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-status completed-report-status">
+
+                                        <span class="recent-report-status-dot"></span>
+
+                                        Completed
+
+                                    </span>
+
+                                </td>
+
+
+                                <td class="reports-action-column">
+
+                                    <button type="button"
+                                            class="recent-report-action-button"
+                                            data-report="Trip Completion Report"
+                                            title="Open Report">
+                                        ↗
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- =========================================
+                                 REPORT ROW 02
+                                 ========================================= -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="recent-report-name-cell">
+
+                                        <div class="recent-report-icon route-report-icon">
+
+                                            <img src="/Images/Blue_Location.png"
+                                                 alt="" />
+
+                                        </div>
+
+
+                                        <div class="recent-report-name-text">
+
+                                            <strong>
+                                                Route Performance Report
+                                            </strong>
+
+                                            <small>
+                                                Route-wise transport performance
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-type">
+                                        Route
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    01 Apr 2025 - 30 Apr 2025
+                                </td>
+
+
+                                <td>
+                                    29 Apr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-status completed-report-status">
+
+                                        <span class="recent-report-status-dot"></span>
+
+                                        Completed
+
+                                    </span>
+
+                                </td>
+
+
+                                <td class="reports-action-column">
+
+                                    <button type="button"
+                                            class="recent-report-action-button"
+                                            data-report="Route Performance Report"
+                                            title="Open Report">
+                                        ↗
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- =========================================
+                                 REPORT ROW 03
+                                 ========================================= -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="recent-report-name-cell">
+
+                                        <div class="recent-report-icon fuel-report-icon">
+
+                                            <img src="/Images/fuel-management-icon.png"
+                                                 alt="" />
+
+                                        </div>
+
+
+                                        <div class="recent-report-name-text">
+
+                                            <strong>
+                                                Fuel Consumption Report
+                                            </strong>
+
+                                            <small>
+                                                Fuel usage and operating cost
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-type">
+                                        Fuel
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    01 Apr 2025 - 30 Apr 2025
+                                </td>
+
+
+                                <td>
+                                    28 Apr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-status completed-report-status">
+
+                                        <span class="recent-report-status-dot"></span>
+
+                                        Completed
+
+                                    </span>
+
+                                </td>
+
+
+                                <td class="reports-action-column">
+
+                                    <button type="button"
+                                            class="recent-report-action-button"
+                                            data-report="Fuel Consumption Report"
+                                            title="Open Report">
+                                        ↗
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                            <!-- =========================================
+                                 REPORT ROW 04
+                                 ========================================= -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="recent-report-name-cell">
+
+                                        <div class="recent-report-icon maintenance-report-icon">
+
+                                            <img src="/Images/maintenance-management-icon.png"
+                                                 alt="" />
+
+                                        </div>
+
+
+                                        <div class="recent-report-name-text">
+
+                                            <strong>
+                                                Maintenance Summary
+                                            </strong>
+
+                                            <small>
+                                                Vehicle maintenance activity summary
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-type">
+                                        Maintenance
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    01 Apr 2025 - 30 Apr 2025
+                                </td>
+
+
+                                <td>
+                                    27 Apr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-status completed-report-status">
+
+                                        <span class="recent-report-status-dot"></span>
+
+                                        Completed
+
+                                    </span>
+
+                                </td>
+
+
+                                <td class="reports-action-column">
+
+                                    <button type="button"
+                                            class="recent-report-action-button"
+                                            data-report="Maintenance Summary"
+                                            title="Open Report">
+                                        ↗
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                            <!-- =========================================
+                                 REPORT ROW 05
+                                 ========================================= -->
+                            <tr>
+
+                                <td>
+
+                                    <div class="recent-report-name-cell">
+
+                                        <div class="recent-report-icon schedule-report-icon">
+
+                                            <img src="/Images/schedule-management-icon.png"
+                                                 alt="" />
+
+                                        </div>
+
+
+                                        <div class="recent-report-name-text">
+
+                                            <strong>
+                                                Monthly Operations Report
+                                            </strong>
+
+                                            <small>
+                                                Monthly transport operations overview
+                                            </small>
+
+                                        </div>
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-type">
+                                        Operations
+                                    </span>
+
+                                </td>
+
+
+                                <td>
+                                    01 Mar 2025 - 31 Mar 2025
+                                </td>
+
+
+                                <td>
+                                    01 Apr 2025
+                                </td>
+
+
+                                <td>
+
+                                    <span class="recent-report-status completed-report-status">
+
+                                        <span class="recent-report-status-dot"></span>
+
+                                        Completed
+
+                                    </span>
+
+                                </td>
+
+
+                                <td class="reports-action-column">
+
+                                    <button type="button"
+                                            class="recent-report-action-button"
+                                            data-report="Monthly Operations Report"
+                                            title="Open Report">
+                                        ↗
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+            <!-- =====================================================
+                 PAGE SCRIPTS
+                 ===================================================== -->
+            <script>
+
+                            document.addEventListener("DOMContentLoaded", function () {
+
+                                const reportType = document.getElementById("reportType");
+                                const dateRange = document.getElementById("dateRange");
+                                const routeFilter = document.getElementById("routeFilter");
+
+                                const applyFiltersButton =
+                                    document.getElementById("applyFiltersButton");
+
+                                const resetFiltersButton =
+                                    document.getElementById("resetFiltersButton");
+
+                                const exportPdfButton =
+                                    document.getElementById("exportPdfButton");
+
+
+                                // =================================================
+                                // APPLY FILTERS
+                                // =================================================
+                                if (applyFiltersButton) {
+
+                                    applyFiltersButton.addEventListener("click", function () {
+
+                                        const selectedReportType =
+                                            reportType ? reportType.value : "all";
+
+                                        const selectedDateRange =
+                                            dateRange ? dateRange.value : "";
+
+                                        const selectedRoute =
+                                            routeFilter ? routeFilter.value : "all";
+
+                                        console.log("Report Type:", selectedReportType);
+                                        console.log("Date Range:", selectedDateRange);
+                                        console.log("Route:", selectedRoute);
+
+                                    });
+
+                                }
+
+
+                                // =================================================
+                                // RESET FILTERS
+                                // =================================================
+                                if (resetFiltersButton) {
+
+                                    resetFiltersButton.addEventListener("click", function () {
+
+                                        if (reportType) {
+                                            reportType.value = "all";
+                                        }
+
+                                        if (dateRange) {
+                                            dateRange.value = "apr-2025";
+                                        }
+
+                                        if (routeFilter) {
+                                            routeFilter.value = "all";
+                                        }
+
+                                    });
+
+                                }
+
+
+                                // =================================================
+                                // EXPORT PDF / PRINT
+                                // =================================================
+                                if (exportPdfButton) {
+
+                                    exportPdfButton.addEventListener("click", function () {
+
+                                        window.print();
+
+                                    });
+
+                                }
+
+
+                                // =================================================
+                                // RECENT REPORT ACTION BUTTONS
+                                // =================================================
+                                const reportActionButtons =
+                                    document.querySelectorAll(
+                                        ".recent-report-action-button"
+                                    );
+
+                                reportActionButtons.forEach(function (button) {
+
+                                    button.addEventListener("click", function () {
+
+                                        const reportName =
+                                            this.getAttribute("data-report");
+
+                                        alert(
+                                            reportName +
+                                            " selected."
+                                        );
+
+                                    });
+
+                                });
+
+
+                                // =================================================
+                                // KEEP ACTIVE REPORT MENU ITEM VISIBLE
+                                // =================================================
+                                const activeMenuItem =
+                                    document.querySelector(
+                                        ".sidebar-menu .menu-item.active"
+                                    );
+
+                                if (activeMenuItem) {
+
+                                    activeMenuItem.scrollIntoView({
+                                        block: "nearest"
+                                    });
+
+                                }
+
+                            });
+
+            </script>
+        </main>
+
+    </div>
+
+</body>
+</html>

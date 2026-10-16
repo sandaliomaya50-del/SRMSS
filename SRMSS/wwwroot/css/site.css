@@ -1,0 +1,521 @@
+css
+/* ==============================
+   BASIC PAGE SETTINGS
+   ============================== */
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+
+/* ==============================
+   MAIN LOGIN PAGE
+   ============================== */
+
+.login-page {
+    width: 1500px;
+    height: 936px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0;
+    background-image: url('/Images/login-background.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   LOGIN PANEL
+   ============================== */
+
+.login-panel {
+    width: 380px;
+    min-height: 480px;
+    background-color: rgba(255, 255, 255, 0.97);
+    margin-right: 70px;
+    padding: 30px 45px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* ==============================
+   BRAND HEADER
+   ============================== */
+
+.brand-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+
+    /* ==============================
+   LOGO
+   ============================== */
+
+    .brand-header img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+
+    /* ==============================
+   SRMSS HEADING
+   ============================== */
+
+    .brand-header h1 {
+        margin: 0;
+        padding: 0;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 1;
+    }
+
+
+/* ==============================
+   COLORS
+   ============================== */
+
+.navy-text {
+    color: #123B5D;
+}
+
+.blue-text {
+    color: #1E73BE;
+}
+
+
+/* ==============================
+   LOGIN SUBTITLE
+   ============================== */
+
+.login-subtitle {
+    text-align: center;
+    margin: 5px 0 4px 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+
+/* ==============================
+   SYSTEM DESCRIPTION
+   ============================== */
+
+.system-description {
+    text-align: center;
+    margin: 0 0 20px 0;
+    padding: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #888888;
+    line-height: 1.4;
+}
+
+
+/* ==============================
+   FORM GROUP
+   ============================== */
+
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+
+    /* ==============================
+   LABEL
+   ============================== */
+
+    .form-group label {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #333333;
+        cursor: default;
+    }
+
+
+/* ==============================
+   LABEL ICON
+   ============================== */
+
+.label-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+    flex-shrink: 0;
+}
+
+
+/* ==============================
+   INPUT CONTAINER
+   ============================== */
+
+.icon-input {
+    width: 100%;
+    height: 46px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   ICON INSIDE TEXTBOX
+   ============================== */
+
+.input-icon {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+    z-index: 2;
+    pointer-events: none;
+}
+
+
+/* ==============================
+   TEXTBOX
+   ============================== */
+
+.icon-input input {
+    width: 100%;
+    height: 46px;
+    padding: 0 14px 0 43px;
+    border: 1px solid #D5D5D5;
+    border-radius: 7px;
+    background-color: #ffffff;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+
+    /* ==============================
+   PLACEHOLDER
+   ============================== */
+
+    .icon-input input::placeholder {
+        color: #999999;
+    }
+
+
+    /* ==============================
+   INPUT FOCUS
+   ============================== */
+
+    .icon-input input:focus {
+        border-color: #123B5D;
+    }
+
+
+/* ==============================
+   PASSWORD INPUT
+   ============================== */
+
+.password-box input {
+    padding-left: 43px;
+    padding-right: 45px;
+}
+
+
+/* ==============================
+   EYE BUTTON
+   ============================== */
+
+.show-password {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 17px;
+    padding: 0;
+    z-index: 3;
+}
+
+
+/* ==============================
+   LOGIN OPTIONS
+   ============================== */
+
+.login-options {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2px 0 18px 0;
+    font-size: 13px;
+}
+
+
+/* ==============================
+   SHOW PASSWORD
+   ============================== */
+
+.show-password-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #555555;
+    cursor: pointer;
+}
+
+    .show-password-label input {
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+    }
+
+
+/* ==============================
+   FORGOT PASSWORD
+   ============================== */
+
+.forgot-password {
+    color: #123B5D;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+    .forgot-password:hover {
+        text-decoration: underline;
+    }
+
+
+/* ==============================
+   LOGIN BUTTON
+   ============================== */
+
+.login-button {
+    width: 100%;
+    height: 48px;
+    border: none;
+    border-radius: 7px;
+    background-color: #1E73BE;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    transition: background-color 0.2s ease;
+}
+
+
+    /* ==============================
+   LOGIN BUTTON HOVER
+   ============================== */
+
+    .login-button:hover {
+        background-color: #155A96;
+    }
+
+
+/* ==============================
+   LOGIN ARROW
+   ============================== */
+
+.login-arrow {
+    width: 21px;
+    height: 21px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ==============================
+   AUTHORIZED TEXT
+   ============================== */
+
+.authorized {
+    text-align: center;
+    margin: 16px 0 0 0;
+    padding: 0;
+    font-size: 12px;
+    color: #777777;
+}
+
+
+/* ==============================
+   COPYRIGHT
+   ============================== */
+
+.copyright {
+    text-align: center;
+    margin: 6px 0 0 0;
+    padding: 0;
+    font-size: 11px;
+    color: #999999;
+}
+
+
+/* ==============================
+   BOTTOM RIGHT FADE DECORATION
+   ============================== */
+
+.panel-decoration {
+    position: absolute;
+    right: -20px;
+    bottom: -18px;
+    width: 210px;
+    height: 130px;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+
+/* ==============================
+   BASE CURVE
+   ============================== */
+
+.curve {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    transform: rotate(-8deg);
+    filter: blur(0.3px);
+}
+
+
+/* ==============================
+   NAVY WIDE FADE LINE
+   ============================== */
+
+.curve-one {
+    width: 210px;
+    height: 95px;
+    right: -45px;
+    bottom: -45px;
+    border-top: 9px solid rgba(18, 59, 93, 0.85);
+    border-right: 9px solid rgba(18, 59, 93, 0.45);
+    opacity: 0.9;
+}
+
+
+/* ==============================
+   BLUE WIDE FADE LINE
+   ============================== */
+
+.curve-two {
+    width: 180px;
+    height: 80px;
+    right: -28px;
+    bottom: -32px;
+    border-top: 8px solid rgba(30, 115, 190, 0.80);
+    border-right: 8px solid rgba(30, 115, 190, 0.30);
+    opacity: 0.85;
+}
+
+
+/* ==============================
+   SECOND NAVY FADE LINE
+   ============================== */
+
+.curve-three {
+    width: 150px;
+    height: 65px;
+    right: -12px;
+    bottom: -20px;
+    border-top: 6px solid rgba(18, 59, 93, 0.55);
+    border-right: 6px solid rgba(18, 59, 93, 0.15);
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   SCREEN SIZE
+   ============================== */
+
+@media (max-width: 1500px), (max-height: 936px) {
+
+    .login-page {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        background-size: contain;
+    }
+}
+
+
+/* ==============================
+   SMALL SCREENS
+   ============================== */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: auto;
+    }
+
+    .login-page {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        background-size: contain;
+    }
+
+    .login-panel {
+        width: calc(100% - 40px);
+        min-height: 480px;
+        margin-right: 0;
+        padding: 30px;
+    }
+
+    .brand-header img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .brand-header h1 {
+        font-size: 30px;
+    }
+}
+
+

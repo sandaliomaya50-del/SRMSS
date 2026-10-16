@@ -1,0 +1,1511 @@
+﻿/* =========================================================
+   SRMSS - SCHEDULE MANAGEMENT PAGE
+========================================================= */
+
+
+/* =========================================================
+   BASIC
+========================================================= */
+
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #F3F8FD;
+    color: #123B5D;
+    overflow-x: hidden;
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+
+.schedule-management-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #F3F8FD;
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 276px;
+    height: 100vh;
+    background: #062e52;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+
+
+
+
+
+.sidebar-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+.sidebar-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    padding: 24px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 22px;
+}
+
+
+
+
+
+    .sidebar-logo img {
+        width: 57px;
+        height: 57px;
+        object-fit: contain;
+    }
+
+
+
+
+
+.sidebar-brand-text {
+    margin-left: 9px;
+}
+
+
+
+
+
+    .sidebar-brand-text h2 {
+        margin: 0;
+        color: white;
+        font-size: 27px;
+        font-weight: 700;
+    }
+
+
+
+
+
+    .sidebar-brand-text span {
+        color: white;
+        font-size: 8.5px;
+        line-height: 1.35;
+    }
+
+/* =========================================================
+   MENU
+========================================================= */
+
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+
+
+
+
+    .sidebar-menu::-webkit-scrollbar {
+        display: none;
+    }
+
+
+
+
+
+
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+    padding: 7px 12px;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+}
+
+
+
+
+
+    .menu-item img {
+        width: 21px;
+        height: 21px;
+        object-fit: contain;
+        margin-right: 13px;
+    }
+
+
+
+
+
+    .menu-item:hover {
+        background: rgba(37,127,202,.35);
+    }
+
+
+
+
+
+    .menu-item.active {
+        background: linear-gradient(90deg,#0c66aa,#1674bc);
+    }
+
+
+
+
+
+
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+
+.sidebar-bottom {
+    margin-top: auto;
+}
+
+
+
+
+
+.sidebar-slogan {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 12px;
+}
+
+
+
+
+
+    .sidebar-slogan strong {
+        color: white;
+        font-size: 13px;
+    }
+
+
+
+
+
+    .sidebar-slogan span {
+        color: white;
+        font-size: 10px;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+
+.main-content {
+    width: calc(100% - 276px);
+    min-height: 100vh;
+    margin-left: 276px;
+    background: #F3F8FD;
+}
+
+/* =========================================================
+   TOP HEADER
+========================================================= */
+
+
+.top-header {
+    width: 100%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E4EDF5;
+    box-shadow: 0 2px 8px rgba(25,70,110,0.04);
+}
+
+
+
+
+
+
+
+/* SEARCH */
+
+
+.search-box {
+    width: 330px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background: #F4F8FC;
+    border-radius: 22px;
+    border: 1px solid #EDF2F7;
+}
+
+
+
+
+
+.search-symbol {
+    width: 22px;
+    font-size: 27px;
+    color: #0A5EA8;
+    margin-right: 7px;
+}
+
+
+
+
+
+.search-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   HEADER RIGHT
+========================================================= */
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+
+
+
+
+
+.notification-button {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+}
+
+
+
+
+
+.notification-icon {
+    font-size: 27px;
+    color: #0B4C87;
+}
+
+
+
+
+
+.notification-count {
+    position: absolute;
+    top: -2px;
+    right: -1px;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #E53935;
+    color: white;
+    font-size: 10px;
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   ADMIN PROFILE
+========================================================= */
+
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+.admin-avatar {
+    width: 37px;
+    height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #0B477F;
+    margin-right: 10px;
+}
+
+
+
+
+
+    .admin-avatar img {
+        width: 22px;
+        filter: brightness(0) invert(1);
+    }
+
+
+
+
+
+.admin-information {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+    .admin-information strong {
+        font-size: 13px;
+        color: #123B5D;
+    }
+
+
+
+
+
+    .admin-information span {
+        font-size: 10px;
+        color: #7891A7;
+    }
+
+
+
+
+
+.admin-arrow {
+    margin-left: 12px;
+    color: #6E8AA2;
+}
+
+/* =========================================================
+   CONTENT AREA
+========================================================= */
+
+
+.content-area {
+    width: 100%;
+    padding: 25px 28px 35px;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PAGE HEADING
+========================================================= */
+
+
+.page-heading {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+.heading-left {
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+.back-button {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    color: #1468B5;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+
+
+
+
+.page-heading h1 {
+    margin: 0;
+    color: #082D61;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+
+
+
+.page-heading p {
+    margin: 5px 0 0;
+    color: #6B8AA5;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+/* =========================================================
+   BREADCRUMB
+========================================================= */
+
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    color: #718DA6;
+    font-size: 13px;
+}
+
+
+
+
+
+    .breadcrumb img {
+        width: 17px;
+        height: 17px;
+        margin-right: 8px;
+    }
+
+
+
+
+
+.breadcrumb-slash {
+    margin: 0 9px;
+    color: #A4B7C8;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SCHEDULE MAIN GRID
+========================================================= */
+
+
+.schedule-main-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0,1.7fr) minmax(330px,0.9fr);
+    gap: 18px;
+    align-items: start;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   COMMON CARDS
+========================================================= */
+
+
+.add-schedule-card,
+.schedule-overview-card {
+    background: #FFFFFF;
+    border: 1px solid #E5EDF4;
+    border-radius: 7px;
+    box-shadow: 0 3px 12px rgba(32,83,125,0.04);
+}
+
+
+
+
+
+.add-schedule-card {
+    min-height: 645px;
+    padding: 22px;
+}
+
+/* =========================================================
+   CARD HEADING
+========================================================= */
+
+
+.card-heading,
+.overview-heading {
+    display: flex;
+    align-items: center;
+    padding-bottom: 17px;
+    border-bottom: 1px solid #EEF3F7;
+    margin-bottom: 17px;
+}
+
+
+
+
+
+.card-heading-icon,
+.overview-heading-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0878E8;
+    border-radius: 11px;
+    margin-right: 14px;
+}
+
+
+
+
+
+    .card-heading-icon img,
+    .overview-heading-icon img {
+        width: 27px;
+        height: 27px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+
+
+
+
+
+
+        /* Date / Calendar icon size correction */
+
+        .overview-heading-icon img[src*="calender-icon"] {
+            width: 36px;
+            height: 36px;
+        }
+
+
+
+
+
+
+
+.card-heading h2,
+.overview-heading h2 {
+    margin: 0;
+    color: #082D61;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+
+
+
+/* Smaller Today's Schedule Summary title */
+
+
+.summary-heading h2 {
+    margin: 0;
+    color: #082D61;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+
+
+
+
+.card-heading p {
+    margin: 4px 0 0;
+    color: #7892A9;
+    font-size: 12px;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   FORM ROW
+========================================================= */
+
+
+.form-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 28px;
+    margin-bottom: 23px;
+}
+
+
+
+
+
+
+
+.form-group {
+    width: 100%;
+}
+
+
+
+
+
+    .form-group label {
+        min-height: 25px;
+        display: flex;
+        align-items: center;
+        margin-bottom: 7px;
+        color: #164B79;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+
+
+
+        .form-group label img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            margin-right: 9px;
+        }
+
+
+
+
+
+.required {
+    color: #E53935;
+    margin-left: 3px;
+}
+
+/* =========================================================
+   INPUTS
+========================================================= */
+
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid #D9E4ED;
+    border-radius: 6px;
+    outline: none;
+    background: #FFFFFF;
+    padding: 10px 13px;
+    color: #52728D;
+    font-size: 12px;
+}
+
+
+
+
+
+.form-group input,
+.form-group select {
+    height: 41px;
+}
+
+
+
+
+
+.form-group textarea {
+    height: 80px;
+    resize: none;
+}
+
+
+
+
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #1E73BE;
+        box-shadow: 0 0 0 3px rgba(30,115,190,0.08);
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FORM BUTTONS
+========================================================= */
+
+
+.form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 7px;
+    padding-top: 17px;
+    border-top: 1px solid #EEF3F7;
+}
+
+
+
+
+
+.reset-button,
+.save-schedule-button {
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 19px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
+
+.reset-button {
+    min-width: 108px;
+    color: #456B89;
+    background: #F3F8FC;
+    border: 1px solid #E1EAF1;
+}
+
+
+
+
+
+.save-schedule-button {
+    min-width: 145px;
+    color: #FFFFFF;
+    background: #0878E8;
+    border: 1px solid #0878E8;
+}
+
+
+
+
+
+.reset-icon,
+.save-icon {
+    margin-right: 8px;
+}
+
+
+
+
+
+
+
+/* =========================================================
+   CALENDAR
+========================================================= */
+
+
+.schedule-overview-card {
+    padding: 22px 20px;
+}
+
+
+
+
+
+.schedule-calendar {
+    width: 100%;
+    background: #F8FBFE;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+
+
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+    .calendar-header button {
+        border: none;
+        background: none;
+        color: #0878E8;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+
+
+
+
+    .calendar-header h3 {
+        margin: 0;
+        color: #082D61;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+
+
+
+
+
+
+.calendar-days,
+.calendar-date-grid {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    text-align: center;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+
+
+
+
+    .calendar-days span {
+        color: #7892A8;
+        font-size: 11px;
+    }
+
+
+
+
+
+    .calendar-date-grid span {
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #164B79;
+        font-size: 12px;
+        border-radius: 50%;
+    }
+
+
+
+
+
+.selected-date {
+    background: #0878E8;
+    color: white !important;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+
+.schedule-summary-card {
+    margin-top: 20px;
+}
+
+
+
+
+
+/* Summary title with icon support */
+
+
+.summary-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+
+
+
+
+    .summary-heading::before {
+        content: "";
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        background-image: url('/Images/schedule-summary-icon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+
+
+
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+
+
+
+
+.summary-box {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #F1F8FD;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+
+
+
+    .summary-box img {
+        width: 32px;
+        height: 32px;
+    }
+
+
+
+
+
+    .summary-box h3 {
+        margin: 8px 0 3px;
+        color: #082D61;
+        font-size: 22px;
+    }
+
+
+
+
+
+    .summary-box p {
+        margin: 0;
+        color: #718DA6;
+        font-size: 12px;
+    }
+
+/* =========================================================
+   SCHEDULE NOTIFICATION SYSTEM
+========================================================= */
+
+
+.schedule-notification {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    z-index: 3000;
+    width: 330px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    animation: notificationSlide 0.4s ease forwards;
+}
+
+
+
+
+
+.notification-icon-circle {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+
+
+
+.notification-content {
+    flex: 1;
+}
+
+
+
+
+
+    .notification-content h4 {
+        margin: 0 0 3px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+
+
+
+
+    .notification-content p {
+        margin: 0;
+        font-size: 12px;
+        color: #607D96;
+    }
+
+
+
+
+
+.notification-close {
+    border: none;
+    background: none;
+    font-size: 20px;
+    color: #7B8FA3;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+/* SUCCESS */
+
+
+.schedule-notification.success {
+    border-left: 5px solid #28A745;
+}
+
+
+
+
+
+    .schedule-notification.success .notification-icon-circle {
+        background: #28A745;
+    }
+
+
+
+
+
+
+
+
+/* ERROR */
+
+
+.schedule-notification.error {
+    border-left: 5px solid #DC3545;
+}
+
+
+
+
+
+    .schedule-notification.error .notification-icon-circle {
+        background: #DC3545;
+    }
+
+
+
+
+
+
+
+
+/* WARNING */
+
+
+.schedule-notification.warning {
+    border-left: 5px solid #F39C12;
+}
+
+
+
+
+
+    .schedule-notification.warning .notification-icon-circle {
+        background: #F39C12;
+    }
+
+
+
+
+
+
+
+
+/* INFORMATION */
+
+
+.schedule-notification.information {
+    border-left: 5px solid #0878E8;
+}
+
+
+
+
+
+    .schedule-notification.information .notification-icon-circle {
+        background: #0878E8;
+    }
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+
+@keyframes notificationSlide {
+
+
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+
+.schedule-notification.hide {
+    animation: notificationHide 0.4s ease forwards;
+}
+
+
+
+
+
+@keyframes notificationHide {
+
+
+    from {
+        opacity: 1;
+    }
+
+
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+
+@media(max-width:950px) {
+
+
+    .schedule-main-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:700px) {
+
+
+    .sidebar {
+        width: 220px;
+    }
+
+
+
+
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+
+
+
+
+    .content-area {
+        padding: 20px 15px;
+    }
+
+
+
+
+
+    .page-heading {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+
+
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+
+
+
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+
+
+
+
+    .reset-button,
+    .save-schedule-button {
+        width: 100%;
+    }
+
+
+
+
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+
+
+
+    .schedule-notification {
+        width: calc(100% - 30px);
+        right: 15px;
+        top: 15px;
+    }
+}
+
+
+
+
+
+
+
+
+
+@media(max-width:500px) {
+
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+
+
+
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+
+
+
+
+    .schedule-management-page {
+        display: block;
+    }
+
+
+
+
+
+    .top-header {
+        padding: 0 15px;
+    }
+
+
+
+
+
+    .search-box {
+        width: 220px;
+    }
+}

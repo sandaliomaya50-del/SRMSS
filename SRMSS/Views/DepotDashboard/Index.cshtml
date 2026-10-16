@@ -1,0 +1,3293 @@
+﻿@{
+    ViewData["Title"] = "Depot Dashboard";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+<head>
+
+
+    <meta charset="utf-8" />
+
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+
+
+    <title>
+        @ViewData["Title"]
+    </title>
+
+
+
+
+
+    <link rel="stylesheet"
+          href="~/css/dashboard.css"
+          asp-append-version="true" />
+
+
+
+    <link rel="stylesheet"
+          href="~/css/depot-dashboard.css"
+          asp-append-version="true" />
+
+
+
+</head>
+
+
+
+
+
+<body>
+
+
+
+
+<div class="dashboard-container">
+
+
+
+
+
+
+    <!-- =====================================================
+         LEFT SIDEBAR
+    ====================================================== -->
+
+
+
+    <aside class="sidebar">
+
+
+
+
+
+        <img src="~/Images/dashboard-left-panel.png"
+             class="sidebar-background"
+             alt="SRMSS Dashboard Left Panel" />
+
+
+
+
+
+        <div class="sidebar-content">
+
+
+
+
+
+
+
+            <!-- LOGO -->
+
+
+
+            <div class="sidebar-logo">
+
+
+
+
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+
+
+
+
+
+
+                <div class="sidebar-brand-text">
+
+
+
+
+
+                    <h2>
+                        SRMSS
+                    </h2>
+
+
+
+
+
+                    <span>
+                        Smart Route Management<br />
+                        and Scheduling System
+                    </span>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+            </div>
+
+            
+
+
+
+                <!-- MENU -->
+
+
+
+                <nav class="sidebar-menu">
+
+
+
+
+
+
+
+                    <!-- DASHBOARD -->
+
+
+
+                    <a href="/Dashboard"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Dashboard" />
+
+
+
+                        <span>
+                            Dashboard
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- ROUTE MANAGEMENT -->
+
+
+
+                    <a href="/RouteManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/location-icon.png"
+                             alt="Route Management" />
+
+
+
+                        <span>
+                            Route Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- ROUTE LIST -->
+
+
+
+                    <a href="/RouteList"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Route List" />
+
+
+
+                        <span>
+                            Route List
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- SCHEDULE MANAGEMENT -->
+
+
+
+                    <a href="/ScheduleManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/schedule-management-icon.png"
+                             alt="Schedule Management" />
+
+
+
+                        <span>
+                            Schedule Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- SCHEDULE LIST -->
+
+
+
+                    <a href="/ScheduleList"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/route-list-icon.png"
+                             alt="Schedule List" />
+
+
+
+                        <span>
+                            Schedule List
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- VEHICLE MANAGEMENT -->
+
+
+
+                    <a href="/VehicleManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/bus-icon.png"
+                             alt="Bus Vehicle Management" />
+
+
+
+                        <span>
+                            Bus/Vehicle Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- DRIVER MANAGEMENT -->
+
+
+
+                    <a href="/DriverManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/driver-management-icon.png"
+                             alt="Driver Management" />
+
+
+
+                        <span>
+                            Driver Management
+                        </span>
+
+
+
+                    </a>
+
+                    
+
+
+
+
+
+
+
+                    <!-- FUEL MANAGEMENT -->
+
+
+
+                    <a href="/FuelManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/fuel-management-icon.png"
+                             alt="Fuel Management" />
+
+
+
+                        <span>
+                            Fuel Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- MAINTENANCE MANAGEMENT -->
+
+
+
+                    <a href="/MaintenanceManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/maintenance-management-icon.png"
+                             alt="Maintenance Management" />
+
+
+
+                        <span>
+                            Maintenance Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- DEPOT DASHBOARD ACTIVE -->
+
+
+
+                    <a href="/DepotDashboard"
+                       class="menu-item active">
+
+
+
+                        <img src="~/Images/home-icon.png"
+                             alt="Depot Dashboard" />
+
+
+
+                        <span>
+                            Depot Dashboard
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- REPORTS & ANALYTICS -->
+
+
+
+                    <a href="/Reports"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/reports-analytics-icon.png"
+                             alt="Reports and Analytics" />
+
+
+
+                        <span>
+                            Reports &amp; Analytics
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- USER MANAGEMENT -->
+
+
+
+                    <a href="/UserManagement"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/user-icon.png"
+                             alt="User Management" />
+
+
+
+                        <span>
+                            User Management
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <!-- PROFILE SETTINGS -->
+
+
+
+                    <a href="/Profile"
+                       class="menu-item">
+
+
+
+                        <img src="~/Images/profile-settings-icon.png"
+                             alt="Profile and Settings" />
+
+
+
+                        <span>
+                            Profile / Settings
+                        </span>
+
+
+
+                    </a>
+
+
+
+
+
+
+
+
+
+                </nav>
+
+
+
+
+
+
+
+
+
+                <!-- SIDEBAR BOTTOM -->
+
+
+
+                <div class="sidebar-bottom">
+
+
+
+
+
+                    <div class="sidebar-slogan">
+
+
+
+
+
+                        <strong>
+                            Smart Transport.
+                        </strong>
+
+
+
+
+
+                        <span>
+                            Better Routes.
+                        </span>
+
+
+
+
+
+                        <span>
+                            Efficient Operations.
+                        </span>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+        </aside>
+
+        
+
+
+
+        @*
+        =====================================================
+        MAIN CONTENT START
+        =====================================================
+    *@
+
+
+
+
+
+        <main class="main-content">
+
+
+
+
+
+
+
+            <!-- TOP HEADER -->
+
+
+
+            <header class="top-header">
+
+
+
+
+
+
+
+                <div class="search-box">
+
+
+
+                    <span class="search-icon">
+
+                        🔍
+
+                    </span>
+
+
+
+
+
+                    <input type="text"
+                           placeholder="Search here..." />
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="header-right">
+
+
+
+
+
+
+
+                    <!-- NOTIFICATION -->
+
+
+
+                    <div class="notification-area">
+
+
+
+
+
+                        <img src="~/Images/alert-bell-blue.png"
+                             alt="Notification" />
+
+
+
+
+
+                        <span class="notification-count">
+
+                            3
+
+                        </span>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!-- ADMIN PROFILE -->
+
+
+
+                    <div class="admin-profile">
+
+
+
+
+
+
+
+                        <div class="admin-avatar">
+
+                            A
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="admin-information">
+
+
+
+
+
+                            <strong>
+
+                                Admin
+
+                            </strong>
+
+
+
+
+
+
+
+
+
+                            <span>
+
+                                System Administrator
+
+                            </span>
+
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <span class="profile-arrow">
+
+                            ▾
+
+                        </span>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </header>
+
+            
+
+
+
+            @*
+            =====================================================
+            DEPOT WELCOME SECTION
+            =====================================================
+        *@
+
+
+
+
+
+            <section class="welcome-section">
+
+
+
+
+
+
+
+                <div class="welcome-text">
+
+
+
+
+
+                    <h1>
+
+                        Depot Dashboard
+
+                    </h1>
+
+
+
+
+
+                    <p>
+
+                        Monitor depot activity, vehicle readiness,
+                        and daily operations.
+
+                    </p>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="welcome-right">
+
+
+
+
+
+
+
+                    <div class="date-banner">
+
+
+
+
+
+
+
+                        <div class="date-icon">
+
+
+
+
+
+                            <img src="~/Images/calender-icon.png"
+                                 alt="Calendar" />
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div>
+
+
+
+
+
+                            <strong>
+
+                                @DateTime.Now.ToString(
+                                "dddd, dd MMMM yyyy")
+
+                            </strong>
+
+
+
+
+
+
+
+
+
+                            <span>
+
+                                @DateTime.Now.ToString(
+                                "hh:mm tt")
+
+                            </span>
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <!-- DASHBOARD BOTTOM IMAGE -->
+
+
+
+                    <div class="dashboard-bottom-image">
+
+
+
+
+
+                        <img src="~/Images/dashboard-bottom.png"
+                             class="dashboard-bottom-img"
+                             alt="Dashboard Bottom" />
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+
+            
+
+
+
+            @*
+            =====================================================
+            DEPOT STATISTICS CARDS
+            =====================================================
+        *@
+
+
+
+
+
+
+            <section class="stats-section">
+
+
+
+
+
+
+
+                <!-- ACTIVE ROUTES -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon blue-icon">
+
+
+
+                        <img src="~/Images/Green_Route.png"
+                             alt="Active Routes" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Active Routes
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.ActiveRoutes
+                        </strong>
+
+
+
+
+
+                        <small class="green-text">
+                            Active depot routes
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- AVAILABLE BUSES -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon green-icon">
+
+
+
+                        <img src="~/Images/bus-depot-blue-icon.png"
+                             alt="Available Buses" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Available Buses
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.AvailableBuses
+                        </strong>
+
+
+
+
+
+                        <small class="green-text">
+                            Ready for operation
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- ASSIGNED DRIVERS -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon purple-icon">
+
+
+
+                        <img src="~/Images/profile-icon.png"
+                             alt="Assigned Drivers" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Assigned Drivers
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.AssignedDrivers
+                        </strong>
+
+
+
+
+
+                        <small class="green-text">
+                            Drivers available
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- CURRENT TRIPS -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon orange-icon">
+
+
+
+                        <img src="~/Images/vehicle-management-icon.png"
+                             alt="Current Trips" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Current Trips
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.CurrentTrips
+                        </strong>
+
+
+
+
+
+                        <small class="green-text">
+                            Trips running now
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- DELAYED TRIPS -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon red-icon">
+
+
+
+                        <img src="~/Images/Red_A_Logo.png"
+                             alt="Delayed Trips" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Delayed Trips
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.DelayedTrips
+                        </strong>
+
+
+
+
+
+                        <small class="red-text">
+                            Requires attention
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- COMPLETED TRIPS -->
+
+
+
+                <div class="stat-card">
+
+
+
+
+
+                    <div class="stat-icon completed-icon">
+
+
+
+                        <img src="~/Images/Green_Tick.png"
+                             alt="Completed Trips" />
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="stat-content">
+
+
+
+                        <span>
+                            Completed Trips
+                        </span>
+
+
+
+
+
+                        <strong>
+                            @ViewBag.CompletedTrips
+                        </strong>
+
+
+
+
+
+                        <small class="green-text">
+                            Successfully completed
+                        </small>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+            
+
+
+
+            @*
+            =====================================================
+            DEPOT CAPACITY OVERVIEW
+            =====================================================
+        *@
+
+
+
+
+
+            <section class="middle-section">
+
+
+
+
+
+
+
+                <!-- DEPOT CAPACITY OVERVIEW -->
+
+
+
+                <div class="dashboard-card utilization-card">
+
+
+
+
+
+
+
+                    <div class="card-title-row">
+
+
+
+                        <h3>
+                            🚌 Depot Capacity Overview
+                        </h3>
+
+
+
+
+
+                        <select>
+
+
+
+                            <option>
+                                Today
+                            </option>
+
+
+
+                            <option>
+                                This Week
+                            </option>
+
+
+
+                            <option>
+                                This Month
+                            </option>
+
+
+
+                        </select>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="utilization-content">
+
+
+
+
+
+
+
+                        <div class="donut-chart">
+
+
+
+
+
+                            <div class="donut-center">
+
+
+
+
+
+                                <strong>
+                                    78%
+                                </strong>
+
+
+
+
+
+                                <span>
+                                    Overall Capacity
+                                </span>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="utilization-list">
+
+
+
+
+
+
+
+                            <div class="utilization-row">
+
+
+
+                                <span class="legend-dot service-dot"></span>
+
+
+
+
+
+                                <span>
+                                    Buses in Service
+                                </span>
+
+
+
+
+
+                                <strong>
+                                    @ViewBag.AvailableBuses
+                                </strong>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="utilization-row">
+
+
+
+                                <span class="legend-dot maintenance-dot"></span>
+
+
+
+
+
+                                <span>
+                                    Under Maintenance
+                                </span>
+
+
+
+
+
+                                <strong>
+                                    @ViewBag.UnderMaintenance
+                                </strong>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="utilization-row">
+
+
+
+                                <span class="legend-dot idle-dot"></span>
+
+
+
+
+
+                                <span>
+                                    Idle Buses
+                                </span>
+
+
+
+
+
+                                <strong>
+                                    4
+                                </strong>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="utilization-row">
+
+
+
+                                <span class="legend-dot out-service-dot"></span>
+
+
+
+
+
+                                <span>
+                                    Out of Service
+                                </span>
+
+
+
+
+
+                                <strong>
+                                    3
+                                </strong>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- CURRENT TRIP STATUS -->
+
+
+
+                <div class="dashboard-card trips-overview-card">
+
+
+
+
+
+
+
+                    <div class="card-title-row">
+
+
+
+                        <h3>
+                            📈 Current Trip Status
+                        </h3>
+
+
+
+
+
+                        <div class="chart-legend">
+
+
+
+
+
+                            <span>
+
+                                <i class="blue-dot"></i>
+
+                                On-Time
+
+                            </span>
+
+
+
+
+
+                            <span>
+
+                                <i class="orange-dot"></i>
+
+                                Delayed
+
+                            </span>
+
+
+
+
+
+                            <span>
+
+                                <i class="green-dot"></i>
+
+                                Completed
+
+                            </span>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+                    
+
+
+
+                    <!-- BAR CHART -->
+
+
+
+                    <div class="bar-chart">
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:75%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:35%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:55%;">
+                            </div>
+
+
+
+                            <span>
+                                6 AM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:82%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:25%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:65%;">
+                            </div>
+
+
+
+                            <span>
+                                8 AM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:70%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:40%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:75%;">
+                            </div>
+
+
+
+                            <span>
+                                10 AM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:60%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:30%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:80%;">
+                            </div>
+
+
+
+                            <span>
+                                12 PM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:85%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:20%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:70%;">
+                            </div>
+
+
+
+                            <span>
+                                2 PM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="bar-group">
+
+
+
+                            <div class="bar blue-bar"
+                                 style="height:65%;">
+                            </div>
+
+
+
+                            <div class="bar orange-bar"
+                                 style="height:35%;">
+                            </div>
+
+
+
+                            <div class="bar green-bar"
+                                 style="height:90%;">
+                            </div>
+
+
+
+                            <span>
+                                4 PM
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            @*
+            =====================================================
+            RECENT DEPOT ACTIVITIES
+            =====================================================
+        *@
+
+
+
+
+
+
+            <section class="bottom-section">
+
+
+
+
+
+
+
+                <div class="dashboard-card activities-card">
+
+
+
+
+
+
+
+                    <div class="card-title-row">
+
+
+
+                        <h3 class="title-with-icon">
+
+
+
+                            <img src="~/Images/Blue_Clock.png"
+                                 alt="Recent Depot Activities" />
+
+
+
+                            Recent Depot Activities
+
+
+
+                        </h3>
+
+
+
+
+
+
+
+                        <a href="#"
+                           class="view-all-link">
+
+
+                            View All
+
+
+                        </a>
+
+
+
+
+
+
+
+                    </div>
+
+                    
+
+
+
+                    <div class="activity-list">
+
+
+
+
+
+
+
+                        <div class="activity-item">
+
+
+
+                            <div class="activity-icon">
+
+
+
+                                <img src="~/Images/Blue_Clock.png"
+                                     alt="Activity" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="activity-details">
+
+
+
+                                <strong>
+                                    Bus B-102 departed from depot
+                                </strong>
+
+
+
+                                <span>
+                                    Route A12 • 10 minutes ago
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <span class="activity-status completed">
+
+                                Completed
+
+                            </span>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="activity-item">
+
+
+
+                            <div class="activity-icon">
+
+
+
+                                <img src="~/Images/Blue_Clock.png"
+                                     alt="Activity" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="activity-details">
+
+
+
+                                <strong>
+                                    Vehicle maintenance completed
+                                </strong>
+
+
+
+                                <span>
+                                    Bus B-205 • 30 minutes ago
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <span class="activity-status service">
+
+                                Service
+
+                            </span>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="activity-item">
+
+
+
+                            <div class="activity-icon">
+
+
+
+                                <img src="~/Images/Blue_Clock.png"
+                                     alt="Activity" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="activity-details">
+
+
+
+                                <strong>
+                                    Driver assigned to new route
+                                </strong>
+
+
+
+                                <span>
+                                    Route 15 • 1 hour ago
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <span class="activity-status assigned">
+
+                                Assigned
+
+                            </span>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="activity-item">
+
+
+
+                            <div class="activity-icon">
+
+
+
+                                <img src="~/Images/Blue_Clock.png"
+                                     alt="Activity" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="activity-details">
+
+
+
+                                <strong>
+                                    Bus inspection completed
+                                </strong>
+
+
+
+                                <span>
+                                    Vehicle B-320 • 2 hours ago
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <span class="activity-status completed">
+
+                                Completed
+
+                            </span>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <!-- DEPOT STATUS -->
+
+
+
+                <div class="dashboard-card depot-status-card">
+
+
+
+
+
+
+
+                    <div class="card-title-row">
+
+
+
+                        <h3>
+                            Depot Status
+                        </h3>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="status-list">
+
+
+
+
+
+
+
+                        <div class="status-item">
+
+
+
+                            <div class="status-icon">
+
+
+
+                                <img src="~/Images/bus-depot-blue-icon.png"
+                                     alt="Bus Status" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-details">
+
+
+
+                                <strong>
+                                    Fleet Availability
+                                </strong>
+
+
+
+                                <span>
+                                    All operational buses are monitored
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-value green">
+
+                                Normal
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="status-item">
+
+
+
+                            <div class="status-icon">
+
+
+
+                                <img src="~/Images/maintenance-management-icon.png"
+                                     alt="Maintenance Status" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-details">
+
+
+
+                                <strong>
+                                    Maintenance Status
+                                </strong>
+
+
+
+                                <span>
+                                    Vehicles requiring attention
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-value orange">
+
+                                Active
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+
+                        <div class="status-item">
+
+
+
+                            <div class="status-icon">
+
+
+
+                                <img src="~/Images/profile-icon.png"
+                                     alt="Driver Status" />
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-details">
+
+
+
+                                <strong>
+                                    Driver Availability
+                                </strong>
+
+
+
+                                <span>
+                                    Assigned drivers ready
+                                </span>
+
+
+
+                            </div>
+
+
+
+
+
+                            <div class="status-value green">
+
+                                Ready
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+                
+
+
+
+
+
+
+
+                <!-- QUICK ACTIONS -->
+
+
+
+                <div class="dashboard-card quick-actions-card">
+
+
+
+
+
+
+
+                    <div class="card-title-row">
+
+
+
+                        <h3>
+                            Quick Actions
+                        </h3>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="quick-actions-grid">
+
+
+
+
+
+
+
+                        <a href="/VehicleManagement"
+                           class="quick-action">
+
+
+
+                            <img src="~/Images/bus-depot-blue-icon.png"
+                                 alt="Vehicles" />
+
+
+
+                            <span>
+                                Manage Vehicles
+                            </span>
+
+
+
+                        </a>
+
+
+
+
+
+
+
+
+
+                        <a href="/DriverManagement"
+                           class="quick-action">
+
+
+
+                            <img src="~/Images/profile-icon.png"
+                                 alt="Drivers" />
+
+
+
+                            <span>
+                                Manage Drivers
+                            </span>
+
+
+
+                        </a>
+
+
+
+
+
+
+
+
+
+                        <a href="/RouteManagement"
+                           class="quick-action">
+
+
+
+                            <img src="~/Images/Green_Route.png"
+                                 alt="Routes" />
+
+
+
+                            <span>
+                                Manage Routes
+                            </span>
+
+
+
+                        </a>
+
+
+
+
+
+
+
+
+
+                        <a href="/MaintenanceManagement"
+                           class="quick-action">
+
+
+
+                            <img src="~/Images/maintenance-management-icon.png"
+                                 alt="Maintenance" />
+
+
+
+                            <span>
+                                Maintenance
+                            </span>
+
+
+
+                        </a>
+
+
+
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+            <!-- PERFORMANCE SUMMARY -->
+
+
+
+            <section class="dashboard-card performance-summary-card">
+
+
+
+
+
+
+
+                <div class="card-title-row">
+
+
+
+                    <h3>
+                        Depot Performance Summary
+                    </h3>
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="performance-grid">
+
+
+
+
+
+
+
+                    <div class="performance-item">
+
+
+
+                        <div class="performance-icon">
+
+
+
+                            <img src="~/Images/Green_Tick.png"
+                                 alt="On Time Trips" />
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="performance-content">
+
+
+
+                            <strong>
+                                @ViewBag.OnTimeTrips
+                            </strong>
+
+
+
+                            <span>
+                                On-Time Trips
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="performance-item">
+
+
+
+                        <div class="performance-icon">
+
+
+
+                            <img src="~/Images/Red_A_Logo.png"
+                                 alt="Delayed Trips" />
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="performance-content">
+
+
+
+                            <strong>
+                                @ViewBag.DelayedTrips
+                            </strong>
+
+
+
+                            <span>
+                                Delayed Trips
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="performance-item">
+
+
+
+                        <div class="performance-icon">
+
+
+
+                            <img src="~/Images/Green_Tick.png"
+                                 alt="Completed Trips" />
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="performance-content">
+
+
+
+                            <strong>
+                                @ViewBag.CompletedTrips
+                            </strong>
+
+
+
+                            <span>
+                                Completed Trips
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="performance-item">
+
+
+
+                        <div class="performance-icon">
+
+
+
+                            <img src="~/Images/fuel-management-icon.png"
+                                 alt="Fuel Cost" />
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="performance-content">
+
+
+
+                            <strong>
+                                Rs @ViewBag.TotalFuelCost
+                            </strong>
+
+
+
+                            <span>
+                                Total Fuel Cost
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                    <div class="performance-item">
+
+
+
+                        <div class="performance-icon">
+
+
+
+                            <img src="~/Images/maintenance-management-icon.png"
+                                 alt="Maintenance" />
+
+
+
+                        </div>
+
+
+
+
+
+                        <div class="performance-content">
+
+
+
+                            <strong>
+                                @ViewBag.MaintenanceCount
+                            </strong>
+
+
+
+                            <span>
+                                Maintenance Records
+                            </span>
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+
+            </section>
+
+
+
+
+
+
+
+
+
+        </main>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function ()
+                {
+
+
+                    const activeMenu =
+                        document.querySelector(
+                            ".menu-item.active"
+                        );
+
+
+
+                    if(activeMenu)
+                    {
+
+                        activeMenu.classList.add(
+                            "selected"
+                        );
+
+                    }
+
+
+                }
+            );
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+
+
+</html>

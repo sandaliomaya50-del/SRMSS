@@ -1,0 +1,603 @@
+﻿@{
+    ViewData["Title"] = "SRMSS Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"]</title>
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <style>
+
+        /* =========================================
+           ERROR INPUT
+           ========================================= */
+
+        .input-error {
+            border: 2px solid #e53935 !important;
+            outline: none !important;
+        }
+
+
+        /* =========================================
+           NOTIFICATION OVERLAY
+           ========================================= */
+
+        .notification-overlay {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            z-index: 99999;
+
+            backdrop-filter: blur(3px);
+
+        }
+
+
+        /* =========================================
+           NOTIFICATION BOX
+           ========================================= */
+
+        .notification-box {
+
+            width: 420px;
+
+            max-width: 90%;
+
+            background: #ffffff;
+
+            border-radius: 16px;
+
+            padding: 35px 30px 30px;
+
+            text-align: center;
+
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+
+            animation: popupShow 0.3s ease;
+
+        }
+
+
+        /* =========================================
+           POPUP ANIMATION
+           ========================================= */
+
+        @@keyframes popupShow {
+
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        /* =========================================
+           SUCCESS ICON
+           ========================================= */
+
+        .success-icon {
+
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #e8f7ee;
+
+            color: #20a05a;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 35px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           ERROR ICON
+           ========================================= */
+
+        .error-icon {
+
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 50%;
+
+            background: #fdecec;
+
+            color: #e53935;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-size: 35px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================================
+           NOTIFICATION TITLE
+           ========================================= */
+
+        .notification-title {
+
+            margin: 0 0 10px;
+
+            color: #173b57;
+
+            font-size: 24px;
+
+            font-weight: 700;
+
+        }
+
+
+        /* =========================================
+           NOTIFICATION MESSAGE
+           ========================================= */
+
+        .notification-message {
+
+            margin: 0 auto 25px;
+
+            max-width: 340px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================================
+           OK BUTTON
+           ========================================= */
+
+        .notification-ok {
+
+            width: 120px;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #173b57;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .notification-ok:hover {
+
+            background: #247ba0;
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         LOGIN PAGE
+         ========================================= -->
+
+    <div class="login-page">
+
+        <div class="login-panel">
+
+
+            <!-- LOGO + SRMSS -->
+
+            <div class="brand-header">
+
+                <img src="~/Images/srms-logo.png"
+                     alt="SRMSS Logo" />
+
+                <h1>
+
+                    <span class="navy-text">SRM</span><span class="blue-text">SS</span>
+
+                </h1>
+
+            </div>
+
+
+            <!-- LOGIN SUBTITLE -->
+
+            <p class="login-subtitle">
+
+                <span class="navy-text">Login to</span>
+                <span class="blue-text"> SRMSS</span>
+
+            </p>
+
+
+            <!-- SYSTEM DESCRIPTION -->
+
+            <p class="system-description">
+
+                Smart Route Management and Scheduling System
+
+            </p>
+
+
+            <!-- =========================================
+                 LOGIN FORM
+                 ========================================= -->
+
+            <form method="post"
+                  action="/Login/Login">
+
+
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label for="username">
+
+                        <img src="~/Images/user-icon.png"
+                             alt="User Icon"
+                             class="label-icon" />
+
+                        <span>Username/Email</span>
+
+                    </label>
+
+
+                    <div class="icon-input">
+
+                        <img src="~/Images/username-input-icon.png"
+                             alt="Username Icon"
+                             class="input-icon" />
+
+
+                        <input type="text"
+                               id="username"
+                               name="username"
+                               placeholder="Enter your username or email"
+                               autocomplete="username"
+                               class="@(ViewBag.UsernameError == true ? "input-error" : "")"
+                               required />
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+
+                        <img src="~/Images/lock-icon.png"
+                             alt="Lock Icon"
+                             class="label-icon" />
+
+                        <span>Password</span>
+
+                    </label>
+
+
+                    <div class="icon-input password-box">
+
+                        <img src="~/Images/password-input-icon.png"
+                             alt="Password Icon"
+                             class="input-icon" />
+
+
+                        <input type="password"
+                               id="password"
+                               name="password"
+                               placeholder="Enter your password"
+                               autocomplete="current-password"
+                               class="@(ViewBag.PasswordError == true ? "input-error" : "")"
+                               required />
+
+
+                        <!-- EYE BUTTON -->
+
+                        <button type="button"
+                                class="show-password"
+                                onclick="togglePassword()"
+                                aria-label="Show or hide password">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHOW PASSWORD + FORGOT PASSWORD -->
+
+                <div class="login-options">
+
+                    <label class="show-password-label">
+
+                        <input type="checkbox"
+                               id="showPasswordCheckbox"
+                               onclick="togglePassword()" />
+
+                        <span>Show Password</span>
+
+                    </label>
+
+
+                    <a href="#"
+                       class="forgot-password">
+
+                        Forgot Password?
+
+                    </a>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button type="submit"
+                        class="login-button">
+
+                    <span>Login</span>
+
+                    <img src="~/Images/arrow-icon.png"
+                         alt="Arrow"
+                         class="login-arrow" />
+
+                </button>
+
+            </form>
+
+
+            <!-- AUTHORIZED PERSONNEL -->
+
+            <p class="authorized">
+
+                Authorized Personnel Only
+
+            </p>
+
+
+            <!-- COPYRIGHT -->
+
+            <p class="copyright">
+
+                © 2026 SRMSS. All Rights Reserved.
+
+            </p>
+
+
+            <!-- DECORATIVE LINES -->
+
+            <div class="panel-decoration">
+
+                <span class="curve curve-one"></span>
+
+                <span class="curve curve-two"></span>
+
+                <span class="curve curve-three"></span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         SUCCESS POPUP
+         ========================================= -->
+
+    @if (ViewBag.LoginSuccess == true)
+    {
+
+        <div class="notification-overlay">
+
+            <div class="notification-box">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2 class="notification-title">
+                    Login Successful
+                </h2>
+
+                <p class="notification-message">
+
+                    @ViewBag.SuccessMessage
+
+                    <br />
+
+                    You can now access the SRMSS Dashboard.
+
+                </p>
+
+                <button type="button"
+                        class="notification-ok"
+                        onclick="goToDashboard()">
+
+                    OK
+
+                </button>
+
+            </div>
+
+        </div>
+
+    }
+
+
+    <!-- =========================================
+         ERROR POPUP
+         ========================================= -->
+
+    @if (ViewBag.LoginError == true)
+    {
+
+        <div class="notification-overlay">
+
+            <div class="notification-box">
+
+                <div class="error-icon">
+                    ✕
+                </div>
+
+                <h2 class="notification-title">
+                    Login Failed
+                </h2>
+
+                <p class="notification-message">
+
+                    @ViewBag.ErrorMessage
+
+                </p>
+
+                <button type="button"
+                        class="notification-ok"
+                        onclick="closeError()">
+
+                    OK
+
+                </button>
+
+            </div>
+
+        </div>
+
+    }
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+
+    <script>
+
+        // Show / Hide Password
+
+        function togglePassword() {
+
+            var password =
+                document.getElementById("password");
+
+            var checkbox =
+                document.getElementById("showPasswordCheckbox");
+
+
+            if (password.type === "password") {
+
+                password.type = "text";
+
+                checkbox.checked = true;
+
+            }
+            else {
+
+                password.type = "password";
+
+                checkbox.checked = false;
+
+            }
+
+        }
+
+
+        // Close Error Popup
+
+        function closeError() {
+
+            window.location.href = "/Login";
+
+        }
+
+
+        // Continue to Dashboard
+
+        function goToDashboard() {
+
+            window.location.href =
+                "/Login/ContinueToDashboard";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+

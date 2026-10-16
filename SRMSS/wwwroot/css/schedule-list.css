@@ -1,0 +1,1248 @@
+﻿/* =========================================================
+   SRMSS - SCHEDULE LIST PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   BASIC PAGE SETTINGS
+   ========================================================= */
+
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+}
+
+
+
+/* =========================================================
+   MASTER SRMSS SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 276px;
+    height: 100vh;
+    background: #062e52;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.sidebar-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.sidebar-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 15px;
+}
+
+
+
+/* =========================================================
+   SIDEBAR LOGO / BRAND
+   ========================================================= */
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    margin-bottom: 22px;
+    flex-shrink: 0;
+}
+
+    .sidebar-logo img {
+        width: 57px;
+        height: 57px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+
+.sidebar-brand-text {
+    margin-left: 9px;
+}
+
+    .sidebar-brand-text h2 {
+        margin: 0;
+        padding: 0;
+        color: #ffffff;
+        font-size: 27px;
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    .sidebar-brand-text span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.92);
+        font-size: 8.5px;
+        line-height: 1.35;
+        font-weight: 400;
+    }
+
+
+
+/* =========================================================
+   SIDEBAR MENU
+   ========================================================= */
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2px;
+    box-sizing: border-box;
+}
+
+    .sidebar-menu::-webkit-scrollbar {
+        width: 3px;
+    }
+
+    .sidebar-menu::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidebar-menu::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 10px;
+    }
+
+
+
+/* =========================================================
+   SIDEBAR MENU ITEMS
+   ========================================================= */
+
+.menu-item {
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 7px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    flex-shrink: 0;
+}
+
+    .menu-item img {
+        width: 21px;
+        height: 21px;
+        object-fit: contain;
+        flex-shrink: 0;
+        margin-right: 13px;
+    }
+
+    .menu-item span {
+        display: block;
+        white-space: nowrap;
+    }
+
+    .menu-item:hover {
+        background: rgba(22, 116, 188, 0.35);
+        color: #ffffff;
+        transform: translateX(2px);
+    }
+
+    .menu-item.active {
+        background: linear-gradient( 90deg, #0c66aa 0%, #1674bc 100% );
+        color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+        .menu-item.active:hover {
+            transform: translateX(2px);
+        }
+
+/* =========================================================
+   SIDEBAR BOTTOM SLOGAN
+   ========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 12px;
+    flex-shrink: 0;
+}
+
+.sidebar-slogan {
+    padding: 8px 12px 0;
+}
+
+    .sidebar-slogan strong {
+        display: block;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    .sidebar-slogan span {
+        display: block;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 10px;
+        font-weight: 400;
+        line-height: 1.45;
+    }
+
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    margin-left: 276px;
+    min-height: 100vh;
+    width: calc(100% - 276px);
+    box-sizing: border-box;
+    padding: 0;
+}
+
+
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.top-header {
+    width: 100%;
+    height: 78px;
+    background: #ffffff;
+    border-bottom: 1px solid #e4e9ef;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 35px;
+    box-sizing: border-box;
+}
+
+
+
+/* =========================================================
+   SEARCH AREA
+   ========================================================= */
+
+.header-search {
+    position: relative;
+    width: 340px;
+}
+
+    .header-search input {
+        width: 100%;
+        height: 40px;
+        padding: 0 15px 0 42px;
+        border: 1px solid #dce2e8;
+        border-radius: 9px;
+        background: #f8fafc;
+        color: #333333;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 13px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+        .header-search input:focus {
+            border-color: #1e73be;
+            background: #ffffff;
+        }
+
+    .header-search::before {
+        content: "⌕";
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-52%);
+        color: #7a8794;
+        font-size: 21px;
+        z-index: 2;
+    }
+
+
+
+/* =========================================================
+   HEADER RIGHT SIDE
+   ========================================================= */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.notification-button {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .notification-button:hover {
+        background: #f2f5f8;
+    }
+
+.notification-icon {
+    font-size: 19px;
+    color: #526170;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #e53935;
+    border: 2px solid #ffffff;
+}
+
+
+
+/* =========================================================
+   ADMIN PROFILE
+   ========================================================= */
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-avatar {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .admin-avatar img {
+        width: 42px;
+        height: 42px;
+        object-fit: contain;
+        display: block;
+    }
+
+.admin-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.admin-name {
+    color: #243447;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.admin-role {
+    margin-top: 3px;
+    color: #8a96a3;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+.admin-arrow {
+    margin-left: 8px;
+    color: #526170;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-container {
+    padding: 30px 35px 35px;
+    box-sizing: border-box;
+}
+
+.page-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.page-heading-left h1 {
+    margin: 0;
+    color: #123b5d;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.page-heading-left p {
+    margin: 7px 0 0;
+    color: #7b8794;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+
+
+/* =========================================================
+   ADD SCHEDULE BUTTON
+   ========================================================= */
+
+.add-schedule-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 145px;
+    height: 42px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 8px;
+    background: #1e73be;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(30, 115, 190, 0.18);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .add-schedule-button:hover {
+        background: #155a96;
+        color: #ffffff;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 14px rgba(30, 115, 190, 0.24);
+    }
+
+    .add-schedule-button .plus {
+        font-size: 18px;
+        line-height: 1;
+    }
+
+
+
+/* =========================================================
+   SCHEDULE LIST CARD
+   ========================================================= */
+
+.schedule-list-card {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5eaf0;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(20, 40, 60, 0.05);
+    overflow: hidden;
+}
+
+
+
+/* =========================================================
+   FILTER BAR
+   ========================================================= */
+
+.filter-bar {
+    width: 100%;
+    padding: 18px 20px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border-bottom: 1px solid #e9edf2;
+}
+
+.filter-search {
+    position: relative;
+    flex: 1;
+    max-width: 390px;
+}
+
+    .filter-search input {
+        width: 100%;
+        height: 39px;
+        padding: 0 13px 0 38px;
+        border: 1px solid #d9e0e7;
+        border-radius: 8px;
+        background: #f9fbfd;
+        color: #263544;
+        font-family: "Segoe UI", Arial, sans-serif;
+        font-size: 12.5px;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+        .filter-search input:focus {
+            border-color: #1e73be;
+            background: #ffffff;
+        }
+
+    .filter-search::before {
+        content: "⌕";
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-52%);
+        color: #7e8b98;
+        font-size: 19px;
+        z-index: 2;
+    }
+
+
+
+/* =========================================================
+   DATE FILTER
+   ========================================================= */
+
+.filter-date {
+    width: 165px;
+    height: 39px;
+    padding: 0 12px;
+    border: 1px solid #d9e0e7;
+    border-radius: 8px;
+    background: #f9fbfd;
+    color: #465463;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12.5px;
+    outline: none;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+    .filter-date:focus {
+        border-color: #1e73be;
+        background: #ffffff;
+    }
+
+
+
+/* =========================================================
+   ROUTE FILTER
+   ========================================================= */
+
+.filter-select {
+    width: 175px;
+    height: 39px;
+    padding: 0 12px;
+    border: 1px solid #d9e0e7;
+    border-radius: 8px;
+    background: #f9fbfd;
+    color: #465463;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12.5px;
+    outline: none;
+    cursor: pointer;
+}
+
+    .filter-select:focus {
+        border-color: #1e73be;
+        background: #ffffff;
+    }
+
+
+
+/* =========================================================
+   CLEAR FILTER BUTTON
+   ========================================================= */
+
+.clear-filter-button {
+    height: 39px;
+    padding: 0 16px;
+    border: 1px solid #d9e0e7;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #596775;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+    .clear-filter-button:hover {
+        background: #f4f7fa;
+        border-color: #c8d1da;
+        color: #1e73be;
+    }
+
+/* =========================================================
+   TABLE WRAPPER
+   ========================================================= */
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+
+/* =========================================================
+   SCHEDULE TABLE
+   ========================================================= */
+
+.schedule-table {
+    width: 100%;
+    min-width: 1180px;
+    border-collapse: collapse;
+    table-layout: auto;
+}
+
+    .schedule-table thead {
+        background: #f7f9fb;
+    }
+
+    .schedule-table th {
+        padding: 14px 12px;
+        border-bottom: 1px solid #e4e9ef;
+        color: #637180;
+        font-size: 10.5px;
+        font-weight: 700;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    .schedule-table td {
+        padding: 14px 12px;
+        border-bottom: 1px solid #edf0f3;
+        color: #3c4855;
+        font-size: 11.5px;
+        font-weight: 400;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+
+    .schedule-table tbody tr {
+        transition: background 0.15s ease;
+    }
+
+        .schedule-table tbody tr:hover {
+            background: #f9fbfd;
+        }
+
+        .schedule-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+
+
+/* =========================================================
+   ROW NUMBER
+   ========================================================= */
+
+.row-number {
+    color: #7d8995;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+
+
+/* =========================================================
+   SCHEDULE ID
+   ========================================================= */
+
+.schedule-code {
+    color: #123b5d;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+
+
+/* =========================================================
+   SCHEDULE TEXT
+   ========================================================= */
+
+.schedule-text {
+    color: #3f4d5a;
+    font-size: 11.5px;
+}
+
+
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+.schedule-time {
+    color: #475564;
+    font-size: 11.5px;
+    font-weight: 500;
+}
+
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.schedule-date {
+    color: #4d5a67;
+    font-size: 11.5px;
+}
+
+
+
+/* =========================================================
+   SCHEDULE STATUS BADGES
+   ========================================================= */
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 76px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+    .status-badge.on-time {
+        background: #e7f6ed;
+        color: #228b4b;
+    }
+
+    .status-badge.delayed {
+        background: #fff4df;
+        color: #b7791f;
+    }
+
+    .status-badge.completed {
+        background: #e8f3fc;
+        color: #1e73be;
+    }
+
+    .status-badge.scheduled {
+        background: #eeeafa;
+        color: #6750a4;
+    }
+
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.action-button {
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dce3e9;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #607080;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+    .action-button:hover {
+        background: #f1f6fa;
+        border-color: #c6d4df;
+        color: #1e73be;
+    }
+
+    .action-button.delete:hover {
+        background: #fff2f2;
+        border-color: #efcaca;
+        color: #d13b3b;
+    }
+/* =========================================================
+   EMPTY TABLE
+   ========================================================= */
+
+.empty-row td {
+    padding: 45px 20px;
+    text-align: center;
+    color: #8995a1;
+    font-size: 13px;
+}
+
+.empty-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.empty-message-icon {
+    font-size: 30px;
+    color: #aab5bf;
+}
+
+.empty-message-text {
+    color: #7c8995;
+    font-size: 12px;
+}
+
+
+
+/* =========================================================
+   TABLE FOOTER
+   ========================================================= */
+
+.table-footer {
+    min-height: 57px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #e9edf2;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+
+.total-records {
+    color: #7b8794;
+    font-size: 11.5px;
+}
+
+    .total-records strong {
+        color: #42515f;
+        font-weight: 600;
+    }
+
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.page-button {
+    min-width: 30px;
+    height: 30px;
+    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dce3e9;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #667482;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+    .page-button:hover {
+        background: #f3f7fa;
+        border-color: #cbd6df;
+    }
+
+    .page-button.active {
+        background: #1e73be;
+        border-color: #1e73be;
+        color: #ffffff;
+    }
+
+
+
+/* =========================================================
+   RESPONSIVE - 950px
+   ========================================================= */
+
+@media (max-width: 950px) {
+
+    .sidebar {
+        width: 235px;
+    }
+
+    .main-content {
+        margin-left: 235px;
+        width: calc(100% - 235px);
+    }
+
+    .top-header {
+        padding: 0 25px;
+    }
+
+    .page-container {
+        padding: 25px;
+    }
+
+    .header-search {
+        width: 280px;
+    }
+
+    .filter-bar {
+        flex-wrap: wrap;
+    }
+
+    .filter-search {
+        max-width: none;
+        width: 100%;
+        flex: none;
+    }
+
+    .filter-date,
+    .filter-select {
+        flex: 1;
+        min-width: 160px;
+    }
+}
+
+
+
+/* =========================================================
+   RESPONSIVE - 700px
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .sidebar-content {
+        min-height: 100vh;
+    }
+
+    .main-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .top-header {
+        height: auto;
+        min-height: 70px;
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .header-search {
+        width: 100%;
+        max-width: none;
+    }
+
+    .header-right {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .page-container {
+        padding: 20px;
+    }
+
+    .page-heading {
+        gap: 15px;
+    }
+
+    .filter-bar {
+        flex-wrap: wrap;
+    }
+
+    .filter-search {
+        max-width: none;
+        width: 100%;
+        flex: none;
+    }
+
+    .filter-date {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .filter-select {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .clear-filter-button {
+        min-width: 90px;
+    }
+}
+/* =========================================================
+   RESPONSIVE - 450px
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .sidebar-content {
+        padding: 20px 12px;
+    }
+
+    .sidebar-logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .sidebar-brand-text h2 {
+        font-size: 24px;
+    }
+
+    .sidebar-brand-text span {
+        font-size: 7.5px;
+    }
+
+    .menu-item {
+        font-size: 12px;
+    }
+
+        .menu-item img {
+            width: 20px;
+            height: 20px;
+            margin-right: 11px;
+        }
+
+    .page-heading {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .add-schedule-button {
+        width: 100%;
+    }
+
+    .filter-date,
+    .filter-select,
+    .clear-filter-button {
+        width: 100%;
+        flex: none;
+    }
+
+    .table-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+
+
+
+/* =========================================================
+   PROFESSIONAL NOTIFICATION SYSTEM
+   ========================================================= */
+
+.schedule-notification-toast {
+    position: fixed;
+    right: 24px;
+    top: 85px;
+    width: 310px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 12px 14px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(18, 59, 93, 0.16);
+    z-index: 99999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+    .schedule-notification-toast.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+
+
+    /* SUCCESS */
+
+    .schedule-notification-toast.success {
+        border-left: 4px solid #22A06B;
+    }
+
+        .schedule-notification-toast.success
+        .schedule-notification-icon {
+            background: #22A06B;
+        }
+
+
+
+    /* ERROR */
+
+    .schedule-notification-toast.error {
+        border-left: 4px solid #DC3545;
+    }
+
+        .schedule-notification-toast.error
+        .schedule-notification-icon {
+            background: #DC3545;
+        }
+
+
+
+    /* WARNING */
+
+    .schedule-notification-toast.warning {
+        border-left: 4px solid #F39C12;
+    }
+
+        .schedule-notification-toast.warning
+        .schedule-notification-icon {
+            background: #F39C12;
+        }
+
+
+
+    /* INFORMATION */
+
+    .schedule-notification-toast.information {
+        border-left: 4px solid #0878E8;
+    }
+
+        .schedule-notification-toast.information
+        .schedule-notification-icon {
+            background: #0878E8;
+        }
+
+
+
+/* =========================================================
+   NOTIFICATION ICON
+   ========================================================= */
+
+.schedule-notification-icon {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 11px;
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+
+/* =========================================================
+   NOTIFICATION CONTENT
+   ========================================================= */
+
+.schedule-notification-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.schedule-notification-title {
+    margin: 0 0 2px 0;
+    color: #123B5D;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.schedule-notification-message {
+    margin: 0;
+    color: #637D92;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+}
+
+
+
+/* =========================================================
+   NOTIFICATION CLOSE BUTTON
+   ========================================================= */
+
+.schedule-notification-close {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 8px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #8AA0B2;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+    .schedule-notification-close:hover {
+        color: #123B5D;
+    }
+
+
+
+/* =========================================================
+   NOTIFICATION MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+    .schedule-notification-toast {
+        left: 16px;
+        right: 16px;
+        top: 75px;
+        width: auto;
+    }
+}
